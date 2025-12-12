@@ -10,8 +10,10 @@ body {
     line-height: 1.7; 
     color: #3f4a56; 
     background-color: #f7f9fc; 
-    /* AJUSTE CRÍTICO: Elimina el scroll lateral */
-    overflow-x: hidden; 
+    overflow-x: hidden; /* Evita el scroll lateral */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el body use toda la altura del viewport */
 }
 
 /* Utilería de Contenedor */
@@ -24,11 +26,11 @@ body {
 
 /* Paleta de Colores (ALTO CONTRASTE Y PROFESIONAL) */
 :root {
-    --primary-color: #0d47a1; /* Azul Zafiro (Dark Blue) */
-    --secondary-color: #455a64; /* Gris pizarra (para textos) */
-    --accent-color: #388e3c; /* Verde (para botones internos) */
+    --primary-color: #0d47a1; /* Azul Zafiro */
+    --secondary-color: #455a64; 
+    --accent-color: #388e3c; 
     --header-bg: #ffffff; 
-    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
+    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.15); 
 }
 
 h1, h2, h3 {
@@ -58,12 +60,18 @@ header {
     color: var(--primary-color);
 }
 
-/* ELIMINACIÓN DE 'PROYECTO FINAL' */
 .project-tag {
     display: none; 
 }
 
 /* Estilo del menú principal */
+.main-nav {
+    /* AJUSTE: Permite que el contenido del nav se alinee bien */
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end; /* Alinea los ítems a la derecha */
+}
+
 .main-nav ul {
     list-style: none;
     display: flex; 
@@ -89,24 +97,13 @@ header {
     padding-bottom: 6px; 
 }
 
-/* AJUSTE DE BOTÓN CTA (Presentación) -> AHORA ES UN BOTÓN NORMAL */
-.cta-link {
-    background-color: transparent !important;
-    color: #333 !important; 
-    padding: 8px 0 !important;
-    border-radius: 0;
-    font-weight: 400; 
-}
-
-
-/* Dropdown Menu (SOLUCIÓN DEFINITIVA PARA VERTICALIDAD Y CIERRE) */
+/* Dropdown Menu (SOLUCIÓN VERTICAL Y CIERRE) */
 .dropdown {
     position: relative;
     padding: 10px 0; 
 }
 
 .activities-dropdown {
-    /* Clases críticas para la verticalidad y el efecto suave */
     display: block; 
     position: absolute;
     top: 100%;
@@ -119,7 +116,7 @@ header {
     border-radius: 5px; 
     z-index: 1001; 
     
-    /* Propiedades del efecto suave */
+    /* Propiedades del efecto suave para evitar que se quede pegado */
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
@@ -132,7 +129,7 @@ header {
     transform: translateY(0); 
 }
 
-/* Estilo de los Ítems del Dropdown (Vertical y limpio) */
+/* Estilo de los Ítems del Dropdown (Vertical) */
 .activities-dropdown li {
     padding: 0;
     margin: 0;
@@ -154,8 +151,11 @@ header {
 }
 
 /* 2. CONTENIDO PRINCIPAL */
+main {
+    flex: 1; /* Permite que el main ocupe el espacio restante y empuje el footer hacia abajo */
+}
+
 .hero-section {
-    /* FONDO DE ALTO CONTRASTE */
     background: #e3f2fd; 
     padding: 60px 40px;
     margin-bottom: 40px;
@@ -187,20 +187,18 @@ header {
 /* Grid de Información (Ajuste para DOS columnas) */
 .info-grid {
     display: grid;
-    /* AJUSTE CRÍTICO: Fuerza dos columnas iguales o se apilan en móvil */
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
+    /* AJUSTE: Garantiza dos columnas en PC */
+    grid-template-columns: 1fr 1fr; 
     gap: 30px;
     margin-bottom: 40px;
 }
-/* Si hay 3 elementos, se mantendrá el diseño de 3 si el espacio lo permite, 
-pero con el HTML ajustado a 2, esto garantiza el ancho. */
 
 .card {
     background: white;
     padding: 25px;
     border-radius: 10px; 
-    /* Sombra visible y de alto contraste */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+    /* Sombra de ALTO CONTRASTE */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
     transition: transform 0.3s;
 }
 
@@ -208,16 +206,17 @@ pero con el HTML ajustado a 2, esto garantiza el ancho. */
     transform: translateY(-5px); 
 }
 
-/* 3. FOOTER */
+/* 3. FOOTER (Menos grueso y abajo del todo) */
 footer {
     background: #37474f; 
     color: white;
     text-align: center;
-    padding: 15px 0;
+    padding: 10px 0; /* Menos padding vertical */
     margin-top: 40px;
+    width: 100%;
 }
 
-/* --- Estilos para el Contenido de las Actividades (Alto Contraste) --- */
+/* --- Estilos Adicionales (Alto Contraste) --- */
 
 .content-header {
     margin-bottom: 40px;
@@ -225,12 +224,12 @@ footer {
     background-color: #ffffff; 
     border-left: 6px solid var(--primary-color); 
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .code-block {
-    background-color: #263238; /* Fondo más oscuro */
-    color: #e0f2f1; /* Texto más claro */
+    background-color: #263238; 
+    color: #e0f2f1; 
     padding: 15px;
     border-radius: 5px;
     overflow-x: auto; 
@@ -239,7 +238,6 @@ footer {
 }
 
 /* --- Estilos para la presentación de Video/Documentación (Bloque Media) --- */
-
 .media-section {
     padding: 30px;
     background-color: #e3f2fd; 
@@ -247,53 +245,37 @@ footer {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
+.media-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 30px;
+    align-items: flex-start; 
+}
+
+.video-player { flex: 2; min-width: 300px; max-width: 100%; }
+.video-player iframe { width: 100%; height: 350px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+
 /* ------------------------------------------------------------------ */
 /* MEDIAS QUERIES (RESPONSIVENESS) */
 /* ------------------------------------------------------------------ */
 
-.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary-color); }
-
 @media (max-width: 768px) {
-    /* Mostrar el botón de menú y ocultar el menú en móviles */
+    /* Ocultar el botón de menú en escritorio */
     .menu-toggle { display: block; }
-
-    .main-nav {
-        display: none;
-        width: 100%;
-        position: absolute;
-        top: 65px; 
-        left: 0;
-        background: var(--header-bg);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 10px 0;
-    }
-
-    /* Mostrar el menú cuando tiene la clase 'active' */
+    .main-nav { display: none; width: 100%; position: absolute; top: 65px; left: 0; background: var(--header-bg); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 10px 0; }
     .main-nav.active { display: block; }
 
+    /* Estructura del menú móvil */
     .main-nav ul { flex-direction: column; gap: 0; }
     .main-nav li { border-bottom: 1px solid #eee; padding: 0; }
     .main-nav a { display: block; padding: 15px 20px; border-bottom: none !important; margin: 0; }
     
     /* Dropdown adaptado a móvil */
     .dropdown { padding: 0; }
-    
-    .activities-dropdown {
-        position: static; 
-        box-shadow: none;
-        background-color: #f8f9fa; 
-        border-radius: 0;
-        padding-left: 20px;
-        border-top: 1px solid #eee;
-        
-        /* Asegura que siempre esté abierto en móvil */
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
+    .activities-dropdown { position: static; box-shadow: none; background-color: #f8f9fa; border-radius: 0; padding-left: 20px; border-top: 1px solid #eee; opacity: 1; visibility: visible; transform: translateY(0); }
     
     /* Adaptación del grid a una columna en móvil */
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
+    .info-grid { grid-template-columns: 1fr; }
+    
+    .media-container { flex-direction: column; }
 }
