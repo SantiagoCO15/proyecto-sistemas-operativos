@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 2 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <title>Actividad 2: Editores y Configuración | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -19,14 +19,14 @@
                 <ul>
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
-                        <a href="#" class="active">Actividades ▾</a>
+                        <a href="#" class="active">Actividades &#9662;</a>
                         <ul class="dropdown-menu activities-dropdown">
-                            <li><a href="actividad1.html">Actividad 1: Linux</a></li>
-                            <li><a href="actividad2.html" class="active">Actividad 2: Editores</a></li>
-                            <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
-                            <li><a href="actividad4.html">Actividad 4: Docker Engine</a></li>
-                            <li><a href="actividad5.html">Actividad 5: Docker Hub</a></li>
-                            <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
+                            <li><a href="actividad1.html">Actividad 1: Linux y Particionamiento</a></li>
+                            <li class="active"><a href="actividad2.html" class="active">Actividad 2: Editores y Configuración</a></li>
+                            <li><a href="actividad3.html">Actividad 3: Scripts y Concurrencia</a></li>
+                            <li><a href="actividad4.html">Actividad 4: Docker Engine e Imagen Base</a></li>
+                            <li><a href="actividad5.html">Actividad 5: Imagen v2.0 y Docker Hub</a></li>
+                            <li><a href="actividad6.html">Actividad 6: Minikube y Despliegue</a></li>
                         </ul>
                     </li>
                     <li><a href="presentacion.html" class="cta-link">Presentación/Videos</a></li>
@@ -44,14 +44,14 @@
         </section>
 
         <section class="documentation-section">
-            <h2>2.1 Instalación y Configuración de Editores</h2>
+            <h2>2.1 Configuración de Editores CLI y Gráfico</h2>
             
             <div class="info-grid">
                 
                 <article class="content-block card">
                     <h3>Editor CLI: Vim (Rocky Linux)</h3>
                     <p>
-                        Se instaló y configuró <strong>Vim</strong> en la distribución de consola <strong>Rocky Linux</strong>. Se demuestra la configuración del archivo `.vimrc` para activar números de línea y *syntax highlighting*.
+                        Se instaló y configuró **Vim** en la distribución de consola **Rocky Linux**. Se demuestra la configuración del archivo `.vimrc` para activar números de línea y resaltar la sintaxis.
                     </p>
                     <pre class="code-block">
                         # Contenido del archivo .vimrc
@@ -60,19 +60,19 @@
                         set autoindent
                     </pre>
                     <figure class="image-placeholder">
-                        <img src="https://via.placeholder.com/900x450?text=CAPTURA+2.1.1%3A+Vim+en+Rocky+Linux+con+Numeros+de+Linea" alt="Captura de Vim en Rocky Linux configurado." class="responsive-img">
-                        <figcaption>Figura 2.1.1: Vim operando con sintaxis y numeración de línea en un archivo de ejemplo.</figcaption>
+                        <img src="img/actividad_2_1.jpg" alt="Captura de Vim en Rocky Linux configurado." class="responsive-img">
+                        <figcaption>Figura 2.1: Vim operando con sintaxis y numeración de línea en un archivo de ejemplo.</figcaption>
                     </figure>
                 </article>
                 
                 <article class="content-block card">
                     <h3>Editor Gráfico: Visual Studio Code (Kubuntu)</h3>
                     <p>
-                        Se instaló <strong>Visual Studio Code</strong> en <strong>Kubuntu</strong>. Se personalizó con *themes* y extensiones básicas para desarrollo de scripts Bash y Dockerfiles.
+                        Se instaló **Visual Studio Code** en **Kubuntu**. Se personalizó con temas y extensiones básicas para facilitar el desarrollo de scripts Bash y Dockerfiles.
                     </p>
                     <figure class="image-placeholder">
-                        <img src="https://via.placeholder.com/1000x550?text=CAPTURA+2.1.2%3A+VS+Code+con+Syntax+Highlighting+y+Archivo+de+Ejemplo" alt="Captura de VS Code con la terminal abierta y un archivo de ejemplo." class="responsive-img">
-                        <figcaption>Figura 2.1.2: Demostración de la configuración de VS Code.</figcaption>
+                        <img src="img/actividad_2_2.jpg" alt="Captura de VS Code con la terminal abierta y un archivo de ejemplo." class="responsive-img">
+                        <figcaption>Figura 2.2: Demostración de la configuración de VS Code.</figcaption>
                     </figure>
                 </article>
 
@@ -86,14 +86,10 @@
                 <article class="card">
                     <h3>Video Demostrativo del Proceso Completo</h3>
                     <div class="video-player">
-                        <iframe 
-                            width="100%" height="315"
-                            src="https://www.youtube.com/embed/TEMPORAL_ID_ACT2" 
-                            title="Video de Explicación de la Actividad 2" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <video controls width="100%" height="315">
+                            <source src="videos/Video_Presentacion_2.mp4" type="video/mp4">
+                            Tu navegador no soporta la etiqueta de video HTML5.
+                        </video>
                     </div>
                     <p style="margin-top: 15px;">Video que demuestra la instalación de los dos editores en sus respectivas distribuciones y la configuración personalizada.</p>
                 </article>
