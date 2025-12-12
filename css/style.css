@@ -7,10 +7,10 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    line-height: 1.7; 
-    color: #3f4a56; 
-    background-color: #f7f9fc; 
-    overflow-x: hidden; 
+    line-height: 1.7;
+    color: #3f4a56;
+    background-color: #f7f9fc;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -18,32 +18,32 @@ body {
 
 /* Utilería de Contenedor */
 .container {
-    width: 95%; 
+    width: 95%;
     max-width: 1100px;
     margin: 0 auto;
     padding: 20px 0;
 }
 
-/* Paleta de Colores (ALTO CONTRASTE) */
+/* Paleta */
 :root {
-    --primary-color: #0d47a1; /* Azul Zafiro */
-    --secondary-color: #455a64; 
-    --accent-color: #388e3c; 
-    --header-bg: #ffffff; 
-    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.15); 
+    --primary-color: #0d47a1;
+    --secondary-color: #455a64;
+    --accent-color: #388e3c;
+    --header-bg: #ffffff;
+    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 h1, h2, h3 {
-    color: var(--primary-color); 
+    color: var(--primary-color);
     margin-bottom: 15px;
     font-weight: 700;
 }
 
-/* 1. HEADER y NAVEGACIÓN */
+/* HEADER */
 header {
     background: var(--header-bg);
-    box-shadow: var(--shadow-subtle); 
-    position: sticky; 
+    box-shadow: var(--shadow-subtle);
+    position: sticky;
     top: 0;
     z-index: 1000;
 }
@@ -58,168 +58,133 @@ header {
 .logo {
     font-size: 1.5rem;
     color: var(--primary-color);
-    /* SOLUCIÓN: Eliminar el espacio del botón sin función */
-    display: inline-flex;
-    align-items: center;
 }
 
-
-/* Estilo del menú principal */
+/* NAV */
 .main-nav {
     flex-grow: 1;
     display: flex;
-    justify-content: flex-end; /* Alinea los ítems a la derecha */
+    justify-content: flex-end;
 }
 
 .main-nav ul {
     list-style: none;
-    display: flex; 
-    gap: 20px;
+    display: flex;
+    gap: 25px;
+}
+
+/* 🔹 FORZAR ALINEACIÓN DE LOS BOTONES */
+.main-nav ul li {
+    display: flex;
+    align-items: center;
 }
 
 .main-nav a {
     text-decoration: none;
     color: #333;
-    padding: 8px 0; 
+    padding: 8px 0;
     transition: color 0.3s, border-bottom 0.3s;
-    background-color: transparent !important; 
-    border-radius: 0; 
-    font-weight: 400; 
 }
 
-/* ESTILO ACTIVO Y HOVER UNIFICADO */
-.main-nav a:hover, 
+.main-nav a:hover,
 .main-nav a.active {
     color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color); 
-    background-color: transparent !important; 
-    padding-bottom: 6px; 
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 6px;
 }
 
-/* Dropdown Menu (SOLUCIÓN DEFINITIVA: Verticalidad y Cierre Suave) */
+/* DROPDOWN */
 .dropdown {
     position: relative;
-    padding: 10px 0; 
 }
 
+/* 🔹 Vertical y centrado bajo el botón */
 .activities-dropdown {
-    /* Clases críticas para la verticalidad */
-    display: block; 
+    display: block;
     position: absolute;
     top: 100%;
-    left: 0;
-    background-color: var(--header-bg);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+    left: 50%;
+    min-width: 200px;
+    background: white;
+    transform: translateX(-50%) translateY(10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     list-style: none;
-    min-width: 250px;
     padding: 10px 0;
-    border-radius: 5px; 
-    z-index: 1001; 
-    
-    /* Propiedades del efecto suave */
+    border-radius: 6px;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    transition: opacity .3s ease, transform .3s ease;
 }
 
 .dropdown:hover .activities-dropdown {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0); 
+    transform: translateX(-50%) translateY(0);
 }
 
-/* Estilo de los Ítems del Dropdown (Vertical) */
 .activities-dropdown li {
-    /* SOLUCIÓN: Asegurar que los ítems del dropdown no usen flexbox horizontal */
-    display: block; 
-    padding: 0;
-    margin: 0;
+    display: block;
 }
 
 .activities-dropdown a {
     display: block;
-    width: 100%;
-    padding: 10px 15px; 
-    color: #3f4a56 !important;
-    border-bottom: none !important; 
-    transition: background-color 0.2s;
+    padding: 10px 15px;
+    color: #333 !important;
 }
 
 .activities-dropdown a:hover {
-    background-color: #f0f0f0; 
-    border-bottom: none !important;
+    background: #f1f1f1;
     color: var(--primary-color) !important;
 }
 
-
-/* 2. CONTENIDO PRINCIPAL */
+/* MAIN */
 main {
-    flex: 1; 
+    flex: 1;
 }
 
 .hero-section {
-    background: #e3f2fd; 
+    background: #e3f2fd;
     padding: 60px 40px;
     margin-bottom: 40px;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
 }
 
-.primary-btn {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-/* Grid de Información (Ajuste para DOS columnas) */
+/* GRID */
 .info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
     margin-bottom: 40px;
 }
 
 .card {
     background: white;
-    padding: 25px;
-    border-radius: 10px; 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* ALTO CONTRASTE */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
     transition: transform 0.3s;
 }
 
-/* 3. FOOTER (Menos grueso y abajo del todo) */
+/* 🔹 Mejor separación del texto de los integrantes */
+.card ul {
+    padding-left: 15px;
+}
+
+.card ul li {
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
 footer {
-    background: #37474f; 
+    background: #37474f;
     color: white;
     text-align: center;
-    padding: 10px 0; 
+    padding: 4px 0;   /* 🔹 Mucho más delgado */
     margin-top: 40px;
     width: 100%;
 }
 
-/* --- Estilos para el Contenido de las Actividades --- */
-.content-header {
-    background-color: #ffffff; 
-    border-left: 6px solid var(--primary-color); 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.code-block {
-    background-color: #263238; 
-    color: #e0f2f1; 
-}
-
-.media-section {
-    background-color: #e3f2fd; 
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* ------------------------------------------------------------------ */
-/* MEDIAS QUERIES (RESPONSIVENESS) */
-/* ------------------------------------------------------------------ */
-
-@media (max-width: 768px) {
-    /* Adaptación del grid a una columna en móvil */
-    .info-grid { grid-template-columns: 1fr; }
-}
+/* Responsive */
+@med
