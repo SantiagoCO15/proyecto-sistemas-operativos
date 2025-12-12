@@ -61,22 +61,25 @@ header {
 }
 
 /* NAV */
+/* --- Importante: usar selector directo (>) para que no afecte a uls anidados --- */
 .main-nav {
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
 }
 
-.main-nav ul {
+/* Solo el UL principal del nav — no afectará a dropdown menus */
+.main-nav > ul {
     list-style: none;
     display: flex;
     gap: 25px;
 }
 
-/* 🔹 FORZAR ALINEACIÓN DE LOS BOTONES */
-.main-nav ul li {
+/* Forzar alineación vertical de cada item del nav (para que "Actividades" esté alineado) */
+.main-nav > ul > li {
     display: flex;
     align-items: center;
+    position: relative; /* para posicionar el dropdown relativo a su li */
 }
 
 .main-nav a {
@@ -95,41 +98,50 @@ header {
 
 /* DROPDOWN */
 .dropdown {
-    position: relative;
+    /* position relativa ya está en el elemento li superior */
 }
 
-/* 🔹 Vertical y centrado bajo el botón */
+/* ===== CORRECCIÓN CLAVE: asegurar verticalidad del dropdown ===== */
+/* El dropdown ahora está forzado a columna y no será afectado por el display:flex del UL principal */
 .activities-dropdown {
-    display: block;
+    display: flex;                /* fuerza comportamiento flexible */
+    flex-direction: column;       /* items en columna (vertical) */
+    align-items: stretch;         /* los enlaces ocupan todo el ancho */
     position: absolute;
-    top: 100%;
+    top: calc(100% + 6px);        /* un poquito de separación */
     left: 50%;
-    min-width: 200px;
+    transform: translateX(-50%) translateY(0);
+    min-width: 220px;
     background: white;
-    transform: translateX(-50%) translateY(10px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     list-style: none;
-    padding: 10px 0;
+    padding: 8px 0;
     border-radius: 6px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity .3s ease, transform .3s ease;
+    transition: opacity .18s ease, transform .18s ease, visibility .18s;
+    z-index: 1001;
 }
 
+/* Mostrar al pasar el ratón (hover) */
 .dropdown:hover .activities-dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
 }
 
+/* Asegurar que los LI y enlaces del dropdown se comporten como lista vertical */
 .activities-dropdown li {
+    width: 100%;
     display: block;
 }
 
 .activities-dropdown a {
     display: block;
-    padding: 10px 15px;
+    padding: 10px 14px;
     color: #333 !important;
+    text-decoration: none;
+    white-space: normal; /* permitir salto de línea si el texto es largo */
 }
 
 .activities-dropdown a:hover {
@@ -167,9 +179,9 @@ main {
     transition: transform 0.3s;
 }
 
-/* 🔹 Mejor separación del texto de los integrantes */
+/* Mejor separación del texto de los integrantes */
 .card ul {
-    padding-left: 15px;
+    padding-left: 18px;
 }
 
 .card ul li {
@@ -181,10 +193,21 @@ footer {
     background: #37474f;
     color: white;
     text-align: center;
-    padding: 4px 0;   /* 🔹 Mucho más delgado */
+    padding: 4px 0;   /* footer más delgado */
     margin-top: 40px;
     width: 100%;
 }
 
 /* Responsive */
-@med
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* En pantallas pequeñas quizá quieras que el dropdown ocupe el ancho del contenedor */
+    .activities-dropdown {
+        left: 0;
+        transform: translateX(0);
+        min-width: 180px;
+    }
+}
