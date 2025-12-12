@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Final | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <h1 class="logo">SISTEMAS OPERATIVOS <span class="project-tag">PROYECTO FINAL</span></h1>
+            <button class="menu-toggle" aria-label="Abrir Menú">&#9776;</button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Portada</a></li>
+                    <li class="dropdown">
+                        <a href="#">Actividades &#9662;</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="actividad1.html">Actividad 1: Linux</a></li>
+                            <li><a href="actividad2.html">Actividad 2: Editores</a></li>
+                            <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
+                            <li><a href="actividad4.html">Actividad 4: Docker Engine</a></li>
+                            <li><a href="actividad5.html">Actividad 5: Docker Hub</a></li>
+                            <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="videos.html">Videos</a></li>
+                    <li><a href="presentacion.html" class="cta-link active">Presentación Final</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-header">
+            <h1>🎙️ Video de Presentación Final y Sustentación</h1>
+            <p class="summary">
+                Enlace directo al video que contiene la sustentación final del proyecto, cubriendo los puntos clave y las conclusiones. La presentación tiene una duración requerida de 15 a 20 minutos[cite: 256].
+            </p>
+        </section>
+
+        <section class="documentation-section">
+            <h2>Enlace de Sustentación (3-4 minutos sugeridos)</h2>
+
+            <article class="content-block" style="text-align: center;">
+                <p>Haz clic en el botón para acceder al video de sustentación final en YouTube:</p>
+                <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_SUSTENTACION" target="_blank" class="btn accent-btn" style="font-size: 1.2rem; padding: 15px 30px;">
+                    Ver Video de Sustentación Final
+                </a>
+                <p style="margin-top: 20px; color: var(--secondary-color); font-size: 0.9rem;">**Nota:** El video debe ser accesible públicamente[cite: 245].</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Proyecto Final. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>

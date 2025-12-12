@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <h1 class="logo">SISTEMAS OPERATIVOS <span class="project-tag">PROYECTO FINAL</span></h1>
+            <button class="menu-toggle" aria-label="Abrir Menú">&#9776;</button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Portada</a></li>
+                    <li class="dropdown">
+                        <a href="#">Actividades &#9662;</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="actividad1.html">Actividad 1: Linux</a></li>
+                            <li><a href="actividad2.html">Actividad 2: Editores</a></li>
+                            <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
+                            <li><a href="actividad4.html">Actividad 4: Docker Engine</a></li>
+                            <li><a href="actividad5.html">Actividad 5: Docker Hub</a></li>
+                            <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="videos.html">Videos</a></li>
+                    <li><a href="presentacion.html" class="cta-link">Presentación Final</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero-section">
+            <h2>Bienvenido al Proyecto de Sistemas Operativos</h2>
+            <p>
+                Este sitio web es el entregable final que documenta el desarrollo y los resultados de las actividades
+                relacionadas con la administración, scripting y orquestación de contenedores (Docker y Kubernetes).
+            </p>
+            <a href="actividad1.html" class="btn primary-btn">Ver Actividad 1</a>
+        </section>
+
+        <section class="info-grid">
+            <article class="card">
+                <h3>Objetivos del Proyecto</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            </article>
+            <article class="card">
+                <h3>Integrantes del Grupo</h3>
+                <ul>
+                    <li>Integrante 1 (Rol/Tareas)</li>
+                    <li>Integrante 2 (Rol/Tareas)</li>
+                    <li>Integrante 3 (Rol/Tareas)</li>
+                </ul>
+            </article>
+            <article class="card">
+                <h3>Fecha y Contacto</h3>
+                <p><strong>Fecha de entrega:</strong> Semana 17 (08 al 13 de diciembre de 2025)</p>
+                <p><strong>Docente:</strong> Mg. José Alexander Castañeda Muñoz</p>
+                <p><strong>Contacto:</strong> castaneda.jose@correounivalle.edu.co</p>
+            </article>
+        </section>
+
+        </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Proyecto Final. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>

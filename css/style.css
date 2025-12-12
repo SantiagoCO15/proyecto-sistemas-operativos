@@ -1,0 +1,333 @@
+/* Base y Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7f6; /* Fondo ligero para modernidad */
+}
+
+/* Utilería de Contenedor */
+.container {
+    width: 90%;
+    max-width: 1200px; /* Ancho máximo en PC */
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Colores y Tipografía */
+:root {
+    --primary-color: #007bff; /* Azul vibrante (Moderno) */
+    --secondary-color: #6c757d; /* Gris para textos secundarios */
+    --accent-color: #28a745; /* Verde para CTAs */
+    --header-bg: #fff;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+/* 1. HEADER y NAVEGACIÓN (Moderno e Intuitivo) */
+header {
+    background: var(--header-bg);
+    box-shadow: var(--shadow-light);
+    position: sticky; /* Sticky Header para mejor UX */
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.project-tag {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    font-weight: 300;
+}
+
+/* Estilo del menú principal */
+.main-nav ul {
+    list-style: none;
+    display: flex; /* Usamos Flexbox para el menú horizontal */
+    gap: 20px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 4px;
+}
+
+.main-nav a:hover, .main-nav .active {
+    color: var(--primary-color);
+    background-color: #e9ecef;
+}
+
+/* Botón de Acción (CTA) */
+.cta-link {
+    background-color: var(--accent-color) !important;
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.cta-link:hover {
+    background-color: #218838 !important;
+}
+
+/* Dropdown Menu (Organización) */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--header-bg);
+    box-shadow: var(--shadow-light);
+    list-style: none;
+    min-width: 200px;
+    padding: 10px 0;
+    border-radius: 0 0 5px 5px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Muestra el menú al pasar el cursor */
+}
+
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 15px;
+}
+
+/* 2. CONTENIDO PRINCIPAL */
+.hero-section {
+    background: linear-gradient(135deg, #e9ecef, #dce4e6);
+    padding: 60px 40px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.hero-section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Grid de Información (Organización) */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Grid */
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra sutil para el efecto moderno */
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Pequeño efecto hover */
+}
+
+/* 3. FOOTER */
+footer {
+    background: #343a40;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* MEDIAS QUERIES (RESPONSIVENESS) */
+/* ------------------------------------------------------------------ */
+
+/* Ocultar el botón de menú en escritorio */
+.menu-toggle {
+    display: none; 
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    /* Mostrar el botón de menú y ocultar el menú en móviles */
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        /* Esconder por defecto en móvil */
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 65px; /* Ajustar debajo del header */
+        left: 0;
+        background: var(--header-bg);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+    }
+
+    /* Mostrar el menú cuando tiene la clase 'active' (activada por JavaScript) */
+    .main-nav.active {
+        display: block;
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* Cambiar a lista vertical */
+        gap: 0;
+    }
+
+    .main-nav li {
+        border-bottom: 1px solid #eee;
+    }
+    
+    .main-nav li:last-child {
+        border-bottom: none;
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 15px 20px;
+    }
+
+    /* Dropdown adaptado a móvil */
+    .dropdown-menu {
+        position: static; /* Ya no es absoluto en móvil */
+        box-shadow: none;
+        background-color: #f8f9fa; /* Fondo más claro para submenú */
+        border-radius: 0;
+        padding-left: 20px;
+        border-top: 1px solid #eee;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: none; /* Desactivar hover en móvil, usaremos el menú principal */
+    }
+
+    /* Ajuste de Texto */
+    .hero-section {
+        padding: 30px 20px;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.8rem;
+    }
+}
+/* --- Estilos Adicionales para el Contenido de las Actividades --- */
+
+.content-header {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #e6f7ff; /* Fondo sutil para la cabecera */
+    border-left: 5px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+.summary {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.documentation-section {
+    margin-bottom: 50px;
+    padding: 30px 0;
+    border-bottom: 1px dashed #ccc;
+}
+
+.documentation-section:last-child {
+    border-bottom: none;
+}
+
+.content-block {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.image-placeholder {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+figcaption {
+    font-style: italic;
+    color: var(--secondary-color);
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* Bloque de código (ya incluido en el paso anterior, pero aquí para referencia) */
+.code-block {
+    background-color: #272822; 
+    color: #f8f8f2; 
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto; 
+    font-family: 'Consolas', 'Monaco', monospace;
+    margin-bottom: 20px;
+}
+
+.video-link-section {
+    text-align: center;
+    padding: 40px 0;
+}

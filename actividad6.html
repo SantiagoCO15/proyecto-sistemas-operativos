@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 1 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <h1 class="logo">SISTEMAS OPERATIVOS <span class="project-tag">PROYECTO FINAL</span></h1>
+            <button class="menu-toggle" aria-label="Abrir Menú">&#9776;</button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Portada</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="active">Actividades &#9662;</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="actividad1.html">Actividad 1: Linux</a></li>
+                            <li><a href="actividad2.html">Actividad 2: Editores</a></li>
+                            <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
+                            <li><a href="actividad4.html">Actividad 4: Docker Engine</a></li>
+                            <li><a href="actividad5.html">Actividad 5: Docker Hub</a></li>
+                            <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="videos.html">Videos</a></li>
+                    <li><a href="presentacion.html" class="cta-link">Presentación Final</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<main class="container">
+    <section class="content-header">
+        <h1>Actividad 6: Instalación y Configuración de Kubernetes (Minikube)</h1>
+        <p class="summary">
+            Instalación de un clúster Kubernetes local usando Minikube. Despliegue de la imagen de Docker (v2.0) a través de un Deployment y exposición del servicio.
+        </p>
+    </section>
+
+    <section class="documentation-section">
+        <h2>6.1 Instalación de Minikube y Configuración de kubectl</h2>
+        <article class="content-block">
+            <h3>Comandos Iniciales y Verificación</h3>
+            <p>
+                Se instaló **Minikube** [cite: 178] en Kubuntu junto con `kubectl`[cite: 180]. El clúster se inició usando `minikube start` [cite: 181] y se verificó su estado[cite: 182].
+            </p>
+            <pre class="code-block">
+                # Comandos de inicio y verificación
+                minikube start --driver=docker
+                kubectl cluster-info # [cite: 190] Captura de cluster-info
+                kubectl get nodes # [cite: 191] Listado de nodos
+            </pre>
+            <figure class="image-placeholder">
+                <img src="https://via.placeholder.com/1000x500?text=CAPTURA+6.1.1%3A+kubectl+get+nodes+y+cluster-info" alt="Captura de la verificación del clúster de Kubernetes." class="responsive-img">
+                <figcaption>Figura 6.1.1: Clúster de Minikube funcionando con `kubectl get nodes`.</figcaption>
+            </figure>
+        </article>
+    </section>
+
+    <section class="documentation-section">
+        <h2>6.2 Creación de Deployment y Exposición de Servicio</h2>
+        <article class="content-block">
+            <h3>Archivo YAML de Deployment y Despliegue</h3>
+            <p>
+                Se creó un Deployment YAML [cite: 198] utilizando la imagen `grupo8/proyecto-so:v2.0` de Docker Hub[cite: 199]. Se aplica el archivo y se verifica el estado de los Pods[cite: 200, 201].
+            </p>
+            <pre class="code-block">
+                # Fragmento del Deployment YAML [cite: 205]
+                apiVersion: apps/v1
+                kind: Deployment
+                spec:
+                  replicas: 1
+                  template:
+                    spec:
+                      containers:
+                      - name: app-container
+                        image: grupo8/proyecto-so:v2.0 
+                        ports:
+                        - containerPort: 8080
+            </pre>
+
+            <h3>Archivo YAML de Service y Acceso</h3>
+            <p>
+                Se expone el servicio mediante un Service YAML [cite: 202] (tipo NodePort o similar) para permitir el acceso. Se demuestra el acceso al servicio desplegado[cite: 203].
+            </p>
+            <pre class="code-block">
+                # Comandos de despliegue y verificación
+                kubectl apply -f deployment.yaml
+                kubectl apply -f service.yaml
+                kubectl logs [NOMBRE_DEL_POD] # [cite: 209] Captura de Logs
+                minikube service [NOMBRE_DEL_SERVICIO] --url # Acceso al servicio
+            </pre>
+            <figure class="image-placeholder">
+                <img src="https://via.placeholder.com/1000x500?text=CAPTURA+6.2.1%3A+Acceso+al+Servicio+Expuesto+y+kubectl+logs" alt="Captura del servicio de Kubernetes accesible en el navegador o terminal." class="responsive-img">
+                <figcaption>Figura 6.2.1: Demostración de acceso al servicio y verificación de los logs del Pod.</figcaption>
+            </figure>
+        </article>
+    </section>
+
+    <section class="video-link-section">
+        <h2>Video de la Actividad 6</h2>
+        <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_ACT6" target="_blank" class="btn primary-btn">
+            Ver Video de Kubernetes (3 Puntos)
+        </a>
+    </section>
+</main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Proyecto Final. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>

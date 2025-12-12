@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 1 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <h1 class="logo">SISTEMAS OPERATIVOS <span class="project-tag">PROYECTO FINAL</span></h1>
+            <button class="menu-toggle" aria-label="Abrir Menú">&#9776;</button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Portada</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="active">Actividades &#9662;</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="actividad1.html">Actividad 1: Linux</a></li>
+                            <li><a href="actividad2.html">Actividad 2: Editores</a></li>
+                            <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
+                            <li><a href="actividad4.html">Actividad 4: Docker Engine</a></li>
+                            <li><a href="actividad5.html">Actividad 5: Docker Hub</a></li>
+                            <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="videos.html">Videos</a></li>
+                    <li><a href="presentacion.html" class="cta-link">Presentación Final</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<main class="container">
+    <section class="content-header">
+        <h1>Actividad 3: Scripts, Automatización, Gestión de Procesos y Hilos</h1>
+        <p class="summary">
+            Creación de scripts en Bash (gráfico y consola), demostración de comandos de gestión de procesos en Linux y desarrollo de un programa simple en Java con concurrencia.
+        </p>
+    </section>
+
+    <section class="documentation-section">
+        <h2>3.1 Script de Automatización en Entorno Gráfico (Kubuntu)</h2>
+        <article class="content-block">
+            <h3>Código y Ejecución del Script de Escritorio</h3>
+            <p>
+                Se creó un script en Bash para [Ejemplo: organizar/limpiar archivos temporales][cite: 59]. Este script está configurado para ejecutarse como una aplicación de escritorio con un botón de ejecución[cite: 60].
+            </p>
+            <pre class="code-block">
+                # Código del script (comentado)
+                #!/bin/bash
+                # [cite: 62] Script: Limpieza_temporal.sh
+                LOG_FILE="/tmp/limpieza_$(date +%Y%m%d).log"
+                echo "Iniciando limpieza de cache..." > $LOG_FILE
+                sudo apt autoremove -y >> $LOG_FILE
+                # ... (resto del código)
+            </pre>
+            <figure class="image-placeholder">
+                <img src="https://via.placeholder.com/900x450?text=CAPTURA+3.1.1%3A+Ejecucion+del+Script+desde+el+Escritorio" alt="Captura de la ejecución del script desde el entorno gráfico de Kubuntu." class="responsive-img">
+                <figcaption>Figura 3.1.1: El script ejecutándose como aplicación de escritorio.</figcaption>
+            </figure>
+        </article>
+    </section>
+
+    <section class="documentation-section">
+        <h2>3.2 Script de Automatización en Entorno Consola (Rocky Linux)</h2>
+        <article class="content-block">
+            <h3>Manejo de Argumentos y Errores</h3>
+            <p>
+                Se creó una versión similar del script para la consola, optimizada con manejo de argumentos, validaciones [cite: 67] y manejo de errores básico[cite: 73].
+            </p>
+            <pre class="code-block">
+                # Código del script de consola con validaciones
+                if [ $# -eq 0 ]; then
+                  echo "Uso: $0 [directorio]" # [cite: 68] Salida informativa
+                  exit 1
+                fi
+                if [ ! -d "$1" ]; then
+                  echo "Error: Directorio no existe." # [cite: 73] Manejo de errores
+                  exit 2
+                fi
+                # ... (código de automatización)
+            </pre>
+            <figure class="image-placeholder">
+                <img src="https://via.placeholder.com/800x400?text=CAPTURA+3.2.1%3A+Ejecucion+del+Script+con+Argumentos+en+Terminal" alt="Captura de la ejecución del script en modo consola." class="responsive-img">
+                <figcaption>Figura 3.2.1: Demostración de la validación de argumentos en la terminal de Rocky Linux.</figcaption>
+            </figure>
+        </article>
+    </section>
+
+    <section class="documentation-section">
+        <h2>3.3 Gestión de Procesos en Linux</h2>
+        <article class="content-block">
+            <h3>Demostración de Comandos y Estados</h3>
+            <p>
+                Se demuestra el dominio de comandos clave para gestión de procesos (`ps`, `top`, `htop`, `pstree`) [cite: 80], su gestión (`kill`, `killall`) [cite: 81] y la gestión de prioridades (`nice`, `renice`)[cite: 82]. Se capturó un proceso en diferentes estados[cite: 84].
+            </p>
+            <pre class="code-block">
+                # Comandos de gestión activa de procesos
+                top -b -n 1 | head -n 10 # Monitoreo
+                nice -n 10 ./mi_proceso_lento & # Asignar prioridad
+                pstree -p
+                kill -9 [PID_EJEMPLO] # Terminación de proceso
+            </pre>
+            <figure class="image-placeholder">
+                <img src="https://via.placeholder.com/1000x500?text=CAPTURA+3.3.1%3A+Procesos+en+Diferentes+Estados+(top+o+htop)" alt="Captura de procesos con htop o top mostrando el PID." class="responsive-img">
+                <figcaption>Figura 3.3.1: Captura de comandos de monitoreo y gestión de procesos.</figcaption>
+            </figure>
+        </article>
+    </section>
+
+    <section class="documentation-section">
+        <h2>3.4 Programación Básica con Hilos en Java (Concurrencia)</h2>
+        <article class="content-block">
+            <h3>Sincronización y Código Fuente</h3>
+            <p>
+                Se creó un programa simple en Java utilizando al menos 3 hilos (`Thread` o `Runnable`)[cite: 92]. El ejemplo demuestra un contador compartido donde se sincroniza el acceso al recurso usando `synchronized`[cite: 93, 100].
+            </p>
+            <pre class="code-block">
+                // Código Java (fragmento)
+                public class Contador {
+                    private int count = 0;
+                    public synchronized void increment() {
+                        count++;
+                    }
+                }
+                // ... (Clase principal con 3+ hilos)
+            </pre>
+            <figure class="image-placeholder">
+                <img src="https://via.placeholder.com/800x400?text=CAPTURA+3.4.1%3A+jps+con+Proceso+en+Ejecucion" alt="Captura de la ejecución del programa Java concurrente." class="responsive-img">
+                <figcaption>Figura 3.4.1: Salida del comando `jps` mostrando el proceso de Java ejecutándose[cite: 107].</figcaption>
+            </figure>
+        </article>
+    </section>
+
+    <section class="video-link-section">
+        <h2>Video de la Actividad 3</h2>
+        <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_ACT3" target="_blank" class="btn primary-btn">
+            Ver Video de Scripts, Procesos y Hilos (4 Puntos)
+        </a>
+    </section>
+</main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Proyecto Final. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
