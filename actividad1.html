@@ -18,7 +18,7 @@
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
                         <a href="#" class="active">Actividades &#9662;</a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu activities-dropdown">
                             <li><a href="actividad1.html">Actividad 1: Linux</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores</a></li>
                             <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
@@ -27,76 +27,97 @@
                             <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
                         </ul>
                     </li>
-                    <li><a href="videos.html">Videos</a></li>
-                    <li><a href="presentacion.html" class="cta-link">Presentación Final</a></li>
+                    <li><a href="presentacion.html" class="cta-link">Presentación/Videos</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="container">
-    <section class="content-header">
-        <h1>Actividad 1: Instalación y Configuración de Linux (Kubuntu y Rocky Linux)</h1>
-        <p class="summary">
-            Documentación del proceso de instalación de las distribuciones asignadas al Grupo 8: **Kubuntu** (Gráfico) y **Rocky Linux** (Consola). Se incluye el particionamiento manual y la instalación de herramientas requeridas.
-        </p>
-    </section>
+        <section class="content-header">
+            <h1>Actividad 1: Instalación y Configuración de Linux (Kubuntu y Rocky Linux)</h1>
+            <p class="summary">
+                Documentación del proceso de instalación de las distribuciones asignadas al Grupo 8: **Kubuntu** (Gráfico) y **Rocky Linux** (Consola). Se incluye el particionamiento manual y la instalación de herramientas requeridas.
+            </p>
+        </section>
 
-    <section class="documentation-section">
-        <h2>1.1 Instalación en Ambiente Gráfico (Kubuntu)</h2>
-        <article class="content-block">
-            <h3>Particionamiento Manual y Requisitos</h3>
-            <p>
-                Se realizó la instalación completa de **Kubuntu**  en una máquina virtual, configurando manualmente las particiones `/`, `swap` y `/home` según lo solicitado[cite: 15]. El sistema operativo quedó con el entorno gráfico funcional (KDE).
-            </p>
-            <figure class="image-placeholder">
-                <img src="https://via.placeholder.com/1000x500?text=CAPTURA+1.1.1%3A+Esquema+de+Particionamiento+Manual+(Kubuntu)" alt="Captura del esquema de particionamiento manual de Kubuntu." class="responsive-img">
-                <figcaption>Figura 1.1.1: Particiones separadas para /, swap y /home.</figcaption>
-            </figure>
-            
-            <h3>Navegadores y Editores Instalados</h3>
-            <p>
-                Se instalaron al menos dos navegadores web y dos editores/IDEs de desarrollo para cumplir con los entregables[cite: 17, 18].
-            </p>
-            <figure class="image-placeholder">
-                <img src="https://via.placeholder.com/1000x550?text=CAPTURA+1.1.2%3A+Kubuntu+funcional+con+Navegadores+y+Editores" alt="Captura del sistema Kubuntu funcionando con las aplicaciones instaladas." class="responsive-img">
-                <figcaption>Figura 1.1.2: Entorno gráfico de Kubuntu con navegadores y editores instalados.</figcaption>
-            </figure>
-        </article>
-    </section>
+        <section class="documentation-section">
+            <h2>1.1 Instalación en Ambiente Gráfico (Kubuntu)</h2>
+            <article class="content-block">
+                <h3>Particionamiento Manual y Requisitos</h3>
+                <p>
+                    [cite_start]Se realizó la instalación completa de **Kubuntu** en una máquina virtual, configurando manualmente las particiones `/`, `swap` y `/home` según lo solicitado[cite: 15]. El sistema operativo quedó con el entorno gráfico funcional (KDE).
+                </p>
+                <figure class="image-placeholder">
+                    <img src="https://via.placeholder.com/1000x500?text=CAPTURA+1.1.1%3A+Esquema+de+Particionamiento+Manual+(Kubuntu)" alt="Captura del esquema de particionamiento manual de Kubuntu." class="responsive-img">
+                    <figcaption>Figura 1.1.1: Particiones separadas para /, swap y /home.</figcaption>
+                </figure>
+                
+                <h3>Navegadores y Editores Instalados</h3>
+                <p>
+                    [cite_start]Se instalaron al menos dos navegadores web y dos editores/IDEs de desarrollo para cumplir con los entregables[cite: 17, 18].
+                </p>
+                <figure class="image-placeholder">
+                    <img src="https://via.placeholder.com/1000x550?text=CAPTURA+1.1.2%3A+Kubuntu+funcional+con+Navegadores+y+Editores" alt="Captura del sistema Kubuntu funcionando con las aplicaciones instaladas." class="responsive-img">
+                    <figcaption>Figura 1.1.2: Entorno gráfico de Kubuntu con navegadores y editores instalados.</figcaption>
+                </figure>
+            </article>
+        </section>
 
-    <section class="documentation-section">
-        <h2>1.2 Instalación en Ambiente Consola (Rocky Linux)</h2>
-        <article class="content-block">
-            <h3>Configuración y Herramientas Básicas</h3>
-            <p>
-                La instalación de **Rocky Linux**  se realizó en modo consola (sin interfaz gráfica)[cite: 28]. También se implementó el particionamiento manual [cite: 29] y se instalaron herramientas básicas como `make`, `rsync`, `curl`, `git` y `wget`[cite: 33].
-            </p>
-            <figure class="image-placeholder">
-                <img src="https://via.placeholder.com/800x400?text=CAPTURA+1.2.1%3A+Particionamiento+en+Consola+(Rocky+Linux)" alt="Captura del esquema de particionamiento manual de Rocky Linux en modo consola." class="responsive-img">
-                <figcaption>Figura 1.2.1: Esquema de particionamiento en la instalación mínima.</figcaption>
-            </figure>
-            
-            <h3>Verificación de Conectividad y Herramientas</h3>
-            <p>
-                Se verificó la conectividad de red y la correcta instalación de las herramientas básicas requeridas[cite: 32, 33].
-            </p>
-            <pre class="code-block">
-                # Comandos de verificación en Rocky Linux
-                curl -V 
-                git --version
-                ping 8.8.8.8 -c 4 
-            </pre>
-        </article>
-    </section>
-    
-    <section class="video-link-section">
-        <h2>Video de la Actividad 1</h2>
-        <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_ACT1" target="_blank" class="btn primary-btn">
-            Ver Video Demostrativo del Proceso Completo (4 Puntos)
-        </a>
-    </section>
-</main>
+        <section class="documentation-section">
+            <h2>1.2 Instalación en Ambiente Consola (Rocky Linux)</h2>
+            <article class="content-block">
+                <h3>Configuración y Herramientas Básicas</h3>
+                <p>
+                    [cite_start]La instalación de **Rocky Linux** se realizó en modo consola (sin interfaz gráfica)[cite: 28]. [cite_start]También se implementó el particionamiento manual [cite: 29] [cite_start]y se instalaron herramientas básicas como `make`, `rsync`, `curl`, `git` y `wget`[cite: 33].
+                </p>
+                <figure class="image-placeholder">
+                    <img src="https://via.placeholder.com/800x400?text=CAPTURA+1.2.1%3A+Particionamiento+en+Consola+(Rocky+Linux)" alt="Captura del esquema de particionamiento manual de Rocky Linux en modo consola." class="responsive-img">
+                    <figcaption>Figura 1.2.1: Esquema de particionamiento en la instalación mínima.</figcaption>
+                </figure>
+                
+                <h3>Verificación de Conectividad y Herramientas</h3>
+                <p>
+                    [cite_start]Se verificó la conectividad de red y la correcta instalación de las herramientas básicas requeridas[cite: 32, 33].
+                </p>
+                <pre class="code-block">
+                    # Comandos de verificación en Rocky Linux
+                    curl -V 
+                    git --version
+                    ping 8.8.8.8 -c 4 
+                </pre>
+            </article>
+        </section>
+        
+        <section class="media-section">
+            <h2>Entrega de Evidencias y Documentación (Video: 2-3 min)</h2>
+            <div class="media-container">
+                
+                <div class="video-player">
+                    <h3>Video Demostrativo del Proceso Completo</h3>
+                    <iframe 
+                        src="https://www.youtube.com/embed/TEMPORAL_ID_ACT1" 
+                        title="Video de Explicación de la Actividad 1" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <div class="documentation-link">
+                    <h3>Archivos de Documentación</h3>
+                    <p>Descarga el PDF con las capturas y explicaciones detalladas (Entregable: Capturas de pantalla de cada etapa de instalación):</p>
+                    <a href="docs/Actividad_1_Documentacion.pdf" target="_blank" class="btn primary-btn">
+                        Ver PDF Documentación (4 Puntos)
+                    </a>
+                    <p style="font-size: 0.85rem; color: #555; margin-top: 10px;">
+                        También puedes descargar los archivos de configuración (si aplica).
+                    </p>
+                </div>
+                
+            </div>
+        </section>
+        </main>
 
     <footer>
         <div class="container">

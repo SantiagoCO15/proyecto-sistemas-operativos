@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 1 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <title>Actividad 5 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -18,7 +18,7 @@
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
                         <a href="#" class="active">Actividades &#9662;</a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu activities-dropdown">
                             <li><a href="actividad1.html">Actividad 1: Linux</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores</a></li>
                             <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
@@ -27,68 +27,89 @@
                             <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
                         </ul>
                     </li>
-                    <li><a href="videos.html">Videos</a></li>
-                    <li><a href="presentacion.html" class="cta-link">Presentación Final</a></li>
+                    <li><a href="presentacion.html" class="cta-link">Presentación/Videos</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-<main class="container">
-    <section class="content-header">
-        <h1>Actividad 5: Modificación y Publicación en Docker Hub</h1>
-        <p class="summary">
-            Modificación de la imagen de Debian (Actividad 4) para agregar funcionalidades adicionales (v2.0) y posterior publicación en el repositorio público de Docker Hub.
-        </p>
-    </section>
-
-    <section class="documentation-section">
-        <h2>5.1 Modificación de Imagen Docker (v2.0)</h2>
-        <article class="content-block">
-            <h3>Modificaciones y Comparación de Tamaños</h3>
-            <p>
-                Se modificó el Dockerfile (v2.0) para incluir funcionalidades adicionales, como la instalación de [Ejemplo: paquete ofimático ligero/otro script de automatización][cite: 150, 151]. Se compara el tamaño de la imagen original (v1.0) con la modificada (v2.0)[cite: 157].
+    <main class="container">
+        <section class="content-header">
+            <h1>Actividad 5: Modificación y Publicación en Docker Hub</h1>
+            <p class="summary">
+                Modificación de la imagen de Debian (Actividad 4) para agregar funcionalidades adicionales (v2.0) y posterior publicación en el repositorio público de Docker Hub.
             </p>
-            <pre class="code-block">
-                # Nuevo Dockerfile (fragmento con las modificaciones) [cite: 154]
-                FROM debian:stable-slim
-                # ... comandos anteriores ...
-                RUN apt install -y python3-pip # Agregando una herramienta adicional [cite: 150]
-                # ... (otros comandos o scripts de automatización)
-            </pre>
-            <figure class="image-placeholder">
-                <img src="https://via.placeholder.com/900x450?text=CAPTURA+5.1.1%3A+docker+images+Comparando+v1.0+vs+v2.0" alt="Captura de docker images mostrando el tamaño de ambas versiones." class="responsive-img">
-                <figcaption>Figura 5.1.1: Comparación del tamaño entre la imagen original y la modificada.</figcaption>
-            </figure>
-        </article>
-    </section>
+        </section>
 
-    <section class="documentation-section">
-        <h2>5.2 Publicación en Docker Hub</h2>
-        <article class="content-block">
-            <h3>Etiquetado y Push Público</h3>
-            <p>
-                La imagen v2.0 fue etiquetada correctamente (`usuario/nombre:v2.0`) [cite: 161] y subida (push) al repositorio de Docker Hub [cite: 162] para asegurar su disponibilidad pública[cite: 163].
-            </p>
-            <pre class="code-block">
-                # Comandos de etiquetado y push
-                docker tag [IMAGE_ID] grupo8/proyecto-so:v2.0
-                docker push grupo8/proyecto-so:v2.0 # [cite: 166] Captura de push
-            </pre>
-            <figure class="image-placeholder">
-                <img src="https://via.placeholder.com/1000x500?text=CAPTURA+5.2.1%3A+URL+Publica+en+Docker+Hub" alt="Captura del repositorio en Docker Hub." class="responsive-img">
-                <figcaption>Figura 5.2.1: URL pública de la imagen en Docker Hub [cite: 167] con el README documentado[cite: 164].</figcaption>
-            </figure>
-        </article>
-    </section>
+        <section class="documentation-section">
+            <h2>5.1 Modificación de Imagen Docker (v2.0)</h2>
+            <article class="content-block">
+                <h3>Modificaciones y Comparación de Tamaños</h3>
+                <p>
+                    [cite_start]Se modificó el Dockerfile (v2.0) para incluir funcionalidades adicionales, como la instalación de [Ejemplo: paquete ofimático ligero/otro script de automatización][cite: 150, 151]. [cite_start]Se compara el tamaño de la imagen original (v1.0) con la modificada (v2.0)[cite: 157].
+                </p>
+                <pre class="code-block">
+                    # [cite_start]Nuevo Dockerfile (fragmento con las modificaciones) [cite: 154]
+                    FROM debian:stable-slim
+                    # ... comandos anteriores ...
+                    [cite_start]RUN apt install -y python3-pip # Agregando una herramienta adicional [cite: 150]
+                    # ... (otros comandos o scripts de automatización)
+                </pre>
+                <figure class="image-placeholder">
+                    <img src="https://via.placeholder.com/900x450?text=CAPTURA+5.1.1%3A+docker+images+Comparando+v1.0+vs+v2.0" alt="Captura de docker images mostrando el tamaño de ambas versiones." class="responsive-img">
+                    <figcaption>Figura 5.1.1: Comparación del tamaño entre la imagen original y la modificada.</figcaption>
+                </figure>
+            </article>
+        </section>
 
-    <section class="video-link-section">
-        <h2>Video de la Actividad 5</h2>
-        <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_ACT5" target="_blank" class="btn primary-btn">
-            Ver Video de Modificación y Docker Hub (3 Puntos)
-        </a>
-    </section>
-</main>
+        <section class="documentation-section">
+            <h2>5.2 Publicación en Docker Hub</h2>
+            <article class="content-block">
+                <h3>Etiquetado y Push Público</h3>
+                <p>
+                    [cite_start]La imagen v2.0 fue etiquetada correctamente (`usuario/nombre:v2.0`) [cite: 161] [cite_start]y subida (push) al repositorio de Docker Hub [cite: 162] [cite_start]para asegurar su disponibilidad pública[cite: 163].
+                </p>
+                <pre class="code-block">
+                    # [cite_start]Comandos de etiquetado y push [cite: 166]
+                    docker tag [IMAGE_ID] grupo8/proyecto-so:v2.0
+                    docker push grupo8/proyecto-so:v2.0
+                </pre>
+                <figure class="image-placeholder">
+                    <img src="https://via.placeholder.com/1000x500?text=CAPTURA+5.2.1%3A+URL+Publica+en+Docker+Hub" alt="Captura del repositorio en Docker Hub." class="responsive-img">
+                    [cite_start]<figcaption>Figura 5.2.1: URL pública de la imagen en Docker Hub [cite: 167] [cite_start]con el README documentado[cite: 164].</figcaption>
+                </figure>
+            </article>
+        </section>
+
+        <section class="media-section">
+            <h2>Entrega de Evidencias y Documentación (Video: 3-4 min)</h2>
+            <div class="media-container">
+                
+                <div class="video-player">
+                    <h3>Video Demostrativo del Proceso Completo</h3>
+                    <iframe 
+                        src="https://www.youtube.com/embed/TEMPORAL_ID_ACT5" 
+                        title="Video de Explicación de la Actividad 5" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <div class="documentation-link">
+                    <h3>Archivos de Documentación y Dockerfile</h3>
+                    <p>Descarga el PDF con las capturas de la modificación y publicación (Entregable: Nuevo Dockerfile, URL pública, README):</p>
+                    <a href="docs/Actividad_5_Documentacion.pdf" target="_blank" class="btn primary-btn">
+                        Ver PDF Documentación (3 Puntos)
+                    </a>
+                    <p style="font-size: 0.85rem; color: #555; margin-top: 10px;">
+                        Incluye la comparación de tamaños entre las versiones de la imagen.
+                    </p>
+                </div>
+                
+            </div>
+        </section>
+        </main>
 
     <footer>
         <div class="container">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 1 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <title>Actividad 6 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -18,7 +18,7 @@
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
                         <a href="#" class="active">Actividades &#9662;</a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu activities-dropdown">
                             <li><a href="actividad1.html">Actividad 1: Linux</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores</a></li>
                             <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
@@ -27,88 +27,109 @@
                             <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
                         </ul>
                     </li>
-                    <li><a href="videos.html">Videos</a></li>
-                    <li><a href="presentacion.html" class="cta-link">Presentación Final</a></li>
+                    <li><a href="presentacion.html" class="cta-link">Presentación/Videos</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-<main class="container">
-    <section class="content-header">
-        <h1>Actividad 6: Instalación y Configuración de Kubernetes (Minikube)</h1>
-        <p class="summary">
-            Instalación de un clúster Kubernetes local usando Minikube. Despliegue de la imagen de Docker (v2.0) a través de un Deployment y exposición del servicio.
-        </p>
-    </section>
-
-    <section class="documentation-section">
-        <h2>6.1 Instalación de Minikube y Configuración de kubectl</h2>
-        <article class="content-block">
-            <h3>Comandos Iniciales y Verificación</h3>
-            <p>
-                Se instaló **Minikube** [cite: 178] en Kubuntu junto con `kubectl`[cite: 180]. El clúster se inició usando `minikube start` [cite: 181] y se verificó su estado[cite: 182].
+    <main class="container">
+        <section class="content-header">
+            <h1>Actividad 6: Instalación y Configuración de Kubernetes (Minikube)</h1>
+            <p class="summary">
+                Instalación de un clúster Kubernetes local usando Minikube. Despliegue de la imagen de Docker (v2.0) a través de un Deployment y exposición del servicio.
             </p>
-            <pre class="code-block">
-                # Comandos de inicio y verificación
-                minikube start --driver=docker
-                kubectl cluster-info # [cite: 190] Captura de cluster-info
-                kubectl get nodes # [cite: 191] Listado de nodos
-            </pre>
-            <figure class="image-placeholder">
-                <img src="https://via.placeholder.com/1000x500?text=CAPTURA+6.1.1%3A+kubectl+get+nodes+y+cluster-info" alt="Captura de la verificación del clúster de Kubernetes." class="responsive-img">
-                <figcaption>Figura 6.1.1: Clúster de Minikube funcionando con `kubectl get nodes`.</figcaption>
-            </figure>
-        </article>
-    </section>
+        </section>
 
-    <section class="documentation-section">
-        <h2>6.2 Creación de Deployment y Exposición de Servicio</h2>
-        <article class="content-block">
-            <h3>Archivo YAML de Deployment y Despliegue</h3>
-            <p>
-                Se creó un Deployment YAML [cite: 198] utilizando la imagen `grupo8/proyecto-so:v2.0` de Docker Hub[cite: 199]. Se aplica el archivo y se verifica el estado de los Pods[cite: 200, 201].
-            </p>
-            <pre class="code-block">
-                # Fragmento del Deployment YAML [cite: 205]
-                apiVersion: apps/v1
-                kind: Deployment
-                spec:
-                  replicas: 1
-                  template:
+        <section class="documentation-section">
+            <h2>6.1 Instalación de Minikube y Configuración de kubectl</h2>
+            <article class="content-block">
+                <h3>Comandos Iniciales y Verificación</h3>
+                <p>
+                    [cite_start]Se instaló **Minikube** [cite: 178] [cite_start]en Kubuntu junto con `kubectl`[cite: 180]. [cite_start]El clúster se inició usando `minikube start` [cite: 181] [cite_start]y se verificó su estado[cite: 182].
+                </p>
+                <pre class="code-block">
+                    # Comandos de inicio y verificación
+                    minikube start --driver=docker
+                    [cite_start]kubectl cluster-info # [cite: 190] Captura de cluster-info
+                    [cite_start]kubectl get nodes # [cite: 191] Listado de nodos
+                </pre>
+                <figure class="image-placeholder">
+                    <img src="https://via.placeholder.com/1000x500?text=CAPTURA+6.1.1%3A+kubectl+get+nodes+y+cluster-info" alt="Captura de la verificación del clúster de Kubernetes." class="responsive-img">
+                    <figcaption>Figura 6.1.1: Clúster de Minikube funcionando con `kubectl get nodes`.</figcaption>
+                </figure>
+            </article>
+        </section>
+
+        <section class="documentation-section">
+            <h2>6.2 Creación de Deployment y Exposición de Servicio</h2>
+            <article class="content-block">
+                <h3>Archivo YAML de Deployment y Despliegue</h3>
+                <p>
+                    [cite_start]Se creó un Deployment YAML [cite: 198] [cite_start]utilizando la imagen `grupo8/proyecto-so:v2.0` de Docker Hub[cite: 199]. [cite_start]Se aplica el archivo y se verifica el estado de los Pods[cite: 200, 201].
+                </p>
+                <pre class="code-block">
+                    # [cite_start]Fragmento del Deployment YAML [cite: 205]
+                    apiVersion: apps/v1
+                    kind: Deployment
                     spec:
-                      containers:
-                      - name: app-container
-                        image: grupo8/proyecto-so:v2.0 
-                        ports:
-                        - containerPort: 8080
-            </pre>
+                      replicas: 1
+                      template:
+                        spec:
+                          containers:
+                          - name: app-container
+                            image: grupo8/proyecto-so:v2.0 
+                            ports:
+                            - containerPort: 8080
+                </pre>
 
-            <h3>Archivo YAML de Service y Acceso</h3>
-            <p>
-                Se expone el servicio mediante un Service YAML [cite: 202] (tipo NodePort o similar) para permitir el acceso. Se demuestra el acceso al servicio desplegado[cite: 203].
-            </p>
-            <pre class="code-block">
-                # Comandos de despliegue y verificación
-                kubectl apply -f deployment.yaml
-                kubectl apply -f service.yaml
-                kubectl logs [NOMBRE_DEL_POD] # [cite: 209] Captura de Logs
-                minikube service [NOMBRE_DEL_SERVICIO] --url # Acceso al servicio
-            </pre>
-            <figure class="image-placeholder">
-                <img src="https://via.placeholder.com/1000x500?text=CAPTURA+6.2.1%3A+Acceso+al+Servicio+Expuesto+y+kubectl+logs" alt="Captura del servicio de Kubernetes accesible en el navegador o terminal." class="responsive-img">
-                <figcaption>Figura 6.2.1: Demostración de acceso al servicio y verificación de los logs del Pod.</figcaption>
-            </figure>
-        </article>
-    </section>
+                <h3>Archivo YAML de Service y Acceso</h3>
+                <p>
+                    [cite_start]Se expone el servicio mediante un Service YAML [cite: 202] (tipo NodePort o similar) para permitir el acceso. [cite_start]Se demuestra el acceso al servicio desplegado[cite: 203].
+                </p>
+                <pre class="code-block">
+                    # Comandos de despliegue y verificación
+                    kubectl apply -f deployment.yaml
+                    kubectl apply -f service.yaml
+                    [cite_start]kubectl logs [NOMBRE_DEL_POD] # [cite: 209] Captura de Logs
+                    minikube service [NOMBRE_DEL_SERVICIO] --url # Acceso al servicio
+                </pre>
+                <figure class="image-placeholder">
+                    <img src="https://via.placeholder.com/1000x500?text=CAPTURA+6.2.1%3A+Acceso+al+Servicio+Expuesto+y+kubectl+logs" alt="Captura del servicio de Kubernetes accesible en el navegador o terminal." class="responsive-img">
+                    <figcaption>Figura 6.2.1: Demostración de acceso al servicio y verificación de los logs del Pod.</figcaption>
+                </figure>
+            </article>
+        </section>
 
-    <section class="video-link-section">
-        <h2>Video de la Actividad 6</h2>
-        <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_ACT6" target="_blank" class="btn primary-btn">
-            Ver Video de Kubernetes (3 Puntos)
-        </a>
-    </section>
-</main>
+        <section class="media-section">
+            <h2>Entrega de Evidencias y Documentación (Video: 2-3 min)</h2>
+            <div class="media-container">
+                
+                <div class="video-player">
+                    <h3>Video Demostrativo del Proceso Completo</h3>
+                    <iframe 
+                        src="https://www.youtube.com/embed/TEMPORAL_ID_ACT6" 
+                        title="Video de Explicación de la Actividad 6" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <div class="documentation-link">
+                    <h3>Archivos de Documentación y YAMLs</h3>
+                    <p>Descarga el PDF con las capturas de la instalación y el despliegue (Entregable: YAMLs, capturas, demostración de acceso):</p>
+                    <a href="docs/Actividad_6_Documentacion.pdf" target="_blank" class="btn primary-btn">
+                        Ver PDF Documentación (3 Puntos)
+                    </a>
+                    <p style="font-size: 0.85rem; color: #555; margin-top: 10px;">
+                        Incluye los archivos YAML de Deployment y Service.
+                    </p>
+                </div>
+                
+            </div>
+        </section>
+        </main>
 
     <footer>
         <div class="container">

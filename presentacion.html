@@ -18,7 +18,7 @@
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
                         <a href="#">Actividades &#9662;</a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu activities-dropdown">
                             <li><a href="actividad1.html">Actividad 1: Linux</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores</a></li>
                             <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
@@ -27,8 +27,7 @@
                             <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
                         </ul>
                     </li>
-                    <li><a href="videos.html">Videos</a></li>
-                    <li><a href="presentacion.html" class="cta-link active">Presentación Final</a></li>
+                    <li><a href="presentacion.html" class="cta-link active">Presentación/Videos</a></li>
                 </ul>
             </nav>
         </div>
@@ -38,21 +37,65 @@
         <section class="content-header">
             <h1>🎙️ Video de Presentación Final y Sustentación</h1>
             <p class="summary">
-                Enlace directo al video que contiene la sustentación final del proyecto, cubriendo los puntos clave y las conclusiones. La presentación tiene una duración requerida de 15 a 20 minutos[cite: 256].
+                Enlace directo al video que contiene la sustentación final del proyecto, cubriendo los puntos clave y las conclusiones. [cite_start]La presentación tiene una duración requerida de 15 a 20 minutos[cite: 256].
             </p>
         </section>
 
         <section class="documentation-section">
-            <h2>Enlace de Sustentación (3-4 minutos sugeridos)</h2>
+            <h2>Sustentación Final (3-4 minutos sugeridos para el video)</h2>
 
             <article class="content-block" style="text-align: center;">
-                <p>Haz clic en el botón para acceder al video de sustentación final en YouTube:</p>
-                <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_SUSTENTACION" target="_blank" class="btn accent-btn" style="font-size: 1.2rem; padding: 15px 30px;">
-                    Ver Video de Sustentación Final
-                </a>
-                <p style="margin-top: 20px; color: var(--secondary-color); font-size: 0.9rem;">**Nota:** El video debe ser accesible públicamente[cite: 245].</p>
+                
+                <div class="video-player" style="margin: 0 auto; max-width: 700px;">
+                    <h3>Video de Sustentación</h3>
+                    <iframe 
+                        src="https://www.youtube.com/embed/TEMPORAL_ID_SUSTENTACION" 
+                        title="Video de Sustentación Final" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <p>Accede directamente al video de sustentación final:</p>
+                    <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_SUSTENTACION" target="_blank" class="btn accent-btn" style="font-size: 1.2rem; padding: 15px 30px;">
+                        Ver Video de Sustentación Final
+                    </a>
+                    <p style="margin-top: 20px; color: var(--secondary-color); font-size: 0.9rem;">
+                        [cite_start]**Nota:** El sitio web debe estar publicado y accesible públicamente[cite: 245].
+                    </p>
+                </div>
             </article>
         </section>
+        
+        <section class="documentation-section">
+            <h2>Enlaces a todos los Videos del Proyecto (Requisito 7.2)</h2>
+            <p class="summary">
+                [cite_start]A continuación se presenta un resumen de los enlaces a todos los videos de las actividades, cuya duración total no debe exceder los 15 minutos combinados[cite: 234].
+            </p>
+            <article class="content-block">
+                <ul class="video-links">
+                    <li>
+                        <strong>Actividad 1 y 2: Linux y Editores</strong> (Sugerido: 2-3 min)
+                        <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_A1-2" target="_blank" class="btn secondary-btn">Ver Video</a>
+                    </li>
+                    <li>
+                        <strong>Actividad 3: Scripts, Procesos y Programación</strong> (Sugerido: 3-4 min)
+                        <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_A3" target="_blank" class="btn secondary-btn">Ver Video</a>
+                    </li>
+                    <li>
+                        <strong>Actividad 4 y 5: Docker Engine y Docker Hub</strong> (Sugerido: 3-4 min)
+                        <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_A4-5" target="_blank" class="btn secondary-btn">Ver Video</a>
+                    </li>
+                    <li>
+                        <strong>Actividad 6: Kubernetes</strong> (Sugerido: 2-3 min)
+                        <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_A6" target="_blank" class="btn secondary-btn">Ver Video</a>
+                    </li>
+                </ul>
+            </article>
+        </section>
+
     </main>
 
     <footer>

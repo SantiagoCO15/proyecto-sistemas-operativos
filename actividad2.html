@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 1 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <title>Actividad 2 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -18,7 +18,7 @@
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
                         <a href="#" class="active">Actividades &#9662;</a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu activities-dropdown">
                             <li><a href="actividad1.html">Actividad 1: Linux</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores</a></li>
                             <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
@@ -27,59 +27,80 @@
                             <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
                         </ul>
                     </li>
-                    <li><a href="videos.html">Videos</a></li>
-                    <li><a href="presentacion.html" class="cta-link">Presentación Final</a></li>
+                    <li><a href="presentacion.html" class="cta-link">Presentación/Videos</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-<main class="container">
-    <section class="content-header">
-        <h1>Actividad 2: Instalación y Configuración de Editores de Texto</h1>
-        <p class="summary">
-            Instalación de dos editores de texto/IDEs con configuración básica personalizada (Kubuntu/Rocky Linux). Se demuestra la activación de colores de sintaxis y números de línea[cite: 48, 49].
-        </p>
-    </section>
+    <main class="container">
+        <section class="content-header">
+            <h1>Actividad 2: Instalación y Configuración de Editores de Texto</h1>
+            <p class="summary">
+                Instalación de dos editores de texto/IDEs con configuración básica personalizada (Kubuntu/Rocky Linux). [cite_start]Se demuestra la activación de colores de sintaxis y números de línea[cite: 48, 49].
+            </p>
+        </section>
 
-    <section class="documentation-section">
-        <h2>2.1 Instalación y Configuración de Editores (Vim y VS Code)</h2>
-        <article class="content-block">
-            <h3>Editor CLI: Vim (Rocky Linux)</h3>
-            <p>
-                Se instaló y configuró **Vim** en la distribución de consola (Rocky Linux)[cite: 42]. Se demuestra la configuración del archivo `.vimrc` para activar números de línea y *syntax highlighting*[cite: 48, 49, 54].
-            </p>
-            <pre class="code-block">
-                # Contenido del archivo .vimrc
-                set nu
-                syntax on
-                set autoindent
-            </pre>
-            <figure class="image-placeholder">
-                <img src="https://via.placeholder.com/900x450?text=CAPTURA+2.1.1%3A+Vim+en+Rocky+Linux+con+Numeros+de+Linea" alt="Captura de Vim en Rocky Linux configurado." class="responsive-img">
-                <figcaption>Figura 2.1.1: Vim operando con sintaxis y numeración de línea en un archivo de ejemplo.</figcaption>
-            </figure>
-        </article>
+        <section class="documentation-section">
+            <h2>2.1 Instalación y Configuración de Editores (Vim y VS Code)</h2>
+            <article class="content-block">
+                <h3>Editor CLI: Vim (Rocky Linux)</h3>
+                <p>
+                    [cite_start]Se instaló y configuró **Vim** en la distribución de consola (Rocky Linux)[cite: 42]. [cite_start]Se demuestra la configuración del archivo `.vimrc` para activar números de línea y *syntax highlighting*[cite: 48, 49, 54].
+                </p>
+                <pre class="code-block">
+                    # Contenido del archivo .vimrc
+                    set nu
+                    syntax on
+                    set autoindent
+                </pre>
+                <figure class="image-placeholder">
+                    <img src="https://via.placeholder.com/900x450?text=CAPTURA+2.1.1%3A+Vim+en+Rocky+Linux+con+Numeros+de+Linea" alt="Captura de Vim en Rocky Linux configurado." class="responsive-img">
+                    <figcaption>Figura 2.1.1: Vim operando con sintaxis y numeración de línea en un archivo de ejemplo.</figcaption>
+                </figure>
+            </article>
+            
+            <article class="content-block">
+                <h3>Editor Gráfico: Visual Studio Code (Kubuntu)</h3>
+                <p>
+                    [cite_start]Se instaló **Visual Studio Code** en Kubuntu[cite: 18]. [cite_start]Se personalizó con *themes* y extensiones básicas para desarrollo de scripts Bash y Dockerfiles[cite: 43].
+                </p>
+                <figure class="image-placeholder">
+                    <img src="https://via.placeholder.com/1000x550?text=CAPTURA+2.1.2%3A+VS+Code+con+Syntax+Highlighting+y+Archivo+de+Ejemplo" alt="Captura de VS Code con la terminal abierta y un archivo de ejemplo." class="responsive-img">
+                    <figcaption>Figura 2.1.2: Demostración de la configuración de VS Code.</figcaption>
+                </figure>
+            </article>
+        </section>
         
-        <article class="content-block">
-            <h3>Editor Gráfico: Visual Studio Code (Kubuntu)</h3>
-            <p>
-                Se instaló **Visual Studio Code** en Kubuntu[cite: 18]. Se personalizó con *themes* y extensiones básicas para desarrollo de scripts Bash y Dockerfiles[cite: 43].
-            </p>
-            <figure class="image-placeholder">
-                <img src="https://via.placeholder.com/1000x550?text=CAPTURA+2.1.2%3A+VS+Code+con+Syntax+Highlighting+y+Archivo+de+Ejemplo" alt="Captura de VS Code con la terminal abierta y un archivo de ejemplo." class="responsive-img">
-                <figcaption>Figura 2.1.2: Demostración de la configuración de VS Code.</figcaption>
-            </figure>
-        </article>
-    </section>
-    
-    <section class="video-link-section">
-        <h2>Video de la Actividad 2</h2>
-        <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_ACT2" target="_blank" class="btn primary-btn">
-            Ver Video de Instalación y Configuración de Editores (1 Punto)
-        </a>
-    </section>
-</main>
+        <section class="media-section">
+            <h2>Entrega de Evidencias y Documentación (Video: 2-3 min)</h2>
+            <div class="media-container">
+                
+                <div class="video-player">
+                    <h3>Video Demostrativo del Proceso Completo</h3>
+                    <iframe 
+                        src="https://www.youtube.com/embed/TEMPORAL_ID_ACT2" 
+                        title="Video de Explicación de la Actividad 2" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <div class="documentation-link">
+                    <h3>Archivos de Documentación</h3>
+                    [cite_start]<p>Descarga el PDF con las capturas y configuraciones (Entregable: Capturas de las etapas de instalación y configuración)[cite: 52]:</p>
+                    <a href="docs/Actividad_2_Documentacion.pdf" target="_blank" class="btn primary-btn">
+                        Ver PDF Documentación (1 Punto)
+                    </a>
+                    <p style="font-size: 0.85rem; color: #555; margin-top: 10px;">
+                        [cite_start]Incluye el archivo de configuración personalizado (.vimrc, .nanorc, etc.)[cite: 54].
+                    </p>
+                </div>
+                
+            </div>
+        </section>
+        </main>
 
     <footer>
         <div class="container">

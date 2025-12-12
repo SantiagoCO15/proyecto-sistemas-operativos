@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <title>Portada | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -18,7 +18,7 @@
                     <li><a href="index.html" class="active">Portada</a></li>
                     <li class="dropdown">
                         <a href="#">Actividades &#9662;</a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu activities-dropdown">
                             <li><a href="actividad1.html">Actividad 1: Linux</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores</a></li>
                             <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
@@ -27,8 +27,7 @@
                             <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
                         </ul>
                     </li>
-                    <li><a href="videos.html">Videos</a></li>
-                    <li><a href="presentacion.html" class="cta-link">Presentación Final</a></li>
+                    <li><a href="presentacion.html" class="cta-link">Presentación/Videos</a></li>
                 </ul>
             </nav>
         </div>
@@ -47,7 +46,7 @@
         <section class="info-grid">
             <article class="card">
                 <h3>Objetivos del Proyecto</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                [cite_start]<p>El objetivo es que los estudiantes profundicen y apliquen conocimientos sobre sistemas operativos a través de la instalación, configuración de Linux, e implementación de aplicaciones en máquinas virtuales, contenedores Docker y orquestación con Kubernetes. [cite: 5, 6]</p>
             </article>
             <article class="card">
                 <h3>Integrantes del Grupo</h3>
@@ -59,13 +58,13 @@
             </article>
             <article class="card">
                 <h3>Fecha y Contacto</h3>
-                <p><strong>Fecha de entrega:</strong> Semana 17 (08 al 13 de diciembre de 2025)</p>
-                <p><strong>Docente:</strong> Mg. José Alexander Castañeda Muñoz</p>
-                <p><strong>Contacto:</strong> castaneda.jose@correounivalle.edu.co</p>
+                [cite_start]<p><strong>Fecha de entrega:</strong> Semana 17 (08 al 13 de diciembre de 2025) [cite: 2]</p>
+                <p><strong>Docente:</strong> Mg. [cite_start]José Alexander Castañeda Muñoz [cite: 19]</p>
+                [cite_start]<p><strong>Contacto:</strong> castaneda.jose@correounivalle.edu.co [cite: 19]</p>
             </article>
         </section>
 
-        </main>
+    </main>
 
     <footer>
         <div class="container">
@@ -76,6 +75,7 @@
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const mainNav = document.querySelector('.main-nav');
+        // Script original para el toggle del menú móvil
         menuToggle.addEventListener('click', () => {
             mainNav.classList.toggle('active');
         });
