@@ -277,6 +277,20 @@ body.dark-mode footer {
     background-color: #aaa;
 }
 
+/* ESTILOS DE IMAGEN Y VIDEO RESPONSIVO AÑADIDOS */
+.responsive-img, 
+.video-player video {
+    max-width: 100%; 
+    height: auto;    
+    display: block;
+    margin: 15px auto;
+    border-radius: 4px; 
+}
+
+.video-player {
+    width: 100%;
+}
+
 @media (max-width: 768px) {
     .info-grid {
         grid-template-columns: 1fr;

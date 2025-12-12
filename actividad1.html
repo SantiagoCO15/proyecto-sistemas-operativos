@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 1 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <title>Actividad 1: Instalación y Particionamiento | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -19,14 +19,14 @@
                 <ul>
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
-                        <a href="#" class="active">Actividades ▾</a>
+                        <a href="#" class="active">Actividades &#9662;</a>
                         <ul class="dropdown-menu activities-dropdown">
-                            <li><a href="actividad1.html" class="active">Actividad 1: Linux</a></li>
-                            <li><a href="actividad2.html">Actividad 2: Editores</a></li>
-                            <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
-                            <li><a href="actividad4.html">Actividad 4: Docker Engine</a></li>
-                            <li><a href="actividad5.html">Actividad 5: Docker Hub</a></li>
-                            <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
+                            <li class="active"><a href="actividad1.html" class="active">Actividad 1: Linux y Particionamiento</a></li>
+                            <li><a href="actividad2.html">Actividad 2: Editores y Configuración</a></li>
+                            <li><a href="actividad3.html">Actividad 3: Scripts y Concurrencia</a></li>
+                            <li><a href="actividad4.html">Actividad 4: Docker Engine e Imagen Base</a></li>
+                            <li><a href="actividad5.html">Actividad 5: Imagen v2.0 y Docker Hub</a></li>
+                            <li><a href="actividad6.html">Actividad 6: Minikube y Despliegue</a></li>
                         </ul>
                     </li>
                     <li><a href="presentacion.html" class="cta-link">Presentación/Videos</a></li>
@@ -37,61 +37,66 @@
 
     <main class="container">
         <section class="content-header">
-            <h1>Actividad 1: Instalación y Configuración de Linux (Kubuntu y Rocky Linux)</h1>
+            <h1>Actividad 1: Instalación de Sistemas Operativos (Kubuntu y Ubuntu Server)</h1>
             <p class="summary">
-                Documentación del proceso de instalación de las distribuciones asignadas al Grupo 8: <strong>Kubuntu</strong> Gráfico y <strong>Rocky Linux</strong> Consola. Se incluye el particionamiento manual y la instalación de herramientas requeridas.
+                El objetivo de esta actividad fue instalar y verificar la funcionalidad de dos sistemas operativos basados en Linux: **Kubuntu** (con interfaz gráfica) y **Ubuntu Server** (solo línea de comandos)[cite: 4, 5]. Esto demuestra la capacidad de configurar máquinas virtuales y manejar diferentes entornos operativos[cite: 5].
             </p>
         </section>
 
         <section class="documentation-section">
-            <h2>1.1 Instalación en Ambiente Gráfico</h2>
+            <h2>1.1 Instalación de Kubuntu (Entorno Gráfico)</h2>
             <article class="content-block card">
-                <h3>Particionamiento Manual y Requisitos</h3>
+                <h3>A. Configuración de Particiones</h3>
                 <p>
-                    Se realizó la instalación completa de <strong>Kubuntu</strong> en una máquina virtual. El particionamiento manual del disco se configuró con particiones separadas para `/`, `swap` y `/home`. El sistema quedó con el entorno gráfico KDE funcional.
+                    Se realizó la instalación de Kubuntu utilizando el software de virtualización Oracle VirtualBox[cite: 7]. Se creó un esquema de particionamiento personalizado, asignando particiones separadas para la Raíz (`/`), Swap y Home (`/home`), lo cual es fundamental para una distribución organizada del sistema[cite: 11, 12, 13].
                 </p>
                 <figure class="image-placeholder">
-                    <img src="https://via.placeholder.com/1000x500?text=CAPTURA+1.1.1%3A+Esquema+de+Particionamiento+Manual+(Kubuntu)" alt="Captura del esquema de particionamiento manual de Kubuntu." class="responsive-img">
-                    <figcaption>Figura 1.1.1: Particiones separadas para /, swap y /home.</figcaption>
+                    <img src="img/actividad_1_1.jpg" alt="Captura del esquema de particionamiento manual de Kubuntu en VirtualBox." class="responsive-img">
+                    <figcaption>Figura 1.1: Vista del particionamiento manual para Kubuntu con 15 GB para Raíz, 4 GB para Swap y el resto para Home[cite: 12, 13, 19].</figcaption>
                 </figure>
                 
-                <h3>Navegadores y Editores Instalados</h3>
+                <h3>B. Evidencia de Instalación</h3>
                 <p>
-                    Para el entregable, se instalaron al menos dos navegadores web (ej. Firefox, Brave) y dos editores/IDEs de desarrollo (ej. VS Code, PyCharm).
+                    El sistema quedó con el entorno gráfico KDE funcional y listo para la instalación de los navegadores y editores requeridos en la siguiente actividad.
                 </p>
                 <figure class="image-placeholder">
-                    <img src="https://via.placeholder.com/1000x550?text=CAPTURA+1.1.2%3A+Kubuntu+funcional+con+Navegadores+y+Editores" alt="Captura del sistema Kubuntu funcionando con las aplicaciones instaladas." class="responsive-img">
-                    <figcaption>Figura 1.1.2: Entorno gráfico de Kubuntu con navegadores y editores instalados.</figcaption>
+                    <img src="img/actividad_1_2.jpg" alt="Captura del sistema Kubuntu funcional con Navegadores y Editores." class="responsive-img">
+                    <figcaption>Figura 1.2: Entorno gráfico de Kubuntu funcionando y mostrando los editores y navegadores instalados.</figcaption>
                 </figure>
             </article>
         </section>
 
         <section class="documentation-section">
-            <h2>1.2 Instalación en Ambiente Consola</h2>
+            <h2>1.2 Instalación de Ubuntu Server (Línea de Comandos)</h2>
             <article class="content-block card">
-                <h3>Configuración y Herramientas Básicas</h3>
+                <h3>C. Configuración de Particiones y Usuario</h3>
                 <p>
-                    La instalación de <strong>Rocky Linux</strong> se ejecutó en modo consola sin interfaz gráfica. Se aplicó el particionamiento manual del disco y se incluyeron herramientas básicas de línea de comandos requeridas.
+                    La instalación de Ubuntu Server se realizó sin una interfaz gráfica, siguiendo la misma estructura de particionamiento (Raíz, Swap, Home)[cite: 24, 25, 27, 29, 30]. Además, se instaló el servidor OpenSSH para futura administración remota[cite: 26].
                 </p>
                 <ul>
-                    <li>Herramientas básicas instaladas: `make`, `rsync`, `curl`, `git`, `wget`.</li>
-                    <li>Configuración de red y conectividad a internet.</li>
+                    <li>Raíz (`/`): 15 GB, Ext4[cite: 27].</li>
+                    <li>Swap: 4 GB, Área de Intercambio[cite: 29].</li>
+                    <li>Home (`/home`): 11 GB restantes, Ext4[cite: 29].</li>
                 </ul>
 
                 <figure class="image-placeholder">
-                    <img src="https://via.placeholder.com/800x400?text=CAPTURA+1.2.1%3A+Particionamiento+en+Consola+(Rocky+Linux)" alt="Captura del esquema de particionamiento manual de Rocky Linux en modo consola." class="responsive-img">
-                    <figcaption>Figura 1.2.1: Esquema de particionamiento en la instalación mínima.</figcaption>
+                    <img src="img/actividad_1_3.jpg" alt="Captura del esquema de particionamiento manual de Ubuntu Server en modo consola." class="responsive-img">
+                    <figcaption>Figura 1.3: Resumen del particionamiento manual durante la instalación de Ubuntu Server[cite: 30].</figcaption>
                 </figure>
                 
-                <h3>Verificación de Conectividad y Herramientas</h3>
+                <h3>D. Verificación de Conectividad</h3>
                 <p>
-                    Se demuestra la correcta instalación y funcionamiento de la conectividad y las herramientas requeridas.
+                    Una vez reiniciado el servidor, se accedió con las credenciales creadas. La prueba final verificó la funcionalidad de red ejecutando el comando `ip a`[cite: 32, 34, 35].
                 </p>
                 <pre class="code-block">
-                    # Comandos de verificación en Rocky Linux
-                    curl -V 
-                    git --version
-                    ping 8.8.8.8 -c 4 
+                    # Comando de verificación de interfaz de red en Ubuntu Server
+                    jinergjinercito:" ip a 
+                    # Se muestra la configuración de la interfaz lo (loopback) 
+                    # y enpes3 (red física), confirmando la conectividad.
+                    
+                    # Salida obtenida:
+                    1: 10: LOOPBACK,UP,LOWER_UP> mtu 65536...
+                    2: enpes3: <BROADCAST, MULTICAST, UP, LOWER UP> mtu 1500...
                 </pre>
             </article>
         </section>
@@ -103,16 +108,12 @@
                 <article class="card">
                     <h3>Video Demostrativo del Proceso Completo</h3>
                     <div class="video-player">
-                        <iframe 
-                            width="100%" height="315"
-                            src="https://www.youtube.com/embed/TEMPORAL_ID_ACT1" 
-                            title="Video de Explicación de la Actividad 1" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <video controls width="100%" height="315">
+                            <source src="videos/Video_Presentacion_1.mp4" type="video/mp4">
+                            Tu navegador no soporta la etiqueta de video HTML5.
+                        </video>
                     </div>
-                    <p>Video que muestra el proceso de instalación y configuración de ambas distribuciones Linux.</p>
+                    <p style="margin-top: 15px;">Video que muestra el proceso de instalación de Kubuntu (gráfico) y Ubuntu Server (consola), incluyendo el particionamiento manual y la verificación de red.</p>
                 </article>
                 
                 <article class="card center-content">
@@ -147,9 +148,9 @@
         const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
         if (isDarkMode) {
             body.classList.add('dark-mode');
-            iconSpan.textContent = '☀️';
+            iconSpan.textContent = '☀️'; 
         } else {
-            iconSpan.textContent = '🌙';
+            iconSpan.textContent = '🌙'; 
         }
 
         darkModeToggle.addEventListener('click', () => {
@@ -170,5 +171,6 @@
             });
         }
     </script>
-    </body>
+
+</body>
 </html>
