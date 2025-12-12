@@ -35,7 +35,7 @@ body {
 
 h1, h2, h3 {
     color: var(--primary-color);
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Aumentado a 20px para separar más H3 del contenido dentro de las tarjetas */
     font-weight: 700;
 }
 
@@ -154,7 +154,7 @@ main {
     flex: 1;
 }
 
-/* AÑADIDO: Margen para separar visualmente las secciones de documentación */
+/* Margen para separar visualmente las secciones de documentación */
 .documentation-section,
 .media-section {
     margin-bottom: 40px; 
@@ -186,7 +186,12 @@ main {
     transition: transform 0.3s;
 }
 
-/* BOTÓN para el PDF (similar al a:hover, pero como botón) */
+/* UTILIDAD: Para centrar el botón PDF */
+.center-content {
+    text-align: center;
+}
+
+/* BOTONES */
 .btn {
     display: inline-block;
     padding: 12px 25px;

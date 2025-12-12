@@ -12,7 +12,6 @@
     <header>
         <div class="container header-content">
             <h1 class="logo">SISTEMAS OPERATIVOS</h1>
-            <button class="menu-toggle" aria-label="Abrir Menú">&#9776;</button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Portada</a></li>
@@ -37,7 +36,7 @@
         <section class="content-header">
             <h1>Actividad 1: Instalación y Configuración de Linux (Kubuntu y Rocky Linux)</h1>
             <p class="summary">
-                Documentación del proceso de instalación de las distribuciones asignadas al Grupo 8: <strong>Kubuntu</strong> (Gráfico) y <strong>Rocky Linux</strong> (Consola). Se incluye el particionamiento manual y la instalación de herramientas requeridas.
+                Documentación del proceso de instalación de las distribuciones asignadas al Grupo 8: <strong>Kubuntu</strong> Gráfico y <strong>Rocky Linux</strong> Consola. Se incluye el particionamiento manual y la instalación de herramientas requeridas.
             </p>
         </section>
 
@@ -69,7 +68,7 @@
             <article class="content-block card">
                 <h3>Configuración y Herramientas Básicas</h3>
                 <p>
-                    La instalación de <strong>Rocky Linux</strong> se ejecutó en modo consola (sin interfaz gráfica). Se aplicó el particionamiento manual del disco y se incluyeron herramientas básicas de línea de comandos requeridas.
+                    La instalación de <strong>Rocky Linux</strong> se ejecutó en modo consola sin interfaz gráfica. Se aplicó el particionamiento manual del disco y se incluyeron herramientas básicas de línea de comandos requeridas.
                 </p>
                 <ul>
                     <li>Herramientas básicas instaladas: `make`, `rsync`, `curl`, `git`, `wget`.</li>
@@ -113,7 +112,7 @@
                     <p style="margin-top: 15px;">Video que muestra el proceso de instalación y configuración de ambas distribuciones Linux.</p>
                 </article>
                 
-                <article class="card">
+                <article class="card center-content">
                     <h3>Documento con Capturas de Pantalla</h3>
                     <p>Descarga el PDF con las capturas de pantalla de cada etapa de instalación y explicaciones detalladas (Entregables requeridos):</p>
                     <a href="docs/Actividad_1_Documentacion.pdf" target="_blank" class="btn primary-btn">
@@ -136,11 +135,15 @@
     </footer>
 
     <script>
+        // Se mantiene el script para soporte de menú responsive, aunque el botón de toggle se eliminó en el modo escritorio
         const menuToggle = document.querySelector('.menu-toggle');
         const mainNav = document.querySelector('.main-nav');
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-        });
+        // Prevenir errores si el botón no existe en el DOM
+        if (menuToggle) {
+             menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        }
     </script>
 
 </body>
