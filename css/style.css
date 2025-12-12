@@ -10,7 +10,7 @@ body {
     line-height: 1.7; 
     color: #3f4a56; 
     background-color: #f7f9fc; 
-    /* EVITAR SCROLL HORIZONTAL POR DESBORDAMIENTO */
+    /* AJUSTE CRÍTICO: Elimina el scroll lateral */
     overflow-x: hidden; 
 }
 
@@ -22,13 +22,13 @@ body {
     padding: 20px 0;
 }
 
-/* Paleta de Colores (Mayor Contraste) */
+/* Paleta de Colores (ALTO CONTRASTE Y PROFESIONAL) */
 :root {
-    --primary-color: #0d47a1; /* Azul Zafiro */
-    --secondary-color: #455a64; /* Gris pizarra */
-    --accent-color: #388e3c; /* Verde botella (Usado solo para énfasis no en el menú) */
+    --primary-color: #0d47a1; /* Azul Zafiro (Dark Blue) */
+    --secondary-color: #455a64; /* Gris pizarra (para textos) */
+    --accent-color: #388e3c; /* Verde (para botones internos) */
     --header-bg: #ffffff; 
-    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
 }
 
 h1, h2, h3 {
@@ -58,8 +58,7 @@ header {
     color: var(--primary-color);
 }
 
-/* ELIMINACIÓN DE LA CLASE project-tag */
-/* Ya no se usa en HTML, pero se mantiene para evitar conflictos */
+/* ELIMINACIÓN DE 'PROYECTO FINAL' */
 .project-tag {
     display: none; 
 }
@@ -76,25 +75,22 @@ header {
     color: #333;
     padding: 8px 0; 
     transition: color 0.3s, border-bottom 0.3s;
-    /* RESTABLECIMIENTO DEL FORMATO DE BOTÓN NORMAL */
     background-color: transparent !important; 
     border-radius: 0; 
-    font-weight: 400; /* Texto normal */
+    font-weight: 400; 
 }
 
 /* ESTILO ACTIVO Y HOVER UNIFICADO */
 .main-nav a:hover, 
-.main-nav a.active,
-.main-nav .cta-link.active { /* Ahora el CTA también tiene el mismo estilo */
+.main-nav a.active {
     color: var(--primary-color);
     border-bottom: 2px solid var(--primary-color); 
     background-color: transparent !important; 
-    padding-bottom: 6px; /* Ajuste para el border-bottom */
+    padding-bottom: 6px; 
 }
 
-/* Ajuste específico para el enlace Presentación (Ahora no es CTA) */
+/* AJUSTE DE BOTÓN CTA (Presentación) -> AHORA ES UN BOTÓN NORMAL */
 .cta-link {
-    /* Quitamos el fondo verde */
     background-color: transparent !important;
     color: #333 !important; 
     padding: 8px 0 !important;
@@ -102,17 +98,15 @@ header {
     font-weight: 400; 
 }
 
-.cta-link:hover {
-    background-color: transparent !important;
-}
 
-/* Dropdown Menu (CORRECCIÓN FINAL Y VERTICAL) */
+/* Dropdown Menu (SOLUCIÓN DEFINITIVA PARA VERTICALIDAD Y CIERRE) */
 .dropdown {
     position: relative;
     padding: 10px 0; 
 }
 
 .activities-dropdown {
+    /* Clases críticas para la verticalidad y el efecto suave */
     display: block; 
     position: absolute;
     top: 100%;
@@ -125,7 +119,7 @@ header {
     border-radius: 5px; 
     z-index: 1001; 
     
-    /* Configuración de transición */
+    /* Propiedades del efecto suave */
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
@@ -147,20 +141,21 @@ header {
 .activities-dropdown a {
     display: block;
     width: 100%;
-    padding: 10px 15px; /* Más padding para los ítems */
+    padding: 10px 15px; 
     color: #3f4a56 !important;
-    border-bottom: none !important; /* Desactiva el borde en el dropdown */
+    border-bottom: none !important; 
     transition: background-color 0.2s;
 }
 
 .activities-dropdown a:hover {
-    background-color: #f0f0f0; /* Fondo sutil al hacer hover en el ítem */
+    background-color: #f0f0f0; 
     border-bottom: none !important;
     color: var(--primary-color) !important;
 }
 
 /* 2. CONTENIDO PRINCIPAL */
 .hero-section {
+    /* FONDO DE ALTO CONTRASTE */
     background: #e3f2fd; 
     padding: 60px 40px;
     margin-bottom: 40px;
@@ -169,10 +164,7 @@ header {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05); 
 }
 
-/* ELIMINACIÓN DEL BOTÓN EN EL HERO - Solo para HTML, pero afecta la visibilidad de .btn */
-/* ... (el resto del hero section se mantiene igual) */
-
-/* Botones (CTA verde solo para contenido, no para menú) */
+/* Botones */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -192,19 +184,23 @@ header {
     transform: translateY(-1px);
 }
 
-/* Grid de Información y Contenido de Actividades (Mantenido) */
+/* Grid de Información (Ajuste para DOS columnas) */
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* AJUSTE CRÍTICO: Fuerza dos columnas iguales o se apilan en móvil */
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
     gap: 30px;
     margin-bottom: 40px;
 }
+/* Si hay 3 elementos, se mantendrá el diseño de 3 si el espacio lo permite, 
+pero con el HTML ajustado a 2, esto garantiza el ancho. */
 
 .card {
     background: white;
     padding: 25px;
     border-radius: 10px; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    /* Sombra visible y de alto contraste */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
     transition: transform 0.3s;
 }
 
@@ -221,7 +217,8 @@ footer {
     margin-top: 40px;
 }
 
-/* --- Estilos Adicionales (Mantenidos) --- */
+/* --- Estilos para el Contenido de las Actividades (Alto Contraste) --- */
+
 .content-header {
     margin-bottom: 40px;
     padding: 30px;
@@ -231,28 +228,9 @@ footer {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-.summary {
-    font-size: 1.15rem; 
-    color: #555;
-}
-
-.documentation-section {
-    margin-bottom: 50px;
-    padding: 30px 0;
-    border-bottom: 1px dashed #cfd8dc; 
-}
-
-.content-block {
-    margin-top: 20px;
-    padding: 30px;
-    background: white;
-    border-radius: 10px; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); 
-}
-
 .code-block {
-    background-color: #263238; 
-    color: #e0f2f1; 
+    background-color: #263238; /* Fondo más oscuro */
+    color: #e0f2f1; /* Texto más claro */
     padding: 15px;
     border-radius: 5px;
     overflow-x: auto; 
@@ -261,46 +239,23 @@ footer {
 }
 
 /* --- Estilos para la presentación de Video/Documentación (Bloque Media) --- */
+
 .media-section {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 40px;
     padding: 30px;
     background-color: #e3f2fd; 
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
-
-.media-container {
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 30px;
-    align-items: flex-start; 
-}
-
-.video-player { flex: 2; min-width: 300px; max-width: 100%; }
-.video-player iframe { width: 100%; height: 350px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
-.documentation-link { flex: 1; min-width: 200px; padding: 25px; background-color: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); text-align: center; }
 
 /* ------------------------------------------------------------------ */
 /* MEDIAS QUERIES (RESPONSIVENESS) */
 /* ------------------------------------------------------------------ */
 
-.menu-toggle {
-    display: none; 
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--primary-color);
-}
+.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary-color); }
 
 @media (max-width: 768px) {
     /* Mostrar el botón de menú y ocultar el menú en móviles */
-    .menu-toggle {
-        display: block;
-    }
+    .menu-toggle { display: block; }
 
     .main-nav {
         display: none;
@@ -314,31 +269,14 @@ footer {
     }
 
     /* Mostrar el menú cuando tiene la clase 'active' */
-    .main-nav.active {
-        display: block;
-    }
+    .main-nav.active { display: block; }
 
-    .main-nav ul {
-        flex-direction: column; 
-        gap: 0;
-    }
-
-    .main-nav li {
-        border-bottom: 1px solid #eee;
-        padding: 0; /* Asegurar que no haya padding extra */
-    }
-
-    .main-nav a {
-        display: block;
-        padding: 15px 20px;
-        border-bottom: none !important;
-        margin: 0;
-    }
+    .main-nav ul { flex-direction: column; gap: 0; }
+    .main-nav li { border-bottom: 1px solid #eee; padding: 0; }
+    .main-nav a { display: block; padding: 15px 20px; border-bottom: none !important; margin: 0; }
     
     /* Dropdown adaptado a móvil */
-    .dropdown {
-        padding: 0;
-    }
+    .dropdown { padding: 0; }
     
     .activities-dropdown {
         position: static; 
@@ -348,17 +286,14 @@ footer {
         padding-left: 20px;
         border-top: 1px solid #eee;
         
+        /* Asegura que siempre esté abierto en móvil */
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
     }
     
-    /* Adaptación del contenido */
-    .hero-section h2 {
-        font-size: 1.8rem;
-    }
-
-    .media-container {
-        flex-direction: column;
+    /* Adaptación del grid a una columna en móvil */
+    .info-grid {
+        grid-template-columns: 1fr;
     }
 }
