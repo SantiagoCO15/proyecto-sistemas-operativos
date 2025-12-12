@@ -154,6 +154,13 @@ main {
     flex: 1;
 }
 
+/* AÑADIDO: Margen para separar visualmente las secciones de documentación */
+.documentation-section,
+.media-section {
+    margin-bottom: 40px; 
+}
+
+
 .hero-section {
     background: #e3f2fd;
     padding: 60px 40px;
@@ -177,6 +184,30 @@ main {
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
     transition: transform 0.3s;
+}
+
+/* BOTÓN para el PDF (similar al a:hover, pero como botón) */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white !important;
+    border: none;
+}
+
+.primary-btn:hover {
+    background-color: #0c4091; /* Un azul ligeramente más oscuro */
+    transform: translateY(-1px);
+    border-bottom: none; /* Evita la línea del nav en el hover */
 }
 
 /* Mejor separación del texto de los integrantes */
