@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 5 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <title>Actividad 5: Imagen v2.0 y Docker Hub | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -19,14 +19,14 @@
                 <ul>
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
-                        <a href="#" class="active">Actividades ▾</a>
+                        <a href="#" class="active">Actividades &#9662;</a>
                         <ul class="dropdown-menu activities-dropdown">
-                            <li><a href="actividad1.html">Actividad 1: Linux</a></li>
-                            <li><a href="actividad2.html">Actividad 2: Editores</a></li>
-                            <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
-                            <li><a href="actividad4.html">Actividad 4: Docker Engine</a></li>
-                            <li><a href="actividad5.html" class="active">Actividad 5: Docker Hub</a></li>
-                            <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
+                            <li><a href="actividad1.html">Actividad 1: Linux y Particionamiento</a></li>
+                            <li><a href="actividad2.html">Actividad 2: Editores y Configuración</a></li>
+                            <li><a href="actividad3.html">Actividad 3: Scripts y Concurrencia</a></li>
+                            <li><a href="actividad4.html">Actividad 4: Docker Engine e Imagen Base</a></li>
+                            <li class="active"><a href="actividad5.html" class="active">Actividad 5: Imagen v2.0 y Docker Hub</a></li>
+                            <li><a href="actividad6.html">Actividad 6: Minikube y Despliegue</a></li>
                         </ul>
                     </li>
                     <li><a href="presentacion.html" class="cta-link">Presentación/Videos</a></li>
@@ -37,59 +37,71 @@
 
     <main class="container">
         <section class="content-header">
-            <h1>Actividad 5: Modificación y Publicación de Imagen en Docker Hub</h1>
+            <h1>Actividad 5: Creación y Publicación de Imagen Docker Mejorada v2.0</h1>
             <p class="summary">
-                Modificación de la imagen de Debian Actividad 4 para agregar funcionalidades adicionales v2.0 y posterior publicación en el repositorio público de Docker Hub.
+                Modificación de la imagen Docker creada previamente para agregar funcionalidades adicionales, optimizar su utilidad y posteriormente publicar la versión mejorada `miimage:2.0` en el repositorio público de Docker Hub.
             </p>
         </section>
 
         <section class="documentation-section">
-            <h2>5.1 Modificación de Imagen Docker</h2>
+            <h2>5.1 Creación de Dockerfile y Comparación de Tamaños</h2>
             <article class="content-block card">
-                <h3>Modificaciones y Comparación de Tamaños</h3>
+                <h3>Dockerfile Mejorado</h3>
                 <p>
-                    Se modificó el Dockerfile para incluir funcionalidades adicionales, como la instalación de paquetes o scripts de automatización. Se compara el tamaño de la imagen original con la modificada.
-                </p>
-                <p>
-                    Opcionalmente, se aplicaron técnicas de optimización, como *multi-stage builds*, para reducir el tamaño final de la imagen.
+                    Se creó un nuevo Dockerfile para la versión `v2.0` que incluye herramientas esenciales adicionales como build-essential, nano, vim, curl, wget, htop, y neofetch. También se agregó un script de bienvenida, saludo.sh, accesible globalmente, y se limpió el cache para reducir el tamaño final.
                 </p>
                 <pre class="code-block">
-                    FROM debian:stable-slim as build-stage
+                    # Fragmento del Dockerfile v2.0
+                    FROM debian:latest
+                    RUN apt update && apt install -y \
+                        build-essential nano vim curl wget htop neofetch \
+                        && apt clean && rm -rf /var/lib/apt/lists/*
                     
-
-                    FROM debian:stable-slim
+                    RUN useradd -ms /bin/bash desarrollador
+                    RUN echo '#!/bin/bash\necho "Bienvenido al contenedor mejorado..."' > /usr/local/bin/saludo.sh \
+                        && chmod +x /usr/local/bin/saludo.sh
                     
-                    RUN apt install -y htop ncdu
+                    USER desarrollador
+                    WORKDIR /home/desarrollador
+                    CMD ["/bin/bash"]
                 </pre>
+                
+                <h3>Comparación y Ejecución de la Imagen</h3>
+                <p>
+                    Tras la construcción, la imagen `miimage:2.0` se comparó con la versión anterior `miimage:1.0`. La nueva versión resultó significativamente más grande debido a la inclusión de herramientas, evidenciando las nuevas funcionalidades. Se ejecutó el contenedor para validar el nuevo script de bienvenida.
+                </p>
                 <figure class="image-placeholder">
-                    <img src="https://via.placeholder.com/900x450?text=CAPTURA+5.1.1%3A+docker+images+Comparando+v1.0+vs+v2.0" alt="Captura de docker images mostrando el tamaño de ambas versiones." class="responsive-img">
-                    <figcaption>Figura 5.1.1: Comparación del tamaño entre la imagen original y la modificada.</figcaption>
+                    <img src="img/actividad_5_1.jpg" alt="Captura de docker images mostrando la comparación de tamaño entre v1.0 y v2.0." class="responsive-img">
+                    <figcaption>Figura 5.1: Comparación de tamaños de imagen `miimage:1.0` y `miimage:2.0` tras la adición de herramientas y la ejecución de `saludo.sh`.</figcaption>
                 </figure>
             </article>
         </section>
 
         <section class="documentation-section">
-            <h2>5.2 Publicación en Docker Hub</h2>
+            <h2>5.2 Etiquetado y Publicación en Docker Hub</h2>
             <article class="content-block card">
-                <h3>Etiquetado y Push Público</h3>
+                <h3>Proceso de Login y Etiquetado</h3>
                 <p>
-                    La imagen fue correctamente etiquetada utilizando la estructura `usuario/nombre:tag`. Se realizó el proceso de `docker login` y `docker push` para subir la imagen al repositorio de Docker Hub, asegurando su disponibilidad pública.
+                    Se realizó la autenticación en Docker Hub usando `sudo docker login` con la cuenta `yeisong18`. Posteriormente, la imagen local fue etiquetada `docker tag` para seguir el formato requerido por el repositorio público `usuario/imagen:tag`.
                 </p>
                 <pre class="code-block">
-                    docker tag [IMAGE_ID] grupo8/proyecto-so:v2.0
-                    docker push grupo8/proyecto-so:v2.0
+                    # Comandos de autenticación y etiquetado
+                    sudo docker login
+                    sudo docker tag miimage:2.0 yeisong18/miimage:2.0
                 </pre>
+                
+                <h3>Push Público y Verificación</h3>
+                <p>
+                    El comando `docker push yeisong18/miimage:2.0` envió la imagen al repositorio público. La subida se verificó en el sitio web de Docker Hub, confirmando que la imagen, sus capas y el tamaño estaban correctamente registrados y disponibles.
+                </p>
                 <figure class="image-placeholder">
-                    <img src="https://via.placeholder.com/1000x500?text=CAPTURA+5.2.1%3A+URL+Publica+en+Docker+Hub" alt="Captura del repositorio en Docker Hub." class="responsive-img">
-                    <figcaption>Figura 5.2.1: URL pública de la imagen en Docker Hub con el README documentado.</figcaption>
+                    <img src="img/actividad_5_2.jpg" alt="Captura del repositorio en Docker Hub mostrando la imagen publicada y el resultado del push." class="responsive-img">
+                    <figcaption>Figura 5.2: El comando `docker push` exitoso y la visualización de la imagen `yeisong18/miimage:2.0` en el repositorio de Docker Hub.</figcaption>
                 </figure>
                 
-                <h3>Documentación en Docker Hub</h3>
+                <h3>URL Pública en Docker Hub</h3>
                 <p>
-                    Se incluye el enlace público de la imagen en Docker Hub y se verifica que el README del repositorio esté correctamente documentado con instrucciones de uso.
-                </p>
-                <p>
-                    URL Pública en Docker Hub: `<ENLACE_A_DOCKER_HUB>`
+                    URL Pública en Docker Hub: `https://hub.docker.com/r/yeisong18/miimage`
                 </p>
             </article>
         </section>
@@ -101,14 +113,10 @@
                 <article class="card">
                     <h3>Video Demostrativo del Proceso Completo</h3>
                     <div class="video-player">
-                        <iframe 
-                            width="100%" height="315"
-                            src="https://www.youtube.com/embed/TEMPORAL_ID_ACT5" 
-                            title="Video de Explicación de la Actividad 5" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <video controls width="100%" height="315">
+                            <source src="videos/Video_Presentacion_5.mp4" type="video/mp4">
+                            Tu navegador no soporta la etiqueta de video HTML5.
+                        </video>
                     </div>
                     <p style="margin-top: 15px;">Video que demuestra las modificaciones en el Dockerfile, el proceso de etiquetado y la subida de la imagen a Docker Hub.</p>
                 </article>
