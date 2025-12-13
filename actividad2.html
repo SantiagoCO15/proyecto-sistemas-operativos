@@ -37,9 +37,9 @@
 
     <main class="container">
         <section class="content-header">
-            <h1>Actividad 2: Instalación y Configuración de Editores de Texto</h1>
+            <h1>Actividad 2: Instalación y Personalización de Editores</h1>
             <p class="summary">
-                Instalación de dos editores de texto/IDEs con configuración básica personalizada en <strong>Kubuntu</strong> y <strong>Rocky Linux</strong>. Se demuestra la activación de colores de sintaxis y números de línea.
+                Esta actividad demostró la capacidad de instalar, utilizar y personalizar dos tipos fundamentales de editores de texto en un entorno Linux Kubuntu: un editor de interfaz gráfica GUI y un editor de línea de comandos CLI.
             </p>
         </section>
 
@@ -49,30 +49,35 @@
             <div class="info-grid">
                 
                 <article class="content-block card">
-                    <h3>Editor CLI: Vim (Rocky Linux)</h3>
+                    <h3>Editor Gráfico: Visual Studio Code</h3>
                     <p>
-                        Se instaló y configuró **Vim** en la distribución de consola **Rocky Linux**. Se demuestra la configuración del archivo `.vimrc` para activar números de línea y resaltar la sintaxis.
+                        Se seleccionó Visual Studio Code por su versatilidad. La instalación se realizó usando el gestor de paquetes Snap en Kubuntu. La personalización se centró en asegurar la activación de la numeración de línea en las Preferencias.
                     </p>
                     <pre class="code-block">
-                        # Contenido del archivo .vimrc
-                        set nu
-                        syntax on
-                        set autoindent
+                        # Comando de instalación de VS Code
+                        sudo snap install code --classic
                     </pre>
                     <figure class="image-placeholder">
-                        <img src="img/actividad_2_1.jpg" alt="Captura de Vim en Rocky Linux configurado." class="responsive-img">
-                        <figcaption>Figura 2.1: Vim operando con sintaxis y numeración de línea en un archivo de ejemplo.</figcaption>
+                        <img src="img/actividad_2_1.jpg" alt="Captura de Visual Studio Code en Kubuntu mostrando los números de línea activados." class="responsive-img">
+                        <figcaption>Figura 2.1: VS Code con numeración de línea visible, validando la personalización del editor gráfico.</figcaption>
                     </figure>
                 </article>
                 
                 <article class="content-block card">
-                    <h3>Editor Gráfico: Visual Studio Code (Kubuntu)</h3>
+                    <h3>Editor CLI: Nano</h3>
                     <p>
-                        Se instaló **Visual Studio Code** en **Kubuntu**. Se personalizó con temas y extensiones básicas para facilitar el desarrollo de scripts Bash y Dockerfiles.
+                        Se eligió Nano como editor de consola por su simplicidad. Para lograr la personalización persistente se modificó el archivo de configuración del usuario, `.nanorc`, para mostrar los números de línea por defecto.
                     </p>
+                    <pre class="code-block">
+                        # Modificación del archivo de configuración
+                        nano ~/.nanorc
+                        
+                        # Directiva insertada
+                        set linenumbers
+                    </pre>
                     <figure class="image-placeholder">
-                        <img src="img/actividad_2_2.jpg" alt="Captura de VS Code con la terminal abierta y un archivo de ejemplo." class="responsive-img">
-                        <figcaption>Figura 2.2: Demostración de la configuración de VS Code.</figcaption>
+                        <img src="img/actividad_2_2.jpg" alt="Captura de Nano en la terminal con un archivo de prueba mostrando los números de línea activados automáticamente." class="responsive-img">
+                        <figcaption>Figura 2.2: Evidencia de la personalización de Nano, mostrando la activación automática de la numeración de línea.</figcaption>
                     </figure>
                 </article>
 
@@ -91,7 +96,7 @@
                             Tu navegador no soporta la etiqueta de video HTML5.
                         </video>
                     </div>
-                    <p style="margin-top: 15px;">Video que demuestra la instalación de los dos editores en sus respectivas distribuciones y la configuración personalizada.</p>
+                    <p style="margin-top: 15px;">Video que demuestra la instalación y configuración de los editores Visual Studio Code y Nano en Kubuntu.</p>
                 </article>
                 
                 <article class="card center-content">
@@ -101,7 +106,7 @@
                         Descargar Documentación PDF
                     </a>
                     <p style="font-size: 0.85rem; color: #555; margin-top: 10px;">
-                        Incluye el archivo de configuración personalizado .vimrc si aplica.
+                        Incluye la evidencia de la personalización tanto del editor GUI como del CLI.
                     </p>
                 </article>
                 
