@@ -5,15 +5,42 @@
     box-sizing: border-box;
 }
 
+/* Paleta de Colores (Variables Light Mode) */
+:root {
+    --primary-color: #0d47a1;
+    --secondary-color: #455a64;
+    --accent-color: #388e3c;
+    --header-bg: #ffffff;
+    --body-bg: #f7f9fc; /* Fondo general claro */
+    --card-bg: white; /* Fondo de tarjetas claro */
+    --text-color: #3f4a56; /* Color de texto principal */
+    --link-color: #333;
+    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Paleta de Colores (Variables Dark Mode) */
+body.dark-mode {
+    --primary-color: #90caf9; /* Azul claro para títulos */
+    --secondary-color: #cfd8dc;
+    --header-bg: #1e1e1e; /* Fondo oscuro */
+    --body-bg: #121212; /* Fondo muy oscuro */
+    --card-bg: #1e1e1e; /* Fondo de tarjetas oscuro */
+    --text-color: #e0e0e0; /* Color de texto claro */
+    --link-color: #e0e0e0;
+    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.5); /* Sombra oscura */
+}
+
+/* Aplicación de Variables a Estilos Base */
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.7;
-    color: #3f4a56;
-    background-color: #f7f9fc;
+    color: var(--text-color);
+    background-color: var(--body-bg);
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
 }
 
 /* Utilería de Contenedor */
@@ -24,20 +51,11 @@ body {
     padding: 20px 0;
 }
 
-/* Paleta */
-:root {
-    --primary-color: #0d47a1;
-    --secondary-color: #455a64;
-    --accent-color: #388e3c;
-    --header-bg: #ffffff;
-    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
 h1, h2, h3 {
     color: var(--primary-color);
-    /* Aumentado a 20px para separar H3 del contenido inmediatamente siguiente dentro de las tarjetas */
     margin-bottom: 20px; 
     font-weight: 700;
+    transition: color 0.3s; /* Transición suave */
 }
 
 /* HEADER */
@@ -47,6 +65,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transición suave */
 }
 
 .header-content {
@@ -62,30 +81,27 @@ header {
 }
 
 /* NAV */
-/* --- Importante: usar selector directo (>) para que no afecte a uls anidados --- */
 .main-nav {
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
 }
 
-/* Solo el UL principal del nav — no afectará a dropdown menus */
 .main-nav > ul {
     list-style: none;
     display: flex;
     gap: 25px;
 }
 
-/* Forzar alineación vertical de cada item del nav (para que "Actividades" esté alineado) */
 .main-nav > ul > li {
     display: flex;
     align-items: center;
-    position: relative; /* para posicionar el dropdown relativo a su li */
+    position: relative;
 }
 
 .main-nav a {
     text-decoration: none;
-    color: #333;
+    color: var(--link-color);
     padding: 8px 0;
     transition: color 0.3s, border-bottom 0.3s;
 }
@@ -98,55 +114,48 @@ header {
 }
 
 /* DROPDOWN */
-.dropdown {
-    /* position relativa ya está en el elemento li superior */
-}
-
-/* ===== CORRECCIÓN CLAVE: asegurar verticalidad del dropdown ===== */
-/* El dropdown ahora está forzado a columna y no será afectado por el display:flex del UL principal */
 .activities-dropdown {
-    display: flex;                /* fuerza comportamiento flexible */
-    flex-direction: column;       /* items en columna (vertical) */
-    align-items: stretch;         /* los enlaces ocupan todo el ancho */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     position: absolute;
-    top: calc(100% + 6px);        /* un poquito de separación */
+    top: calc(100% + 6px);
     left: 50%;
     transform: translateX(-50%) translateY(0);
     min-width: 220px;
-    background: white;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background: var(--card-bg); /* Usa variable */
+    box-shadow: var(--shadow-subtle);
     list-style: none;
     padding: 8px 0;
     border-radius: 6px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity .18s ease, transform .18s ease, visibility .18s;
+    transition: opacity .18s ease, transform .18s ease, visibility .18s, background-color 0.3s;
     z-index: 1001;
 }
 
-/* Mostrar al pasar el ratón (hover) */
 .dropdown:hover .activities-dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
 }
 
-/* Asegurar que los LI y enlaces del dropdown se comporten como lista vertical */
-.activities-dropdown li {
-    width: 100%;
-    display: block;
-}
-
 .activities-dropdown a {
     display: block;
     padding: 10px 14px;
-    color: #333 !important;
+    color: var(--text-color) !important;
     text-decoration: none;
-    white-space: normal; /* permitir salto de línea si el texto es largo */
+    white-space: normal;
 }
 
 .activities-dropdown a:hover {
     background: #f1f1f1;
+    color: var(--primary-color) !important;
+}
+
+/* Ajuste de hover para Dark Mode */
+body.dark-mode .activities-dropdown a:hover {
+    background: #2b2b2b;
     color: var(--primary-color) !important;
 }
 
@@ -166,9 +175,8 @@ main {
 .documentation-section ul,
 .documentation-section figure,
 .documentation-section pre {
-    margin-bottom: 15px; /* Añade espacio después de párrafos, listas, figuras y bloques de código */
+    margin-bottom: 15px; 
 }
-
 
 .hero-section {
     background: #e3f2fd;
@@ -177,6 +185,12 @@ main {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s;
+}
+
+/* Ajuste de Hero Section para Dark Mode */
+body.dark-mode .hero-section {
+    background: #282c34;
 }
 
 /* GRID */
@@ -188,11 +202,11 @@ main {
 }
 
 .card {
-    background: white;
+    background: var(--card-bg);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
-    transition: transform 0.3s;
+    box-shadow: var(--shadow-subtle);
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
 }
 
 /* UTILIDAD: Para centrar el botón PDF */
@@ -221,7 +235,7 @@ main {
 .primary-btn:hover {
     background-color: #0c4091; /* Un azul ligeramente más oscuro */
     transform: translateY(-1px);
-    border-bottom: none; /* Evita la línea del nav en el hover */
+    border-bottom: none;
 }
 
 /* Mejor separación del texto de los integrantes */
@@ -238,18 +252,58 @@ footer {
     background: #37474f;
     color: white;
     text-align: center;
-    padding: 4px 0;   /* footer más delgado */
+    padding: 4px 0;
     margin-top: 40px;
     width: 100%;
+    transition: background-color 0.3s;
 }
+
+/* Ajuste de Footer para Dark Mode */
+body.dark-mode footer {
+    background: #000000;
+}
+
+/* --- DARK MODE TOGGLE BUTTON STYLES (Fixed Bottom Left) --- */
+#dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1100; /* Siempre visible */
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-subtle);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#dark-mode-toggle:hover {
+    background-color: #0c4091;
+}
+
+/* Apariencia del botón en Dark Mode */
+.dark-mode #dark-mode-toggle {
+    background-color: var(--secondary-color);
+    color: var(--body-bg); /* El icono se verá oscuro sobre el botón claro */
+}
+
+.dark-mode #dark-mode-toggle:hover {
+    background-color: #aaa;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
     .info-grid {
         grid-template-columns: 1fr;
     }
-
-    /* En pantallas pequeñas quizá quieras que el dropdown ocupe el ancho del contenedor */
     .activities-dropdown {
         left: 0;
         transform: translateX(0);
