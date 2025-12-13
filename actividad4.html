@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 4: Docker Engine e Imagen Base | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <title>Actividad 5: Imagen v2.0 y Docker Hub | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -24,8 +24,8 @@
                             <li><a href="actividad1.html">Actividad 1: Linux y Particionamiento</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores y Configuración</a></li>
                             <li><a href="actividad3.html">Actividad 3: Scripts y Concurrencia</a></li>
-                            <li class="active"><a href="actividad4.html" class="active">Actividad 4: Docker Engine e Imagen Base</a></li>
-                            <li><a href="actividad5.html">Actividad 5: Imagen v2.0 y Docker Hub</a></li>
+                            <li><a href="actividad4.html">Actividad 4: Docker Engine e Imagen Base</a></li>
+                            <li class="active"><a href="actividad5.html" class="active">Actividad 5: Imagen v2.0 y Docker Hub</a></li>
                             <li><a href="actividad6.html">Actividad 6: Minikube y Despliegue</a></li>
                         </ul>
                     </li>
@@ -37,78 +37,72 @@
 
     <main class="container">
         <section class="content-header">
-            <h1>Actividad 4: Instalación y Creación de Imagen Docker en Debian</h1>
+            <h1>Actividad 5: Creación y Publicación de Imagen Docker Mejorada (v2.0)</h1>
             <p class="summary">
-                Instalación del Docker Engine nativo en Debian, siguiendo los pasos para agregar el repositorio oficial, instalar los componentes y verificar el estado del servicio. Se incluye la creación de una imagen base personalizada a partir de un Dockerfile.
+                [cite_start]Modificación de la imagen Docker creada previamente para agregar funcionalidades adicionales, optimizar su utilidad y posteriormente publicar la versión mejorada `miimage:2.0` en el repositorio público de Docker Hub[cite: 1, 100].
             </p>
         </section>
 
         <section class="documentation-section">
-            <h2>4.1 Instalación y Verificación de Docker Engine</h2>
+            <h2>5.1 Creación de Dockerfile y Comparación de Tamaños</h2>
             <article class="content-block card">
-                <h3>Instalación y Componentes</h3>
+                <h3>Dockerfile Mejorado</h3>
                 <p>
-                    El proceso incluyó la instalación de dependencias como ca-certificates, curl y gnupg. Posteriormente, se agregó el repositorio oficial de Docker y se instalaron los paquetes principales: docker-ce, docker-ce-cli, containerd.io, buildx-plugin y docker-compose-plugin.
-                </p>
-                <figure class="image-placeholder">
-                    <img src="img/actividad_4_1.jpg" alt="Captura del estado del servicio Docker y la ejecución de la imagen hello-world." class="responsive-img">
-                    <figcaption>Figura 4.1: Verificación del estado de Docker con `systemctl status docker` mostrando el servicio activo y la ejecución exitosa de la imagen `hello-world`.</figcaption>
-                </figure>
-                
-                <h3>Verificación del Servicio</h3>
-                <p>
-                    Se verificó el estado del servicio Docker con `sudo systemctl status docker`, confirmando que el motor de contenedores se encontraba activo y ejecutándose. Finalmente, se ejecutó la imagen `hello-world` para validar la correcta instalación.
+                    [cite_start]Se creó un nuevo Dockerfile [cite: 8] [cite_start]para la versión `v2.0` que incluye herramientas esenciales adicionales como `build-essential`, `nano`, `vim`, `curl`, `wget`, `htop`, y `neofetch`[cite: 20, 21, 22, 23, 24, 25, 26, 41]. [cite_start]También se agregó un script de bienvenida, `saludo.sh`, accesible globalmente, y se limpió el cache (`apt clean`) para reducir el tamaño final[cite: 28, 32, 43].
                 </p>
                 <pre class="code-block">
-                    # Comandos de instalación clave
-                    sudo apt install -y ca-certificates curl gnupg lsb-release
-                    sudo apt install -y docker-ce docker-ce-cli containerd.io
-                    sudo systemctl status docker
-                    sudo docker run hello-world
-                </pre>
-            </article>
-        </section>
-
-        <section class="documentation-section">
-            <h2>4.2 Creación de Imagen Docker Personalizada v1.0</h2>
-            <article class="content-block card">
-                <h3>Dockerfile y Construcción de Imagen</h3>
-                <p>
-                    Se creó un Dockerfile utilizando Debian como imagen base. La imagen se personalizó para instalar herramientas de compilación gcc, g++ y make, crear un usuario sin privilegios llamado desarrollador, y establecer una terminal Bash como comando por defecto al iniciar el contenedor.
-                </p>
-                <pre class="code-block">
-                    # Contenido del Dockerfile
+                    # Fragmento del Dockerfile v2.0
                     FROM debian:latest
-                    RUN apt update && apt install -y gcc g++ make
-                    RUN useradd -ms/bin/bash desarrollador
+                    RUN apt update && apt install -y \
+                        build-essential nano vim curl wget htop neofetch \
+                        && apt clean && rm -rf /var/lib/apt/lists/*
+                    
+                    RUN useradd -ms /bin/bash desarrollador
+                    RUN echo '#!/bin/bash\necho "Bienvenido al contenedor mejorado..."' > /usr/local/bin/saludo.sh \
+                        && chmod +x /usr/local/bin/saludo.sh
+                    
                     USER desarrollador
                     WORKDIR /home/desarrollador
-                    CMD ["bash"]
+                    CMD ["/bin/bash"]
                 </pre>
+                
+                <h3>Comparación y Ejecución de la Imagen</h3>
+                <p>
+                    Tras la construcción, la imagen `miimage:2.0` se comparó con la versión anterior (`miimage:1.0`). [cite_start]La nueva versión resultó significativamente más grande (3.96GB vs 620MB) debido a la inclusión de herramientas, evidenciando las nuevas funcionalidades[cite: 89, 91]. [cite_start]Se ejecutó el contenedor para validar el nuevo script de bienvenida[cite: 93, 97].
+                </p>
                 <figure class="image-placeholder">
-                    <img src="img/actividad_4_2.jpg" alt="Captura del proceso de construcción de la imagen con docker build." class="responsive-img">
-                    <figcaption>Figura 4.2: Construcción exitosa de la imagen con el comando `sudo docker build -t miimagen:1.0 .`.</figcaption>
+                    <img src="img/actividad_5_1.jpg" alt="Captura de docker images mostrando la comparación de tamaño entre v1.0 y v2.0." class="responsive-img">
+                    [cite_start]<figcaption>Figura 5.1: Comparación de tamaños de imagen `miimage:1.0` y `miimage:2.0` tras la adición de herramientas y la ejecución de `saludo.sh`[cite: 91, 97].</figcaption>
                 </figure>
             </article>
         </section>
 
         <section class="documentation-section">
-            <h2>4.3 Ciclo de Vida del Contenedor</h2>
+            <h2>5.2 Etiquetado y Publicación en Docker Hub</h2>
             <article class="content-block card">
-                <h3>Comandos Clave de Gestión</h3>
+                <h3>Proceso de Login y Etiquetado</h3>
                 <p>
-                    Se demostró la gestión completa del ciclo de vida del contenedor utilizando la imagen miimagen:1.0. Los pasos incluyeron la creación interactiva, la desconexión, la reentrada, la detención, el reinicio y la eliminación final.
+                    [cite_start]Se realizó la autenticación en Docker Hub usando `sudo docker login` con la cuenta `yeisong18`[cite: 136, 148]. [cite_start]Posteriormente, la imagen local fue etiquetada (`docker tag`) para seguir el formato requerido por el repositorio público (`usuario/imagen:tag`)[cite: 157, 162].
                 </p>
-                <ul>
-                    <li>`docker run -it --name`: Crea y ejecuta el contenedor en modo interactivo.</li>
-                    <li>`docker ps -a`: Lista todos los contenedores, incluidos los detenidos.</li>
-                    <li>`docker exec -it`: Permite ejecutar un comando dentro de un contenedor en ejecución.</li>
-                    <li>`docker stop/start/rm`: Controla la detención, reinicio y eliminación del contenedor.</li>
-                </ul>
+                <pre class="code-block">
+                    # Comandos de autenticación y etiquetado
+                    sudo docker login
+                    sudo docker tag miimage:2.0 yeisong18/miimage:2.0
+                </pre>
+                
+                <h3>Push Público y Verificación</h3>
+                <p>
+                    [cite_start]El comando `docker push yeisong18/miimage:2.0` envió la imagen al repositorio público[cite: 168, 180]. [cite_start]La subida se verificó en el sitio web de Docker Hub, confirmando que la imagen, sus capas y el tamaño estaban correctamente registrados y disponibles[cite: 184, 195, 196].
+                </p>
                 <figure class="image-placeholder">
-                    <img src="img/actividad_4_3.jpg" alt="Captura mostrando la gestión del contenedor y listado de imágenes." class="responsive-img">
-                    <figcaption>Figura 4.3: Demostración de los comandos `docker ps -a` y `docker images`.</figcaption>
+                    <img src="img/actividad_5_2.jpg" alt="Captura del repositorio en Docker Hub mostrando la imagen publicada y el resultado del push." class="responsive-img">
+                    [cite_start]<figcaption>Figura 5.2: El comando `docker push` exitoso y la visualización de la imagen `yeisong18/miimage:2.0` en el repositorio de Docker Hub[cite: 170, 190].</figcaption>
                 </figure>
+                
+                <h3>URL Pública en Docker Hub</h3>
+                <p>
+                    [cite_start]URL Pública en Docker Hub: `https://hub.docker.com/r/yeisong18/miimage` [cite: 187]
+                </p>
             </article>
         </section>
 
@@ -120,21 +114,21 @@
                     <h3>Video Demostrativo del Proceso Completo</h3>
                     <div class="video-player">
                         <video controls width="100%" height="315">
-                            <source src="videos/Video_Presentacion_4.mp4" type="video/mp4">
+                            <source src="videos/Video_Presentacion_5.mp4" type="video/mp4">
                             Tu navegador no soporta la etiqueta de video HTML5.
                         </video>
                     </div>
-                    <p style="margin-top: 15px;">Video que demuestra la instalación, creación de imagen y gestión de contenedores con Docker Engine en Debian.</p>
+                    <p style="margin-top: 15px;">Video que demuestra las modificaciones en el Dockerfile, el proceso de etiquetado y la subida de la imagen a Docker Hub.</p>
                 </article>
                 
                 <article class="card center-content">
                     <h3>Documento con Capturas y Dockerfile</h3>
-                    <p>Descarga el PDF con las capturas de la instalación y la gestión del contenedor.</p>
-                    <a href="docs/Actividad_4_Documentacion.pdf" target="_blank" class="btn primary-btn">
+                    <p>Descarga el PDF con las capturas de las modificaciones, la comparación de tamaños y el proceso de publicación.</p>
+                    <a href="docs/Actividad_5_Documentacion.pdf" target="_blank" class="btn primary-btn">
                         Descargar Documentación PDF
                     </a>
                     <p style="font-size: 0.85rem; color: #555; margin-top: 10px;">
-                        Incluye el archivo Dockerfile y los comandos utilizados.
+                        Incluye el nuevo Dockerfile comentado y la URL del repositorio público.
                     </p>
                 </article>
                 
