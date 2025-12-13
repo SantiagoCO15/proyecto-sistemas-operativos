@@ -9,10 +9,12 @@
 </head>
 <body>
 
+    <button id="dark-mode-toggle" aria-label="Alternar Modo Oscuro">
+        <span class="icon">🌙</span> 
+    </button>
     <header>
         <div class="container header-content">
-            <h1 class="logo">SISTEMAS OPERATIVOS <span class="project-tag">PROYECTO FINAL</span></h1>
-            <button class="menu-toggle" aria-label="Abrir Menú">&#9776;</button>
+            <h1 class="logo">SISTEMAS OPERATIVOS</h1>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Portada</a></li>
@@ -35,49 +37,48 @@
 
     <main class="container">
         <section class="content-header">
-            <h1>🎙️ Video de Presentación Final y Sustentación</h1>
+            <h1>Presentación y Videos Demostrativos</h1>
             <p class="summary">
-                Enlace directo al video que contiene la sustentación final del proyecto, cubriendo los puntos clave y las conclusiones. [cite_start]La presentación tiene una duración requerida de 15 a 20 minutos[cite: 256].
+                Esta sección centraliza los videos de sustentación del proyecto final, resumiendo los objetivos, la metodología y los resultados clave de cada actividad.
             </p>
         </section>
 
-        <section class="documentation-section">
-            <h2>Sustentación Final (3-4 minutos sugeridos para el video)</h2>
-
-            <article class="content-block" style="text-align: center;">
-                
-                <div class="video-player" style="margin: 0 auto; max-width: 700px;">
-                    <h3>Video de Sustentación</h3>
-                    <iframe 
-                        src="https://www.youtube.com/embed/TEMPORAL_ID_SUSTENTACION" 
-                        title="Video de Sustentación Final" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-
-                <div style="margin-top: 30px;">
-                    <p>Accede directamente al video de sustentación final:</p>
-                    <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_SUSTENTACION" target="_blank" class="btn accent-btn" style="font-size: 1.2rem; padding: 15px 30px;">
-                        Ver Video de Sustentación Final
-                    </a>
-                    <p style="margin-top: 20px; color: var(--secondary-color); font-size: 0.9rem;">
-                        [cite_start]**Nota:** El sitio web debe estar publicado y accesible públicamente[cite: 245].
-                    </p>
-                </div>
+        <section class="info-grid">
+            
+            <article class="card">
+                <h3>Resumen Ejecutivo del Proyecto</h3>
+                <p>
+                    El proyecto final de Sistemas Operativos abarca la aplicación práctica de conceptos de administración, scripting y orquestación. Los temas principales cubiertos son:
+                </p>
+                <ul>
+                    <li>Instalación y configuración de distribuciones Linux.</li>
+                    <li>Automatización de tareas mediante scripts Bash.</li>
+                    <li>Creación de imágenes Docker y su publicación.</li>
+                    <li>Orquestación de contenedores usando Kubernetes Minikube.</li>
+                </ul>
             </article>
+
+            <article class="card center-content">
+                <h3>Descarga de Documentación Completa</h3>
+                <p>
+                    Descargue el informe consolidado con las explicaciones, capturas de pantalla, códigos fuente y URLs de las imágenes Docker y servicios expuestos.
+                </p>
+                <a href="docs/Proyecto_Final_Documentacion_Consolidada.pdf" target="_blank" class="btn primary-btn" style="margin-top: 15px;">
+                    Descargar Informe PDF Final
+                </a>
+            </article>
+
         </section>
         
         <section class="documentation-section">
-            <h2>Enlaces a todos los Videos del Proyecto (Requisito 7.2)</h2>
-            <p class="summary">
-                [cite_start]A continuación se presenta un resumen de los enlaces a todos los videos de las actividades, cuya duración total no debe exceder los 15 minutos combinados[cite: 234].
-            </p>
-            <article class="content-block">
-                <ul class="video-links">
+            <h2>Índice de Videos de Sustentación</h2>
+            <article class="content-block card">
+                <p>
+                    A continuación se presenta el listado de videos demostrativos que resumen la ejecución de cada parte del proyecto, según las indicaciones.
+                </p>
+                <ul class="video-list">
                     <li>
-                        <strong>Actividad 1 y 2: Linux y Editores</strong> (Sugerido: 2-3 min)
+                        <strong>Actividad 1 y 2: Linux y Editores</strong> (Sugerido: 4-5 min)
                         <a href="https://www.youtube.com/watch?v=TEMPORAL_ID_A1-2" target="_blank" class="btn secondary-btn">Ver Video</a>
                     </li>
                     <li>
@@ -107,10 +108,38 @@
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const mainNav = document.querySelector('.main-nav');
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-        });
-    </script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const iconSpan = darkModeToggle.querySelector('.icon');
 
-</body>
+        // 1. Cargar preferencia guardada
+        const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            iconSpan.textContent = '☀️'; // Mostrar Sol si está en modo oscuro
+        } else {
+            iconSpan.textContent = '🌙'; // Mostrar Luna si está en modo claro
+        }
+
+        // 2. Lógica del Toggle
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                iconSpan.textContent = '☀️';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                iconSpan.textContent = '🌙';
+            }
+        });
+
+        // 3. Lógica del Menú Responsive (Mantenida)
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        }
+    </script>
+    </body>
 </html>
