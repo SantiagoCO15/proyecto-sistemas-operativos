@@ -9,10 +9,12 @@
 </head>
 <body>
 
+    <button id="dark-mode-toggle" aria-label="Alternar Modo Oscuro">
+        <span class="icon">🌙</span> 
+    </button>
     <header>
         <div class="container header-content">
             <h1 class="logo">SISTEMAS OPERATIVOS</h1>
-            <button class="menu-toggle" aria-label="Abrir Menú">&#9776;</button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Portada</a></li>
@@ -24,7 +26,7 @@
                             <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
                             <li><a href="actividad4.html">Actividad 4: Docker Engine</a></li>
                             <li><a href="actividad5.html">Actividad 5: Docker Hub</a></li>
-                            <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
+                            <li><a href="actividad6.html" class="active">Actividad 6: Kubernetes</a></li>
                         </ul>
                     </li>
                     <li><a href="presentacion.html" class="cta-link">Presentación/Videos</a></li>
@@ -37,22 +39,22 @@
         <section class="content-header">
             <h1>Actividad 6: Instalación y Configuración de Kubernetes (Minikube)</h1>
             <p class="summary">
-                Instalación de un clúster Kubernetes local usando Minikube. Despliegue de la imagen de Docker (v2.0) a través de un Deployment y exposición del servicio.
+                Instalación de un clúster Kubernetes local usando Minikube. Despliegue de la imagen de Docker v2.0 a través de un Deployment y exposición del servicio.
             </p>
         </section>
 
         <section class="documentation-section">
             <h2>6.1 Instalación de Minikube y Configuración de kubectl</h2>
-            <article class="content-block">
+            <article class="content-block card">
                 <h3>Comandos Iniciales y Verificación</h3>
                 <p>
-                    [cite_start]Se instaló **Minikube** [cite: 178] [cite_start]en Kubuntu junto con `kubectl`[cite: 180]. [cite_start]El clúster se inició usando `minikube start` [cite: 181] [cite_start]y se verificó su estado[cite: 182].
+                    Se instaló <strong>Minikube</strong> en Kubuntu junto con `kubectl`. El clúster se inició usando `minikube start` y se verificó su estado.
                 </p>
                 <pre class="code-block">
                     # Comandos de inicio y verificación
                     minikube start --driver=docker
-                    [cite_start]kubectl cluster-info # [cite: 190] Captura de cluster-info
-                    [cite_start]kubectl get nodes # [cite: 191] Listado de nodos
+                    kubectl cluster-info # Captura de cluster-info
+                    kubectl get nodes # Listado de nodos
                 </pre>
                 <figure class="image-placeholder">
                     <img src="https://via.placeholder.com/1000x500?text=CAPTURA+6.1.1%3A+kubectl+get+nodes+y+cluster-info" alt="Captura de la verificación del clúster de Kubernetes." class="responsive-img">
@@ -63,13 +65,13 @@
 
         <section class="documentation-section">
             <h2>6.2 Creación de Deployment y Exposición de Servicio</h2>
-            <article class="content-block">
+            <article class="content-block card">
                 <h3>Archivo YAML de Deployment y Despliegue</h3>
                 <p>
-                    [cite_start]Se creó un Deployment YAML [cite: 198] [cite_start]utilizando la imagen `grupo8/proyecto-so:v2.0` de Docker Hub[cite: 199]. [cite_start]Se aplica el archivo y se verifica el estado de los Pods[cite: 200, 201].
+                    Se creó un Deployment YAML utilizando la imagen `grupo8/proyecto-so:v2.0` de Docker Hub. Se aplica el archivo y se verifica el estado de los Pods.
                 </p>
                 <pre class="code-block">
-                    # [cite_start]Fragmento del Deployment YAML [cite: 205]
+                    # Fragmento del Deployment YAML
                     apiVersion: apps/v1
                     kind: Deployment
                     spec:
@@ -85,13 +87,13 @@
 
                 <h3>Archivo YAML de Service y Acceso</h3>
                 <p>
-                    [cite_start]Se expone el servicio mediante un Service YAML [cite: 202] (tipo NodePort o similar) para permitir el acceso. [cite_start]Se demuestra el acceso al servicio desplegado[cite: 203].
+                    Se expone el servicio mediante un Service YAML tipo NodePort o similar para permitir el acceso. Se demuestra el acceso al servicio desplegado.
                 </p>
                 <pre class="code-block">
                     # Comandos de despliegue y verificación
                     kubectl apply -f deployment.yaml
                     kubectl apply -f service.yaml
-                    [cite_start]kubectl logs [NOMBRE_DEL_POD] # [cite: 209] Captura de Logs
+                    kubectl logs [NOMBRE_DEL_POD] # Captura de Logs
                     minikube service [NOMBRE_DEL_SERVICIO] --url # Acceso al servicio
                 </pre>
                 <figure class="image-placeholder">
@@ -102,34 +104,39 @@
         </section>
 
         <section class="media-section">
-            <h2>Entrega de Evidencias y Documentación (Video: 2-3 min)</h2>
-            <div class="media-container">
+            <h2>Entrega de Evidencias y Documentación</h2>
+            <div class="info-grid">
                 
-                <div class="video-player">
+                <article class="card">
                     <h3>Video Demostrativo del Proceso Completo</h3>
-                    <iframe 
-                        src="https://www.youtube.com/embed/TEMPORAL_ID_ACT6" 
-                        title="Video de Explicación de la Actividad 6" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+                    <div class="video-player">
+                        <iframe 
+                            width="100%" height="315"
+                            src="https://www.youtube.com/embed/TEMPORAL_ID_ACT6" 
+                            title="Video de Explicación de la Actividad 6" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p style="margin-top: 15px;">Video que demuestra la instalación de Minikube, el despliegue del Pod y el acceso al servicio de Kubernetes.</p>
+                </article>
                 
-                <div class="documentation-link">
-                    <h3>Archivos de Documentación y YAMLs</h3>
-                    <p>Descarga el PDF con las capturas de la instalación y el despliegue (Entregable: YAMLs, capturas, demostración de acceso):</p>
+                <article class="card center-content">
+                    <h3>Documento con Capturas y YAMLs</h3>
+                    <p>Descarga el PDF con las capturas de la instalación y el despliegue.</p>
                     <a href="docs/Actividad_6_Documentacion.pdf" target="_blank" class="btn primary-btn">
-                        Ver PDF Documentación (3 Puntos)
+                        Descargar Documentación PDF
                     </a>
                     <p style="font-size: 0.85rem; color: #555; margin-top: 10px;">
                         Incluye los archivos YAML de Deployment y Service.
                     </p>
-                </div>
+                </article>
                 
             </div>
         </section>
-        </main>
+        
+    </main>
 
     <footer>
         <div class="container">
@@ -140,10 +147,38 @@
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const mainNav = document.querySelector('.main-nav');
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-        });
-    </script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const iconSpan = darkModeToggle.querySelector('.icon');
 
-</body>
+        // 1. Cargar preferencia guardada
+        const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            iconSpan.textContent = '☀️'; // Mostrar Sol si está en modo oscuro
+        } else {
+            iconSpan.textContent = '🌙'; // Mostrar Luna si está en modo claro
+        }
+
+        // 2. Lógica del Toggle
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                iconSpan.textContent = '☀️';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                iconSpan.textContent = '🌙';
+            }
+        });
+
+        // 3. Lógica del Menú Responsive (Mantenida)
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        }
+    </script>
+    </body>
 </html>
