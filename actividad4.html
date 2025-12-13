@@ -39,7 +39,7 @@
         <section class="content-header">
             <h1>Actividad 4: Instalación y Creación de Imagen Docker en Debian</h1>
             <p class="summary">
-                Instalación del **Docker Engine** nativo en **Debian**, siguiendo los pasos para agregar el repositorio oficial, instalar los componentes y verificar el estado del servicio. Se incluye la creación de una imagen base personalizada a partir de un Dockerfile.
+                Instalación del Docker Engine nativo en Debian, siguiendo los pasos para agregar el repositorio oficial, instalar los componentes y verificar el estado del servicio. Se incluye la creación de una imagen base personalizada a partir de un Dockerfile.
             </p>
         </section>
 
@@ -48,16 +48,16 @@
             <article class="content-block card">
                 <h3>Instalación y Componentes</h3>
                 <p>
-                    [cite_start]El proceso incluyó la instalación de dependencias como `ca-certificates`, `curl` y `gnupg`[cite: 95, 96, 97, 98]. [cite_start]Posteriormente, se agregó el repositorio oficial de Docker y se instalaron los paquetes principales: `docker-ce`, `docker-ce-cli`, `containerd.io`, `buildx-plugin` y `docker-compose-plugin`[cite: 123, 124, 125, 126, 127, 128].
+                    El proceso incluyó la instalación de dependencias como ca-certificates, curl y gnupg. Posteriormente, se agregó el repositorio oficial de Docker y se instalaron los paquetes principales: docker-ce, docker-ce-cli, containerd.io, buildx-plugin y docker-compose-plugin.
                 </p>
                 <figure class="image-placeholder">
                     <img src="img/actividad_4_1.jpg" alt="Captura del estado del servicio Docker y la ejecución de la imagen hello-world." class="responsive-img">
-                    [cite_start]<figcaption>Figura 4.1: Verificación del estado de Docker con `systemctl status docker` mostrando el servicio activo y la ejecución exitosa de la imagen `hello-world`[cite: 135, 160, 161].</figcaption>
+                    <figcaption>Figura 4.1: Verificación del estado de Docker con `systemctl status docker` mostrando el servicio activo y la ejecución exitosa de la imagen `hello-world`.</figcaption>
                 </figure>
                 
                 <h3>Verificación del Servicio</h3>
                 <p>
-                    [cite_start]Se verificó el estado del servicio Docker con `sudo systemctl status docker`, confirmando que el motor de contenedores se encontraba activo y ejecutándose[cite: 133, 135]. [cite_start]Finalmente, se ejecutó la imagen `hello-world` para validar la correcta instalación[cite: 154, 160].
+                    Se verificó el estado del servicio Docker con `sudo systemctl status docker`, confirmando que el motor de contenedores se encontraba activo y ejecutándose. Finalmente, se ejecutó la imagen `hello-world` para validar la correcta instalación.
                 </p>
                 <pre class="code-block">
                     # Comandos de instalación clave
@@ -70,11 +70,11 @@
         </section>
 
         <section class="documentation-section">
-            <h2>4.2 Creación de Imagen Docker Personalizada (Dockerfile)</h2>
+            <h2>4.2 Creación de Imagen Docker Personalizada v1.0</h2>
             <article class="content-block card">
-                <h3>Dockerfile y Construcción de Imagen (v1.0)</h3>
+                <h3>Dockerfile y Construcción de Imagen</h3>
                 <p>
-                    [cite_start]Se creó un Dockerfile [cite: 176] [cite_start]utilizando **Debian** como imagen base[cite: 187]. [cite_start]La imagen se personalizó para instalar herramientas de compilación (`gcc`, `g++`, `make`), crear un usuario sin privilegios (`desarrollador`) [cite: 189][cite_start], y establecer una terminal Bash como comando por defecto al iniciar el contenedor[cite: 192].
+                    Se creó un Dockerfile utilizando Debian como imagen base. La imagen se personalizó para instalar herramientas de compilación gcc, g++ y make, crear un usuario sin privilegios llamado desarrollador, y establecer una terminal Bash como comando por defecto al iniciar el contenedor.
                 </p>
                 <pre class="code-block">
                     # Contenido del Dockerfile
@@ -87,27 +87,27 @@
                 </pre>
                 <figure class="image-placeholder">
                     <img src="img/actividad_4_2.jpg" alt="Captura del proceso de construcción de la imagen con docker build." class="responsive-img">
-                    [cite_start]<figcaption>Figura 4.2: Construcción exitosa de la imagen con el comando `sudo docker build -t miimagen:1.0 .`[cite: 196, 199, 201].</figcaption>
+                    <figcaption>Figura 4.2: Construcción exitosa de la imagen con el comando `sudo docker build -t miimagen:1.0 .`.</figcaption>
                 </figure>
             </article>
         </section>
 
         <section class="documentation-section">
-            <h2>4.3 Creación y Gestión del Ciclo de Vida del Contenedor</h2>
+            <h2>4.3 Ciclo de Vida del Contenedor</h2>
             <article class="content-block card">
-                <h3>Comandos Clave del Ciclo de Vida</h3>
+                <h3>Comandos Clave de Gestión</h3>
                 <p>
-                    Se demostró la gestión completa del ciclo de vida del contenedor utilizando la imagen `miimagen:1.0`. [cite_start]Los pasos incluyeron la creación interactiva (`docker run -it`), la desconexión, la reentrada (`docker exec`), la detención (`docker stop`), el reinicio (`docker start`) y la eliminación final (`docker rm`)[cite: 207, 212, 236, 261, 288, 312].
+                    Se demostró la gestión completa del ciclo de vida del contenedor utilizando la imagen miimagen:1.0. Los pasos incluyeron la creación interactiva, la desconexión, la reentrada, la detención, el reinicio y la eliminación final.
                 </p>
                 <ul>
-                    [cite_start]<li>`docker run -it --name`: Crea y ejecuta el contenedor en modo interactivo[cite: 207, 208, 209, 210].</li>
-                    [cite_start]<li>`docker ps -a`: Lista todos los contenedores, incluidos los detenidos[cite: 217, 240, 264, 291, 316].</li>
-                    [cite_start]<li>`docker exec -it`: Permite ejecutar un comando dentro de un contenedor en ejecución[cite: 236, 237].</li>
-                    [cite_start]<li>`docker stop/start/rm`: Controla la detención, reinicio y eliminación del contenedor[cite: 261, 288, 312].</li>
+                    <li>`docker run -it --name`: Crea y ejecuta el contenedor en modo interactivo.</li>
+                    <li>`docker ps -a`: Lista todos los contenedores, incluidos los detenidos.</li>
+                    <li>`docker exec -it`: Permite ejecutar un comando dentro de un contenedor en ejecución.</li>
+                    <li>`docker stop/start/rm`: Controla la detención, reinicio y eliminación del contenedor.</li>
                 </ul>
                 <figure class="image-placeholder">
                     <img src="img/actividad_4_3.jpg" alt="Captura mostrando la gestión del contenedor y listado de imágenes." class="responsive-img">
-                    [cite_start]<figcaption>Figura 4.3: Demostración de los comandos `docker ps -a` y `docker images`[cite: 265, 334].</figcaption>
+                    <figcaption>Figura 4.3: Demostración de los comandos `docker ps -a` y `docker images`.</figcaption>
                 </figure>
             </article>
         </section>
