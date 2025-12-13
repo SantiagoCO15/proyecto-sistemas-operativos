@@ -9,10 +9,12 @@
 </head>
 <body>
 
+    <button id="dark-mode-toggle" aria-label="Alternar Modo Oscuro">
+        <span class="icon">🌙</span> 
+    </button>
     <header>
         <div class="container header-content">
             <h1 class="logo">SISTEMAS OPERATIVOS</h1>
-            <button class="menu-toggle" aria-label="Abrir Menú">&#9776;</button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Portada</a></li>
@@ -21,7 +23,7 @@
                         <ul class="dropdown-menu activities-dropdown">
                             <li><a href="actividad1.html">Actividad 1: Linux</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores</a></li>
-                            <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
+                            <li><a href="actividad3.html" class="active">Actividad 3: Scripts</a></li>
                             <li><a href="actividad4.html">Actividad 4: Docker Engine</a></li>
                             <li><a href="actividad5.html">Actividad 5: Docker Hub</a></li>
                             <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
@@ -35,135 +37,99 @@
 
     <main class="container">
         <section class="content-header">
-            <h1>Actividad 3: Scripts, Automatización, Gestión de Procesos y Hilos</h1>
+            <h1>Actividad 3: Creación de scripts, Automatización y Gestión de Procesos</h1>
             <p class="summary">
-                Creación de scripts en Bash (gráfico y consola), demostración de comandos de gestión de procesos en Linux y desarrollo de un programa simple en Java con concurrencia.
+                Implementación de scripts en Bash para tareas automatizadas y demostración de la gestión de procesos y el uso de hilos (threads) en un programa de alto nivel.
             </p>
         </section>
 
         <section class="documentation-section">
-            <h2>3.1 Script de Automatización en Entorno Gráfico (Kubuntu)</h2>
-            <article class="content-block">
-                <h3>Código y Ejecución del Script de Escritorio</h3>
+            <h2>3.1 Creación de Scripts y Automatización (Bash)</h2>
+            <article class="content-block card">
+                <h3>Script para Tarea Automatizada y Demostración</h3>
                 <p>
-                    [cite_start]Se creó un script en Bash para [Ejemplo: organizar/limpiar archivos temporales][cite: 59]. [cite_start]Este script está configurado para ejecutarse como una aplicación de escritorio con un botón de ejecución[cite: 60].
+                    Se creó un script en Bash (`backup.sh`) diseñado para automatizar la tarea de respaldo de directorios específicos. El script incluye validación de parámetros de entrada, manejo de errores y logging de la operación.
+                </p>
+                <p>
+                    El script fue ejecutado en el ambiente de consola (Rocky Linux) para demostrar su funcionalidad completa, incluyendo la verificación de la creación del archivo de respaldo y los permisos.
                 </p>
                 <pre class="code-block">
-                    # Código del script (comentado)
                     #!/bin/bash
-                    [cite_start]# [cite: 62] Script: Limpieza_temporal.sh
-                    LOG_FILE="/tmp/limpieza_$(date +%Y%m%d).log"
-                    echo "Iniciando limpieza de cache..." > $LOG_FILE
-                    sudo apt autoremove -y >> $LOG_FILE
-                    # ... (resto del código)
-                </pre>
-                <figure class="image-placeholder">
-                    <img src="https://via.placeholder.com/900x450?text=CAPTURA+3.1.1%3A+Ejecucion+del+Script+desde+el+Escritorio" alt="Captura de la ejecución del script desde el entorno gráfico de Kubuntu." class="responsive-img">
-                    <figcaption>Figura 3.1.1: El script ejecutándose como aplicación de escritorio.</figcaption>
-                </figure>
-            </article>
-        </section>
-
-        <section class="documentation-section">
-            <h2>3.2 Script de Automatización en Entorno Consola (Rocky Linux)</h2>
-            <article class="content-block">
-                <h3>Manejo de Argumentos y Errores</h3>
-                <p>
-                    [cite_start]Se creó una versión similar del script para la consola, optimizada con manejo de argumentos, validaciones [cite: 67] [cite_start]y manejo de errores básico[cite: 73].
-                </p>
-                <pre class="code-block">
-                    # Código del script de consola con validaciones
-                    if [ $# -eq 0 ]; then
-                      [cite_start]echo "Uso: $0 [directorio]" # [cite: 68] Salida informativa
-                      exit 1
+                    # Script de Respaldo Automatizado
+                    
+                    if [ $# -ne 2 ]; then
+                        echo "Uso: $0 <directorio_origen> <directorio_destino>"
+                        exit 1
                     fi
-                    if [ ! -d "$1" ]; then
-                      echo "Error: Directorio no existe." [cite_start]# [cite: 73] Manejo de errores
-                      exit 2
-                    fi
-                    # ... (código de automatización)
+                    
+                    # ... código completo del script ...
                 </pre>
                 <figure class="image-placeholder">
-                    <img src="https://via.placeholder.com/800x400?text=CAPTURA+3.2.1%3A+Ejecucion+del+Script+con+Argumentos+en+Terminal" alt="Captura de la ejecución del script en modo consola." class="responsive-img">
-                    <figcaption>Figura 3.2.1: Demostración de la validación de argumentos en la terminal de Rocky Linux.</figcaption>
+                    <img src="https://via.placeholder.com/900x450?text=CAPTURA+3.1.1%3A+Ejecucion+del+Script+Bash+en+Consola" alt="Captura de la ejecución del script Bash y el resultado." class="responsive-img">
+                    <figcaption>Figura 3.1.1: Demostración de la ejecución correcta del script de automatización.</figcaption>
                 </figure>
             </article>
         </section>
 
         <section class="documentation-section">
-            <h2>3.3 Gestión de Procesos en Linux</h2>
-            <article class="content-block">
-                <h3>Demostración de Comandos y Estados</h3>
+            <h2>3.2 Gestión de Procesos y Threads (Java/C)</h2>
+            <article class="content-block card">
+                <h3>Gestión de Procesos en Linux</h3>
                 <p>
-                    [cite_start]Se demuestra el dominio de comandos clave para gestión de procesos (`ps`, `top`, `htop`, `pstree`) [cite: 80][cite_start], su gestión (`kill`, `killall`) [cite: 81] [cite_start]y la gestión de prioridades (`nice`, `renice`)[cite: 82]. [cite_start]Se capturó un proceso en diferentes estados[cite: 84].
+                    Se documentó el uso de comandos clave para la gestión de procesos, demostrando cómo identificar procesos (`ps`), cambiar su prioridad (`nice`/`renice`) y finalizar procesos (`kill`/`killall`).
                 </p>
                 <pre class="code-block">
-                    # Comandos de gestión activa de procesos
-                    top -b -n 1 | head -n 10 # Monitoreo
-                    nice -n 10 ./mi_proceso_lento & # Asignar prioridad
-                    pstree -p
-                    kill -9 [PID_EJEMPLO] # Terminación de proceso
+                    # Comandos de gestión de procesos
+                    ps aux | grep java
+                    sudo kill -9 <PID>
+                    sudo renice 10 <PID>
                 </pre>
+                
+                <h3>Implementación de Hilos (Threads)</h3>
+                <p>
+                    Se desarrolló un programa en Java (o C con pthreads) que implementa y gestiona múltiples hilos de ejecución para una tarea concurrente. Se adjunta el código fuente con comentarios detallados.
+                </p>
                 <figure class="image-placeholder">
-                    <img src="https://via.placeholder.com/1000x500?text=CAPTURA+3.3.1%3A+Procesos+en+Diferentes+Estados+(top+o+htop)" alt="Captura de procesos con htop o top mostrando el PID." class="responsive-img">
-                    <figcaption>Figura 3.3.1: Captura de comandos de monitoreo y gestión de procesos.</figcaption>
+                    <img src="https://via.placeholder.com/900x450?text=CAPTURA+3.2.1%3A+Salida+del+Programa+con+Hilos+Concurrente" alt="Captura de la salida del programa demostrando la ejecución concurrente de hilos." class="responsive-img">
+                    <figcaption>Figura 3.2.1: El programa con hilos ejecutándose en el sistema operativo.</figcaption>
                 </figure>
             </article>
         </section>
-
-        <section class="documentation-section">
-            <h2>3.4 Programación Básica con Hilos en Java (Concurrencia)</h2>
-            <article class="content-block">
-                <h3>Sincronización y Código Fuente</h3>
-                <p>
-                    [cite_start]Se creó un programa simple en Java utilizando al menos 3 hilos (`Thread` o `Runnable`)[cite: 92]. [cite_start]El ejemplo demuestra un contador compartido donde se sincroniza el acceso a un recurso compartido usando `synchronized`[cite: 93, 100].
-                </p>
-                <pre class="code-block">
-                    // Código Java (fragmento)
-                    public class Contador {
-                        private int count = 0;
-                        public synchronized void increment() {
-                            count++;
-                        }
-                    }
-                    // ... (Clase principal con 3+ hilos)
-                </pre>
-                <figure class="image-placeholder">
-                    <img src="https://via.placeholder.com/800x400?text=CAPTURA+3.4.1%3A+jps+con+Proceso+en+Ejecucion" alt="Captura de la ejecución del programa Java concurrente." class="responsive-img">
-                    [cite_start]<figcaption>Figura 3.4.1: Salida del comando `jps` mostrando el proceso de Java ejecutándose[cite: 107].</figcaption>
-                </figure>
-            </article>
-        </section>
-
+        
         <section class="media-section">
-            <h2>Entrega de Evidencias y Documentación (Video: 3-4 min)</h2>
-            <div class="media-container">
+            <h2>Entrega de Evidencias y Documentación</h2>
+            <div class="info-grid">
                 
-                <div class="video-player">
+                <article class="card">
                     <h3>Video Demostrativo del Proceso Completo</h3>
-                    <iframe 
-                        src="https://www.youtube.com/embed/TEMPORAL_ID_ACT3" 
-                        title="Video de Explicación de la Actividad 3" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+                    <div class="video-player">
+                        <iframe 
+                            width="100%" height="315"
+                            src="https://www.youtube.com/embed/TEMPORAL_ID_ACT3" 
+                            title="Video de Explicación de la Actividad 3" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p style="margin-top: 15px;">Video que demuestra la creación, ejecución del script Bash y la compilación/ejecución del programa con hilos.</p>
+                </article>
                 
-                <div class="documentation-link">
-                    <h3>Archivos de Documentación y Código</h3>
-                    <p>Descarga el PDF con las capturas, explicaciones de comandos y el código fuente Java (Entregables: Código comentado, capturas, documento de utilidad):</p>
+                <article class="card center-content">
+                    <h3>Documento con Capturas de Pantalla y Código</h3>
+                    <p>Descarga el PDF con las capturas, explicaciones de comandos y el código fuente completo del script y el programa de hilos.</p>
                     <a href="docs/Actividad_3_Documentacion.pdf" target="_blank" class="btn primary-btn">
-                        Ver PDF Documentación (4 Puntos)
+                        Descargar Documentación PDF
                     </a>
                     <p style="font-size: 0.85rem; color: #555; margin-top: 10px;">
                         Incluye los archivos .sh y el código .java.
                     </p>
-                </div>
+                </article>
                 
             </div>
         </section>
-        </main>
+        
+    </main>
 
     <footer>
         <div class="container">
@@ -174,10 +140,38 @@
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const mainNav = document.querySelector('.main-nav');
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-        });
-    </script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const iconSpan = darkModeToggle.querySelector('.icon');
 
-</body>
+        // 1. Cargar preferencia guardada
+        const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            iconSpan.textContent = '☀️'; // Mostrar Sol si está en modo oscuro
+        } else {
+            iconSpan.textContent = '🌙'; // Mostrar Luna si está en modo claro
+        }
+
+        // 2. Lógica del Toggle
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                iconSpan.textContent = '☀️';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                iconSpan.textContent = '🌙';
+            }
+        });
+
+        // 3. Lógica del Menú Responsive (Mantenida)
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        }
+    </script>
+    </body>
 </html>
