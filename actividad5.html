@@ -19,7 +19,7 @@
                 <ul>
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
-                        <a href="#" class="active">Actividades &#9662;</a>
+                        <a href="#" class="active">Actividades ▾</a>
                         <ul class="dropdown-menu activities-dropdown">
                             <li><a href="actividad1.html">Actividad 1: Linux</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores</a></li>
@@ -54,13 +54,12 @@
                     Opcionalmente, se aplicaron técnicas de optimización, como *multi-stage builds*, para reducir el tamaño final de la imagen.
                 </p>
                 <pre class="code-block">
-                    # Fragmento del Nuevo Dockerfile
                     FROM debian:stable-slim as build-stage
-                    # ... instalar dependencias de compilación ...
+                    
 
                     FROM debian:stable-slim
-                    # ... copiar binarios y agregar funcionalidades ...
-                    RUN apt install -y htop ncdu # Herramientas de monitoreo/utilidades
+                    
+                    RUN apt install -y htop ncdu
                 </pre>
                 <figure class="image-placeholder">
                     <img src="https://via.placeholder.com/900x450?text=CAPTURA+5.1.1%3A+docker+images+Comparando+v1.0+vs+v2.0" alt="Captura de docker images mostrando el tamaño de ambas versiones." class="responsive-img">
@@ -77,7 +76,6 @@
                     La imagen fue correctamente etiquetada utilizando la estructura `usuario/nombre:tag`. Se realizó el proceso de `docker login` y `docker push` para subir la imagen al repositorio de Docker Hub, asegurando su disponibilidad pública.
                 </p>
                 <pre class="code-block">
-                    # Comandos de etiquetado y push
                     docker tag [IMAGE_ID] grupo8/proyecto-so:v2.0
                     docker push grupo8/proyecto-so:v2.0
                 </pre>
@@ -144,16 +142,14 @@
         const body = document.body;
         const iconSpan = darkModeToggle.querySelector('.icon');
 
-        // 1. Cargar preferencia guardada
         const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
         if (isDarkMode) {
             body.classList.add('dark-mode');
-            iconSpan.textContent = '☀️'; // Mostrar Sol si está en modo oscuro
+            iconSpan.textContent = '☀️';
         } else {
-            iconSpan.textContent = '🌙'; // Mostrar Luna si está en modo claro
+            iconSpan.textContent = '🌙';
         }
 
-        // 2. Lógica del Toggle
         darkModeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             
@@ -166,7 +162,6 @@
             }
         });
 
-        // 3. Lógica del Menú Responsive (Mantenida)
         if (menuToggle) {
             menuToggle.addEventListener('click', () => {
                 mainNav.classList.toggle('active');

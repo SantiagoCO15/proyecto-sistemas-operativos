@@ -19,7 +19,7 @@
                 <ul>
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
-                        <a href="#" class="active">Actividades &#9662;</a>
+                        <a href="#" class="active">Actividades ▾</a>
                         <ul class="dropdown-menu activities-dropdown">
                             <li><a href="actividad1.html" class="active">Actividad 1: Linux</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores</a></li>
@@ -144,16 +144,14 @@
         const body = document.body;
         const iconSpan = darkModeToggle.querySelector('.icon');
 
-        // 1. Cargar preferencia guardada
         const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
         if (isDarkMode) {
             body.classList.add('dark-mode');
-            iconSpan.textContent = '☀️'; // Mostrar Sol si está en modo oscuro
+            iconSpan.textContent = '☀️';
         } else {
-            iconSpan.textContent = '🌙'; // Mostrar Luna si está en modo claro
+            iconSpan.textContent = '🌙';
         }
 
-        // 2. Lógica del Toggle
         darkModeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             
@@ -166,7 +164,6 @@
             }
         });
 
-        // 3. Lógica del Menú Responsive (Mantenida)
         if (menuToggle) {
             menuToggle.addEventListener('click', () => {
                 mainNav.classList.toggle('active');

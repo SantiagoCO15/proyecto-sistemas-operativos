@@ -19,7 +19,7 @@
                 <ul>
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
-                        <a href="#" class="active">Actividades &#9662;</a>
+                        <a href="#" class="active">Actividades ▾</a>
                         <ul class="dropdown-menu activities-dropdown">
                             <li><a href="actividad1.html">Actividad 1: Linux</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores</a></li>
@@ -53,8 +53,8 @@
                 <pre class="code-block">
                     # Comandos de inicio y verificación
                     minikube start --driver=docker
-                    kubectl cluster-info # Captura de cluster-info
-                    kubectl get nodes # Listado de nodos
+                    kubectl cluster-info
+                    kubectl get nodes
                 </pre>
                 <figure class="image-placeholder">
                     <img src="https://via.placeholder.com/1000x500?text=CAPTURA+6.1.1%3A+kubectl+get+nodes+y+cluster-info" alt="Captura de la verificación del clúster de Kubernetes." class="responsive-img">
@@ -71,7 +71,6 @@
                     Se creó un Deployment YAML utilizando la imagen `grupo8/proyecto-so:v2.0` de Docker Hub. Se aplica el archivo y se verifica el estado de los Pods.
                 </p>
                 <pre class="code-block">
-                    # Fragmento del Deployment YAML
                     apiVersion: apps/v1
                     kind: Deployment
                     spec:
@@ -90,11 +89,10 @@
                     Se expone el servicio mediante un Service YAML tipo NodePort o similar para permitir el acceso. Se demuestra el acceso al servicio desplegado.
                 </p>
                 <pre class="code-block">
-                    # Comandos de despliegue y verificación
                     kubectl apply -f deployment.yaml
                     kubectl apply -f service.yaml
-                    kubectl logs [NOMBRE_DEL_POD] # Captura de Logs
-                    minikube service [NOMBRE_DEL_SERVICIO] --url # Acceso al servicio
+                    kubectl logs [NOMBRE_DEL_POD]
+                    minikube service [NOMBRE_DEL_SERVICIO] --url
                 </pre>
                 <figure class="image-placeholder">
                     <img src="https://via.placeholder.com/1000x500?text=CAPTURA+6.2.1%3A+Acceso+al+Servicio+Expuesto+y+kubectl+logs" alt="Captura del servicio de Kubernetes accesible en el navegador o terminal." class="responsive-img">
@@ -151,16 +149,14 @@
         const body = document.body;
         const iconSpan = darkModeToggle.querySelector('.icon');
 
-        // 1. Cargar preferencia guardada
         const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
         if (isDarkMode) {
             body.classList.add('dark-mode');
-            iconSpan.textContent = '☀️'; // Mostrar Sol si está en modo oscuro
+            iconSpan.textContent = '☀️';
         } else {
-            iconSpan.textContent = '🌙'; // Mostrar Luna si está en modo claro
+            iconSpan.textContent = '🌙';
         }
 
-        // 2. Lógica del Toggle
         darkModeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             
@@ -173,7 +169,6 @@
             }
         });
 
-        // 3. Lógica del Menú Responsive (Mantenida)
         if (menuToggle) {
             menuToggle.addEventListener('click', () => {
                 mainNav.classList.toggle('active');

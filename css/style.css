@@ -1,36 +1,32 @@
-/* Base y Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Paleta de Colores (Variables Light Mode) */
 :root {
     --primary-color: #0d47a1;
     --secondary-color: #455a64;
     --accent-color: #388e3c;
     --header-bg: #ffffff;
-    --body-bg: #f7f9fc; /* Fondo general claro */
-    --card-bg: white; /* Fondo de tarjetas claro */
-    --text-color: #3f4a56; /* Color de texto principal */
+    --body-bg: #f7f9fc;
+    --card-bg: white;
+    --text-color: #3f4a56;
     --link-color: #333;
     --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Paleta de Colores (Variables Dark Mode) */
 body.dark-mode {
-    --primary-color: #90caf9; /* Azul claro para títulos */
+    --primary-color: #90caf9;
     --secondary-color: #cfd8dc;
-    --header-bg: #1e1e1e; /* Fondo oscuro */
-    --body-bg: #121212; /* Fondo muy oscuro */
-    --card-bg: #1e1e1e; /* Fondo de tarjetas oscuro */
-    --text-color: #e0e0e0; /* Color de texto claro */
+    --header-bg: #1e1e1e;
+    --body-bg: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
     --link-color: #e0e0e0;
-    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.5); /* Sombra oscura */
+    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* Aplicación de Variables a Estilos Base */
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.7;
@@ -40,10 +36,9 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* Utilería de Contenedor */
 .container {
     width: 95%;
     max-width: 1100px;
@@ -55,17 +50,16 @@ h1, h2, h3 {
     color: var(--primary-color);
     margin-bottom: 20px; 
     font-weight: 700;
-    transition: color 0.3s; /* Transición suave */
+    transition: color 0.3s;
 }
 
-/* HEADER */
 header {
     background: var(--header-bg);
     box-shadow: var(--shadow-subtle);
     position: sticky;
     top: 0;
     z-index: 1000;
-    transition: background-color 0.3s, box-shadow 0.3s; /* Transición suave */
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .header-content {
@@ -80,7 +74,6 @@ header {
     color: var(--primary-color);
 }
 
-/* NAV */
 .main-nav {
     flex-grow: 1;
     display: flex;
@@ -113,7 +106,6 @@ header {
     padding-bottom: 6px;
 }
 
-/* DROPDOWN */
 .activities-dropdown {
     display: flex;
     flex-direction: column;
@@ -123,7 +115,7 @@ header {
     left: 50%;
     transform: translateX(-50%) translateY(0);
     min-width: 220px;
-    background: var(--card-bg); /* Usa variable */
+    background: var(--card-bg);
     box-shadow: var(--shadow-subtle);
     list-style: none;
     padding: 8px 0;
@@ -153,24 +145,20 @@ header {
     color: var(--primary-color) !important;
 }
 
-/* Ajuste de hover para Dark Mode */
 body.dark-mode .activities-dropdown a:hover {
     background: #2b2b2b;
     color: var(--primary-color) !important;
 }
 
-/* MAIN */
 main {
     flex: 1;
 }
 
-/* Margen para separar visualmente las secciones de documentación */
 .documentation-section,
 .media-section {
     margin-bottom: 40px; 
 }
 
-/* Espaciado interno para elementos de texto dentro de las secciones de documentación/tarjetas */
 .documentation-section p,
 .documentation-section ul,
 .documentation-section figure,
@@ -188,12 +176,10 @@ main {
     transition: background-color 0.3s;
 }
 
-/* Ajuste de Hero Section para Dark Mode */
 body.dark-mode .hero-section {
     background: #282c34;
 }
 
-/* GRID */
 .info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -209,12 +195,10 @@ body.dark-mode .hero-section {
     transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
 }
 
-/* UTILIDAD: Para centrar el botón PDF */
 .center-content {
     text-align: center;
 }
 
-/* BOTONES */
 .btn {
     display: inline-block;
     padding: 12px 25px;
@@ -233,12 +217,11 @@ body.dark-mode .hero-section {
 }
 
 .primary-btn:hover {
-    background-color: #0c4091; /* Un azul ligeramente más oscuro */
+    background-color: #0c4091;
     transform: translateY(-1px);
     border-bottom: none;
 }
 
-/* Mejor separación del texto de los integrantes */
 .card ul {
     padding-left: 18px;
 }
@@ -247,7 +230,6 @@ body.dark-mode .hero-section {
     margin-bottom: 10px;
 }
 
-/* FOOTER */
 footer {
     background: #37474f;
     color: white;
@@ -258,17 +240,15 @@ footer {
     transition: background-color 0.3s;
 }
 
-/* Ajuste de Footer para Dark Mode */
 body.dark-mode footer {
     background: #000000;
 }
 
-/* --- DARK MODE TOGGLE BUTTON STYLES (Fixed Bottom Left) --- */
 #dark-mode-toggle {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    z-index: 1100; /* Siempre visible */
+    z-index: 1100;
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -288,18 +268,15 @@ body.dark-mode footer {
     background-color: #0c4091;
 }
 
-/* Apariencia del botón en Dark Mode */
 .dark-mode #dark-mode-toggle {
     background-color: var(--secondary-color);
-    color: var(--body-bg); /* El icono se verá oscuro sobre el botón claro */
+    color: var(--body-bg);
 }
 
 .dark-mode #dark-mode-toggle:hover {
     background-color: #aaa;
 }
 
-
-/* Responsive */
 @media (max-width: 768px) {
     .info-grid {
         grid-template-columns: 1fr;

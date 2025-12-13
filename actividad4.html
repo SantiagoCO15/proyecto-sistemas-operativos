@@ -19,7 +19,7 @@
                 <ul>
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
-                        <a href="#" class="active">Actividades &#9662;</a>
+                        <a href="#" class="active">Actividades ▾</a>
                         <ul class="dropdown-menu activities-dropdown">
                             <li><a href="actividad1.html">Actividad 1: Linux</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores</a></li>
@@ -55,7 +55,7 @@
                     sudo apt install docker-ce docker-ce-cli containerd.io -y
                     sudo usermod -aG docker ${USER}
                     systemctl enable docker
-                    docker run hello-world # Verificación
+                    docker run hello-world
                 </pre>
                 <figure class="image-placeholder">
                     <img src="img/actividad_4_1.jpg" alt="Captura de docker version y docker info." class="responsive-img">
@@ -69,14 +69,13 @@
             <article class="content-block card">
                 <h3>Dockerfile Comentado</h3>
                 <p>
-                    Se creó una imagen personalizada utilizando **Debian** como base, instalando herramientas de desarrollo como `git`, `curl`, `make` y `gcc`, y configurando un usuario no root.
+                    Se creó una imagen personalizada utilizando <strong>Debian</strong> como base, instalando herramientas de desarrollo como `git`, `curl`, `make` y `gcc`, y configurando un usuario no root.
                 </p>
                 <pre class="code-block">
-                    # Archivo Dockerfile
                     FROM debian:stable-slim 
                     RUN apt update && apt install -y git curl nano make gcc 
                     
-                    RUN useradd -ms /bin/bash appuser # Configurar usuario no root
+                    RUN useradd -ms /bin/bash appuser
                     USER appuser
                     
                     WORKDIR /home/appuser/app
@@ -158,16 +157,14 @@
         const body = document.body;
         const iconSpan = darkModeToggle.querySelector('.icon');
 
-        // 1. Cargar preferencia guardada
         const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
         if (isDarkMode) {
             body.classList.add('dark-mode');
-            iconSpan.textContent = '☀️'; // Mostrar Sol si está en modo oscuro
+            iconSpan.textContent = '☀️';
         } else {
-            iconSpan.textContent = '🌙'; // Mostrar Luna si está en modo claro
+            iconSpan.textContent = '🌙';
         }
 
-        // 2. Lógica del Toggle
         darkModeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             
@@ -180,7 +177,6 @@
             }
         });
 
-        // 3. Lógica del Menú Responsive (Mantenida)
         if (menuToggle) {
             menuToggle.addEventListener('click', () => {
                 mainNav.classList.toggle('active');
