@@ -9,6 +9,9 @@
 </head>
 <body>
 
+    <button id="dark-mode-toggle" aria-label="Alternar Modo Oscuro">
+        <span class="icon">🌙</span> 
+    </button>
     <header>
         <div class="container header-content">
             <h1 class="logo">SISTEMAS OPERATIVOS</h1>
@@ -114,15 +117,40 @@
     </footer>
 
     <script>
-        // Script para menú responsive 
         const menuToggle = document.querySelector('.menu-toggle');
         const mainNav = document.querySelector('.main-nav');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const iconSpan = darkModeToggle.querySelector('.icon');
+
+        // 1. Cargar preferencia guardada
+        const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            iconSpan.textContent = '☀️'; // Mostrar Sol si está en modo oscuro
+        } else {
+            iconSpan.textContent = '🌙'; // Mostrar Luna si está en modo claro
+        }
+
+        // 2. Lógica del Toggle
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                iconSpan.textContent = '☀️';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                iconSpan.textContent = '🌙';
+            }
+        });
+
+        // 3. Lógica del Menú Responsive (Mantenida)
         if (menuToggle) {
             menuToggle.addEventListener('click', () => {
                 mainNav.classList.toggle('active');
             });
         }
     </script>
-
-</body>
+    </body>
 </html>
