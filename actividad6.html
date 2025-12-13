@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 6 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <title>Actividad 6: Minikube y Despliegue | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -19,13 +19,14 @@
                 <ul>
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
-                        <a href="#" class="active">Actividades ▾</a>
+                        <a href="#" class="active">Actividades &#9662;</a>
                         <ul class="dropdown-menu activities-dropdown">
-                            <li><a href="actividad1.html">Actividad 1: Linux</a></li>
-                            <li><a href="actividad2.html">Actividad 2: Editores</a></li>
-                            <li><a href="actividad4.html">Actividad 4: Docker Engine</a></li>
-                            <li><a href="actividad5.html">Actividad 5: Docker Hub</a></li>
-                            <li><a href="actividad6.html" class="active">Actividad 6: Kubernetes</a></li>
+                            <li><a href="actividad1.html">Actividad 1: Linux y Particionamiento</a></li>
+                            <li><a href="actividad2.html">Actividad 2: Editores y Configuración</a></li>
+                            <li><a href="actividad3.html">Actividad 3: Scripts y Concurrencia</a></li>
+                            <li><a href="actividad4.html">Actividad 4: Docker Engine e Imagen Base</a></li>
+                            <li><a href="actividad5.html">Actividad 5: Imagen v2.0 y Docker Hub</a></li>
+                            <li class="active"><a href="actividad6.html" class="active">Actividad 6: Minikube y Despliegue</a></li>
                         </ul>
                     </li>
                     <li><a href="presentacion.html" class="cta-link">Presentación/Videos</a></li>
@@ -36,38 +37,54 @@
 
     <main class="container">
         <section class="content-header">
-            <h1>Actividad 6: Instalación y Configuración de Kubernetes (Minikube)</h1>
+            <h1>Actividad 6: Instalación y Despliegue en Kubernetes Minikube en Debian</h1>
             <p class="summary">
-                Instalación de un clúster Kubernetes local usando Minikube. Despliegue de la imagen de Docker v2.0 a través de un Deployment y exposición del servicio.
+                Instalación de un clúster Kubernetes local usando **Minikube** en **Debian**. Se documenta el despliegue de la imagen Docker `miimage:2.0` a través de un Deployment y la exposición del servicio.
             </p>
         </section>
 
         <section class="documentation-section">
-            <h2>6.1 Instalación de Minikube y Configuración de kubectl</h2>
+            <h2>6.1 Instalación y Verificación del Clúster Minikube</h2>
             <article class="content-block card">
-                <h3>Comandos Iniciales y Verificación</h3>
+                <h3>Instalación de kubectl y Minikube</h3>
                 <p>
-                    Se instaló <strong>Minikube</strong> en Kubuntu junto con `kubectl`. El clúster se inició usando `minikube start` y se verificó su estado.
+                    Se actualizó el sistema y se instaló `kubectl`, el cliente oficial para administrar clústeres de Kubernetes. Luego se descargó, se le dieron permisos y se instaló el binario de Minikube.
                 </p>
                 <pre class="code-block">
-                    # Comandos de inicio y verificación
-                    minikube start --driver=docker
-                    kubectl cluster-info
+                    # Comandos de instalación y verificación
+                    sudo apt update
+                    sudo apt install -y kubectl
+                    kubectl version --client
+                    
+                    # Instalación de Minikube
+                    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+                    sudo install minikube-linux-amd64 /usr/local/bin/minikube
+                    minikube version
+                </pre>
+
+                <h3>Inicio y Verificación del Clúster</h3>
+                <p>
+                    El clúster Minikube se inició usando el driver Docker y se verificó que el nodo estuviera en estado *Ready* y que el *control plane* estuviera corriendo correctamente.
+                </p>
+                <pre class="code-block">
+                    # Inicio y verificación
+                    minikube start --driver docker
                     kubectl get nodes
+                    kubectl cluster-info
                 </pre>
                 <figure class="image-placeholder">
-                    <img src="https://via.placeholder.com/1000x500?text=CAPTURA+6.1.1%3A+kubectl+get+nodes+y+cluster-info" alt="Captura de la verificación del clúster de Kubernetes." class="responsive-img">
-                    <figcaption>Figura 6.1.1: Clúster de Minikube funcionando con `kubectl get nodes`.</figcaption>
+                    <img src="img/actividad_6_1.jpg" alt="Captura de la verificación del clúster de Kubernetes." class="responsive-img">
+                    <figcaption>Figura 6.1: Clúster de Minikube funcionando, mostrando el nodo `minikube` en estado `Ready` y la información del `control plane`.</figcaption>
                 </figure>
             </article>
         </section>
 
         <section class="documentation-section">
-            <h2>6.2 Creación de Deployment y Exposición de Servicio</h2>
+            <h2>6.2 Despliegue y Exposición de Servicio</h2>
             <article class="content-block card">
                 <h3>Archivo YAML de Deployment y Despliegue</h3>
                 <p>
-                    Se creó un Deployment YAML utilizando la imagen `grupo8/proyecto-so:v2.0` de Docker Hub. Se aplica el archivo y se verifica el estado de los Pods.
+                    Se creó el archivo `deployment.yaml` para desplegar la imagen `grupo8/proyecto-so:v2.0` de Docker Hub con un contenedor. Una vez aplicado el archivo, se verificó el estado de los Pods.
                 </p>
                 <pre class="code-block">
                     apiVersion: apps/v1
@@ -83,19 +100,20 @@
                             - containerPort: 8080
                 </pre>
 
-                <h3>Archivo YAML de Service y Acceso</h3>
+                <h3>Exposición del Servicio y Acceso</h3>
                 <p>
-                    Se expone el servicio mediante un Service YAML tipo NodePort o similar para permitir el acceso. Se demuestra el acceso al servicio desplegado.
+                    Se utilizó un Service YAML para exponer el Deployment, permitiendo el acceso a la aplicación desde fuera del clúster. Se demuestran los comandos para verificar los logs del Pod y obtener la URL de acceso al servicio.
                 </p>
                 <pre class="code-block">
+                    # Comandos de despliegue y acceso
                     kubectl apply -f deployment.yaml
                     kubectl apply -f service.yaml
                     kubectl logs [NOMBRE_DEL_POD]
                     minikube service [NOMBRE_DEL_SERVICIO] --url
                 </pre>
                 <figure class="image-placeholder">
-                    <img src="https://via.placeholder.com/1000x500?text=CAPTURA+6.2.1%3A+Acceso+al+Servicio+Expuesto+y+kubectl+logs" alt="Captura del servicio de Kubernetes accesible en el navegador o terminal." class="responsive-img">
-                    <figcaption>Figura 6.2.1: Demostración de acceso al servicio y verificación de los logs del Pod.</figcaption>
+                    <img src="img/actividad_6_2.jpg" alt="Captura del servicio de Kubernetes accesible en el navegador o terminal." class="responsive-img">
+                    <figcaption>Figura 6.2: Despliegue exitoso del Pod y verificación del acceso al servicio expuesto por Minikube.</figcaption>
                 </figure>
             </article>
         </section>
@@ -107,14 +125,10 @@
                 <article class="card">
                     <h3>Video Demostrativo del Proceso Completo</h3>
                     <div class="video-player">
-                        <iframe 
-                            width="100%" height="315"
-                            src="https://www.youtube.com/embed/TEMPORAL_ID_ACT6" 
-                            title="Video de Explicación de la Actividad 6" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <video controls width="100%" height="315">
+                            <source src="videos/Video_Presentacion_6.mp4" type="video/mp4">
+                            Tu navegador no soporta la etiqueta de video HTML5.
+                        </video>
                     </div>
                     <p style="margin-top: 15px;">Video que demuestra la instalación de Minikube, el despliegue del Pod y el acceso al servicio de Kubernetes.</p>
                 </article>
