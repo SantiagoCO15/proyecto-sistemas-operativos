@@ -9,10 +9,12 @@
 </head>
 <body>
 
+    <button id="dark-mode-toggle" aria-label="Alternar Modo Oscuro">
+        <span class="icon">🌙</span> 
+    </button>
     <header>
         <div class="container header-content">
             <h1 class="logo">SISTEMAS OPERATIVOS</h1>
-            <button class="menu-toggle" aria-label="Abrir Menú">&#9776;</button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Portada</a></li>
@@ -22,7 +24,7 @@
                             <li><a href="actividad1.html">Actividad 1: Linux</a></li>
                             <li><a href="actividad2.html">Actividad 2: Editores</a></li>
                             <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
-                            <li><a href="actividad4.html">Actividad 4: Docker Engine</a></li>
+                            <li><a href="actividad4.html" class="active">Actividad 4: Docker Engine</a></li>
                             <li><a href="actividad5.html">Actividad 5: Docker Hub</a></li>
                             <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
                         </ul>
@@ -37,44 +39,44 @@
         <section class="content-header">
             <h1>Actividad 4: Instalación y Configuración de Docker Engine</h1>
             <p class="summary">
-                Instalación de Docker Engine nativo en Linux (Kubuntu), creación de una imagen personalizada basada en **Debian** mediante Dockerfile y gestión básica del ciclo de vida de un contenedor.
+                Instalación de Docker Engine nativo en Linux (Kubuntu), creación de una imagen personalizada basada en <strong>Debian</strong> mediante Dockerfile y gestión básica del ciclo de vida de un contenedor.
             </p>
         </section>
 
         <section class="documentation-section">
             <h2>4.1 Instalación de Docker Engine en Kubuntu</h2>
-            <article class="content-block">
+            <article class="content-block card">
                 <h3>Pasos de Instalación y Configuración</h3>
                 <p>
-                    Se configuró el repositorio oficial de Docker [cite: 111], se instalaron los paquetes requeridos [cite: 112] y se agregó el usuario actual al grupo `docker` para evitar usar `sudo`[cite: 113]. El servicio fue habilitado con `systemctl enable docker`[cite: 114].
+                    [cite_start]Se configuró el repositorio oficial de Docker [cite: 111][cite_start], se instalaron los paquetes requeridos [cite: 112] [cite_start]y se agregó el usuario actual al grupo `docker` para evitar usar `sudo`[cite: 113]. [cite_start]El servicio fue habilitado con `systemctl enable docker`[cite: 114].
                 </p>
                 <pre class="code-block">
                     # Comandos de instalación y configuración
                     sudo apt install docker-ce docker-ce-cli containerd.io -y
                     sudo usermod -aG docker ${USER}
                     systemctl enable docker
-                    docker run hello-world # [cite: 115] Verificación
+                    [cite_start]docker run hello-world # Verificación [cite: 115]
                 </pre>
                 <figure class="image-placeholder">
                     <img src="https://via.placeholder.com/1000x500?text=CAPTURA+4.1.1%3A+docker+version+y+docker+info" alt="Captura de docker version y docker info." class="responsive-img">
-                    <figcaption>Figura 4.1.1: Verificación de la instalación con `docker version` y `docker info`[cite: 123].</figcaption>
+                    [cite_start]<figcaption>Figura 4.1.1: Verificación de la instalación con `docker version` y `docker info`[cite: 123].</figcaption>
                 </figure>
             </article>
         </section>
 
         <section class="documentation-section">
-            <h2>4.2 Creación de Imagen Docker (Dockerfile Debian)</h2>
-            <article class="content-block">
+            <h2>4.2 Creación de Imagen Docker</h2>
+            <article class="content-block card">
                 <h3>Dockerfile Comentado</h3>
                 <p>
-                    Se creó una imagen personalizada utilizando **Debian** como base, instalando herramientas de desarrollo (`git`, `curl`) y configurando un usuario no root[cite: 127, 128].
+                    [cite_start]Se creó una imagen personalizada utilizando **Debian** como base [cite: 126][cite_start], instalando herramientas de desarrollo como `git`, `curl`, `make` y `gcc` [cite: 127][cite_start], y configurando un usuario no root[cite: 128].
                 </p>
                 <pre class="code-block">
-                    # [cite: 131] Archivo Dockerfile
-                    FROM debian:stable-slim # Base Debian [cite: 126]
-                    RUN apt update && apt install -y git curl nano make gcc [cite: 127]
+                    # [cite_start]Archivo Dockerfile [cite: 131]
+                    FROM debian:stable-slim 
+                    RUN apt update && apt install -y git curl nano make gcc 
                     
-                    RUN useradd -ms /bin/bash appuser # [cite: 128] Configurar usuario no root
+                    RUN useradd -ms /bin/bash appuser # Configurar usuario no root
                     USER appuser
                     
                     WORKDIR /home/appuser/app
@@ -82,17 +84,17 @@
                 </pre>
                 <figure class="image-placeholder">
                     <img src="https://via.placeholder.com/900x450?text=CAPTURA+4.2.1%3A+Proceso+de+Construccion+(docker+build)" alt="Captura del proceso de construcción de la imagen con docker build." class="responsive-img">
-                    <figcaption>Figura 4.2.1: Salida del comando `docker build` y listado de imágenes (`docker images`)[cite: 132, 134].</figcaption>
+                    [cite_start]<figcaption>Figura 4.2.1: Salida del comando `docker build` y listado de imágenes (`docker images`)[cite: 132, 134].</figcaption>
                 </figure>
             </article>
         </section>
 
         <section class="documentation-section">
             <h2>4.3 Creación y Gestión de Contenedor</h2>
-            <article class="content-block">
+            <article class="content-block card">
                 <h3>Ciclo de Vida y Comandos</h3>
                 <p>
-                    Se demuestra el ciclo de vida del contenedor utilizando comandos clave: `docker run`, `docker ps`, `docker exec`, `docker logs`, `docker stop` y `docker rm`[cite: 138]. Se incluye una inspección con `docker inspect`[cite: 139].
+                    [cite_start]Se demuestra el ciclo de vida del contenedor utilizando comandos clave: `docker run`, `docker ps`, `docker exec`, `docker logs`, `docker stop` y `docker rm`[cite: 138]. [cite_start]Se incluye una inspección con `docker inspect`[cite: 139].
                 </p>
                 <pre class="code-block">
                     docker run -it --name dev-shell mi-imagen:v1.0
@@ -109,34 +111,39 @@
         </section>
 
         <section class="media-section">
-            <h2>Entrega de Evidencias y Documentación (Video: 3-4 min)</h2>
-            <div class="media-container">
+            <h2>Entrega de Evidencias y Documentación</h2>
+            <div class="info-grid">
                 
-                <div class="video-player">
+                <article class="card">
                     <h3>Video Demostrativo del Proceso Completo</h3>
-                    <iframe 
-                        src="https://www.youtube.com/embed/TEMPORAL_ID_ACT4" 
-                        title="Video de Explicación de la Actividad 4" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+                    <div class="video-player">
+                        <iframe 
+                            width="100%" height="315"
+                            src="https://www.youtube.com/embed/TEMPORAL_ID_ACT4" 
+                            title="Video de Explicación de la Actividad 4" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p style="margin-top: 15px;">Video que demuestra la instalación, creación de imagen y gestión de contenedores con Docker Engine.</p>
+                </article>
                 
-                <div class="documentation-link">
-                    <h3>Archivos de Documentación y Dockerfile</h3>
-                    <p>Descarga el PDF con las capturas de la instalación y la gestión del contenedor (Entregable: Capturas y Dockerfile comentado):</p>
+                <article class="card center-content">
+                    <h3>Documento con Capturas y Dockerfile</h3>
+                    <p>Descarga el PDF con las capturas de la instalación y la gestión del contenedor.</p>
                     <a href="docs/Actividad_4_Documentacion.pdf" target="_blank" class="btn primary-btn">
-                        Ver PDF Documentación (4 Puntos)
+                        Descargar Documentación PDF
                     </a>
                     <p style="font-size: 0.85rem; color: #555; margin-top: 10px;">
                         Incluye el archivo Dockerfile y los comandos utilizados.
                     </p>
-                </div>
+                </article>
                 
             </div>
         </section>
-        </main>
+        
+    </main>
 
     <footer>
         <div class="container">
@@ -147,10 +154,38 @@
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const mainNav = document.querySelector('.main-nav');
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-        });
-    </script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const iconSpan = darkModeToggle.querySelector('.icon');
 
-</body>
+        // 1. Cargar preferencia guardada
+        const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            iconSpan.textContent = '☀️'; // Mostrar Sol si está en modo oscuro
+        } else {
+            iconSpan.textContent = '🌙'; // Mostrar Luna si está en modo claro
+        }
+
+        // 2. Lógica del Toggle
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                iconSpan.textContent = '☀️';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                iconSpan.textContent = '🌙';
+            }
+        });
+
+        // 3. Lógica del Menú Responsive (Mantenida)
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        }
+    </script>
+    </body>
 </html>
