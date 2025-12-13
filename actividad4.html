@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 4 | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
+    <title>Actividad 4: Docker Engine e Imagen Base | PROYECTO FINAL - SISTEMAS OPERATIVOS</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -19,14 +19,14 @@
                 <ul>
                     <li><a href="index.html">Portada</a></li>
                     <li class="dropdown">
-                        <a href="#" class="active">Actividades ▾</a>
+                        <a href="#" class="active">Actividades &#9662;</a>
                         <ul class="dropdown-menu activities-dropdown">
-                            <li><a href="actividad1.html">Actividad 1: Linux</a></li>
-                            <li><a href="actividad2.html">Actividad 2: Editores</a></li>
-                            <li><a href="actividad3.html">Actividad 3: Scripts</a></li>
-                            <li><a href="actividad4.html" class="active">Actividad 4: Docker Engine</a></li>
-                            <li><a href="actividad5.html">Actividad 5: Docker Hub</a></li>
-                            <li><a href="actividad6.html">Actividad 6: Kubernetes</a></li>
+                            <li><a href="actividad1.html">Actividad 1: Linux y Particionamiento</a></li>
+                            <li><a href="actividad2.html">Actividad 2: Editores y Configuración</a></li>
+                            <li><a href="actividad3.html">Actividad 3: Scripts y Concurrencia</a></li>
+                            <li class="active"><a href="actividad4.html" class="active">Actividad 4: Docker Engine e Imagen Base</a></li>
+                            <li><a href="actividad5.html">Actividad 5: Imagen v2.0 y Docker Hub</a></li>
+                            <li><a href="actividad6.html">Actividad 6: Minikube y Despliegue</a></li>
                         </ul>
                     </li>
                     <li><a href="presentacion.html" class="cta-link">Presentación/Videos</a></li>
@@ -37,74 +37,77 @@
 
     <main class="container">
         <section class="content-header">
-            <h1>Actividad 4: Instalación y Configuración de Docker Engine</h1>
+            <h1>Actividad 4: Instalación y Creación de Imagen Docker en Debian</h1>
             <p class="summary">
-                Instalación de Docker Engine nativo en Linux (Kubuntu), creación de una imagen personalizada basada en <strong>Debian</strong> mediante Dockerfile y gestión básica del ciclo de vida de un contenedor.
+                Instalación del **Docker Engine** nativo en **Debian**, siguiendo los pasos para agregar el repositorio oficial, instalar los componentes y verificar el estado del servicio. Se incluye la creación de una imagen base personalizada a partir de un Dockerfile.
             </p>
         </section>
 
         <section class="documentation-section">
-            <h2>4.1 Instalación de Docker Engine en Kubuntu</h2>
+            <h2>4.1 Instalación y Verificación de Docker Engine</h2>
             <article class="content-block card">
-                <h3>Pasos de Instalación y Configuración</h3>
+                <h3>Instalación y Componentes</h3>
                 <p>
-                    Se configuró el repositorio oficial de Docker, se instalaron los paquetes requeridos y se agregó el usuario actual al grupo `docker` para evitar usar `sudo`. El servicio fue habilitado con `systemctl enable docker`.
+                    [cite_start]El proceso incluyó la instalación de dependencias como `ca-certificates`, `curl` y `gnupg`[cite: 95, 96, 97, 98]. [cite_start]Posteriormente, se agregó el repositorio oficial de Docker y se instalaron los paquetes principales: `docker-ce`, `docker-ce-cli`, `containerd.io`, `buildx-plugin` y `docker-compose-plugin`[cite: 123, 124, 125, 126, 127, 128].
+                </p>
+                <figure class="image-placeholder">
+                    <img src="img/actividad_4_1.jpg" alt="Captura del estado del servicio Docker y la ejecución de la imagen hello-world." class="responsive-img">
+                    [cite_start]<figcaption>Figura 4.1: Verificación del estado de Docker con `systemctl status docker` mostrando el servicio activo y la ejecución exitosa de la imagen `hello-world`[cite: 135, 160, 161].</figcaption>
+                </figure>
+                
+                <h3>Verificación del Servicio</h3>
+                <p>
+                    [cite_start]Se verificó el estado del servicio Docker con `sudo systemctl status docker`, confirmando que el motor de contenedores se encontraba activo y ejecutándose[cite: 133, 135]. [cite_start]Finalmente, se ejecutó la imagen `hello-world` para validar la correcta instalación[cite: 154, 160].
                 </p>
                 <pre class="code-block">
-                    # Comandos de instalación y configuración
-                    sudo apt install docker-ce docker-ce-cli containerd.io -y
-                    sudo usermod -aG docker ${USER}
-                    systemctl enable docker
-                    docker run hello-world
+                    # Comandos de instalación clave
+                    sudo apt install -y ca-certificates curl gnupg lsb-release
+                    sudo apt install -y docker-ce docker-ce-cli containerd.io
+                    sudo systemctl status docker
+                    sudo docker run hello-world
                 </pre>
-                <figure class="image-placeholder">
-                    <img src="img/actividad_4_1.jpg" alt="Captura de docker version y docker info." class="responsive-img">
-                    <figcaption>Figura 4.1.1: Verificación de la instalación con `docker version` y `docker info`.</figcaption>
-                </figure>
             </article>
         </section>
 
         <section class="documentation-section">
-            <h2>4.2 Creación de Imagen Docker</h2>
+            <h2>4.2 Creación de Imagen Docker Personalizada (Dockerfile)</h2>
             <article class="content-block card">
-                <h3>Dockerfile Comentado</h3>
+                <h3>Dockerfile y Construcción de Imagen (v1.0)</h3>
                 <p>
-                    Se creó una imagen personalizada utilizando <strong>Debian</strong> como base, instalando herramientas de desarrollo como `git`, `curl`, `make` y `gcc`, y configurando un usuario no root.
+                    [cite_start]Se creó un Dockerfile [cite: 176] [cite_start]utilizando **Debian** como imagen base[cite: 187]. [cite_start]La imagen se personalizó para instalar herramientas de compilación (`gcc`, `g++`, `make`), crear un usuario sin privilegios (`desarrollador`) [cite: 189][cite_start], y establecer una terminal Bash como comando por defecto al iniciar el contenedor[cite: 192].
                 </p>
                 <pre class="code-block">
-                    FROM debian:stable-slim 
-                    RUN apt update && apt install -y git curl nano make gcc 
-                    
-                    RUN useradd -ms /bin/bash appuser
-                    USER appuser
-                    
-                    WORKDIR /home/appuser/app
-                    CMD ["/bin/bash"]
+                    # Contenido del Dockerfile
+                    FROM debian:latest
+                    RUN apt update && apt install -y gcc g++ make
+                    RUN useradd -ms/bin/bash desarrollador
+                    USER desarrollador
+                    WORKDIR /home/desarrollador
+                    CMD ["bash"]
                 </pre>
                 <figure class="image-placeholder">
                     <img src="img/actividad_4_2.jpg" alt="Captura del proceso de construcción de la imagen con docker build." class="responsive-img">
-                    <figcaption>Figura 4.2.1: Salida del comando `docker build` y listado de imágenes (`docker images`).</figcaption>
+                    [cite_start]<figcaption>Figura 4.2: Construcción exitosa de la imagen con el comando `sudo docker build -t miimagen:1.0 .`[cite: 196, 199, 201].</figcaption>
                 </figure>
             </article>
         </section>
 
         <section class="documentation-section">
-            <h2>4.3 Creación y Gestión de Contenedor</h2>
+            <h2>4.3 Creación y Gestión del Ciclo de Vida del Contenedor</h2>
             <article class="content-block card">
-                <h3>Ciclo de Vida y Comandos</h3>
+                <h3>Comandos Clave del Ciclo de Vida</h3>
                 <p>
-                    Se demuestra el ciclo de vida del contenedor utilizando comandos clave: `docker run`, `docker ps`, `docker exec`, `docker logs`, `docker stop` y `docker rm`. Se incluye una inspección con `docker inspect`.
+                    Se demostró la gestión completa del ciclo de vida del contenedor utilizando la imagen `miimagen:1.0`. [cite_start]Los pasos incluyeron la creación interactiva (`docker run -it`), la desconexión, la reentrada (`docker exec`), la detención (`docker stop`), el reinicio (`docker start`) y la eliminación final (`docker rm`)[cite: 207, 212, 236, 261, 288, 312].
                 </p>
-                <pre class="code-block">
-                    docker run -it --name dev-shell mi-imagen:v1.0
-                    docker ps -a
-                    docker exec -it dev-shell /bin/bash
-                    docker stop dev-shell
-                    docker rm dev-shell
-                </pre>
+                <ul>
+                    [cite_start]<li>`docker run -it --name`: Crea y ejecuta el contenedor en modo interactivo[cite: 207, 208, 209, 210].</li>
+                    [cite_start]<li>`docker ps -a`: Lista todos los contenedores, incluidos los detenidos[cite: 217, 240, 264, 291, 316].</li>
+                    [cite_start]<li>`docker exec -it`: Permite ejecutar un comando dentro de un contenedor en ejecución[cite: 236, 237].</li>
+                    [cite_start]<li>`docker stop/start/rm`: Controla la detención, reinicio y eliminación del contenedor[cite: 261, 288, 312].</li>
+                </ul>
                 <figure class="image-placeholder">
-                    <img src="img/actividad_4_3.jpg" alt="Captura mostrando la gestión del contenedor." class="responsive-img">
-                    <figcaption>Figura 4.3.1: Demostración de `docker ps` y `docker exec` en acción.</figcaption>
+                    <img src="img/actividad_4_3.jpg" alt="Captura mostrando la gestión del contenedor y listado de imágenes." class="responsive-img">
+                    [cite_start]<figcaption>Figura 4.3: Demostración de los comandos `docker ps -a` y `docker images`[cite: 265, 334].</figcaption>
                 </figure>
             </article>
         </section>
@@ -116,16 +119,12 @@
                 <article class="card">
                     <h3>Video Demostrativo del Proceso Completo</h3>
                     <div class="video-player">
-                        <iframe 
-                            width="100%" height="315"
-                            src="https://www.youtube.com/embed/TEMPORAL_ID_ACT4" 
-                            title="Video de Explicación de la Actividad 4" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <video controls width="100%" height="315">
+                            <source src="videos/Video_Presentacion_4.mp4" type="video/mp4">
+                            Tu navegador no soporta la etiqueta de video HTML5.
+                        </video>
                     </div>
-                    <p style="margin-top: 15px;">Video que demuestra la instalación, creación de imagen y gestión de contenedores con Docker Engine.</p>
+                    <p style="margin-top: 15px;">Video que demuestra la instalación, creación de imagen y gestión de contenedores con Docker Engine en Debian.</p>
                 </article>
                 
                 <article class="card center-content">
